@@ -1,0 +1,1131 @@
+<!doctype html>
+<html class="h-100" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="description" content="Premium software solutions by CrudOps - White & Yellow Theme with Banner and Video">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
+  <meta name="author" content="CrudOps Team">
+  <meta name="HandheldFriendly" content="true">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>CrudOps Hub - Code that Moves Business</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <style>
+    :root {
+      --co-yellow: #FFC107;
+      --co-dark-text: #212529;
+      --co-matte-black: #1a1a1a;
+      --co-border-gray: #DEE2E6;
+      --co-off-white: #fdfdfd;
+      --co-medium-gray-text: #555;
+      --co-light-gray-bg: #f8f9fa;
+      --co-dark-ash: #AAAAAA;
+
+      --navbar-top-gap: 20px;
+      --navbar-element-initial-height: 70px;
+      --navbar-total-initial-offset: calc(var(--navbar-top-gap) + var(--navbar-element-initial-height));
+
+      --card-width-vw: 90vw;
+      --card-side-padding-vw: calc((100vw - var(--card-width-vw)) / 2);
+      --card-gap-vw: 2vw;
+
+      --services-sticky-content-top: calc(var(--navbar-total-initial-offset) + 3rem);
+      --co-gradient-yellow-start: #fff9e0;
+      --co-gradient-white-end: #ffffff;
+      --co-premium-border: rgba(0, 0, 0, 0.05);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Anonymous Pro', monospace;
+      background-color: #FFFFFF; color: var(--co-dark-text);
+      line-height: 1.7; overflow-x: hidden;
+      padding-top: var(--navbar-total-initial-offset); /* Ensure body padding top for fixed navbar */
+    }
+
+    h1,h2,h3,h4,h5,h6 { font-family: 'Anonymous Pro', monospace; font-weight: 700; color: var(--co-dark-text); margin-bottom: 1.5rem; }
+    p { margin-bottom: 1.5rem; font-weight: 400; font-family: 'Inter', sans-serif; /* Adjusted default p font */ }
+
+    #mainNav { position: fixed; top: var(--navbar-top-gap); left: 50%; transform: translateX(-50%); width: 95%; max-width: 1300px; padding: 1rem; background-color: #FFFFFF; border-radius: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.08); z-index: 1050; transition: all 0.3s ease-in-out; }
+    #mainNav .container { width: 100%; padding: 0; } #mainNav .navbar-brand .logo-img { height: 38px; width:auto; transition: height 0.3s ease-in-out; } #mainNav.scrolled .navbar-brand .logo-img { height: 32px; } #mainNav .navbar-nav .nav-link { font-family: 'Anonymous Pro', monospace; color: var(--co-dark-text); font-weight: 400; padding: 0.5rem 1rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.3s ease; } #mainNav .navbar-nav .nav-link:hover, #mainNav .navbar-nav .nav-link:focus { color: var(--co-yellow); } #mainNav .navbar-nav .nav-item .nav-link.active { color: var(--co-yellow); font-weight: 700; } #mainNav .navbar-nav .nav-link.crudops-hub { font-family: 'Anonymous Pro', monospace; color: var(--co-yellow) !important; font-weight: 700; font-size: 0.9rem; } #mainNav.scrolled { padding: 0.75rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); } .navbar-toggler { border-color: rgba(0, 0, 0, 0.1); margin-left: auto; } .nav-cta-btn { font-family: 'Anonymous Pro', monospace; background-color: var(--co-yellow); border-color: var(--co-yellow); color: var(--co-dark-text); border-radius: 20px; font-weight: 700; padding: 0.45rem 1.3rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; transition: all 0.3s ease; } .nav-cta-btn:hover { background-color: #e0a800; border-color: #e0a800; transform: translateY(-2px); }
+
+    .hero-banner-section { height: 100vh; width: 100%; background-image: url('img/banner.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; position: relative; overflow: hidden; display: flex; }
+    .hero-banner-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.35); z-index: 1; }
+    .hero-banner-inner-content { position: relative; z-index: 2; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding: clamp(1.5rem, 5vw, 4rem); }
+    .hero-ai-text { font-family: 'Anonymous Pro', monospace; font-size: clamp(1.5rem, 3vw, 2.5rem); color: #FFFFFF; font-weight: 700; line-height: 1.3; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); margin: 0; } .hero-ai-text .highlight-yellow { color: var(--co-yellow); } .hero-bottom-details { position: absolute; bottom: clamp(1.5rem, 5vw, 4rem); right: clamp(1.5rem, 5vw, 4rem); text-align: right; } .tagline-hero, .time-location-hero { font-family: 'Anonymous Pro', monospace; color: #f0f0f0; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); margin-bottom: 0.2rem; font-weight: 400; } .tagline-hero { font-size: clamp(0.8rem, 1.5vw, 1.1rem); } .time-location-hero { font-size: clamp(0.7rem, 1.2vw, 0.9rem); } .tagline-hero .highlight-yellow { color: var(--co-yellow); font-weight: 700; }
+
+    /* --- NEW INTERACTIVE CAROUSEL SECTION --- */
+    #interactive-carousel-section {
+        background-color: #ffffff;
+        padding: 5rem 0;
+        overflow: hidden;
+        position: relative;
+    }
+    .interactive-carousel-container {
+        width: 100%;
+        position: relative;
+    }
+    .interactive-carousel-track {
+        display: flex;
+        align-items: center;
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .interactive-carousel-slide {
+        flex: 0 0 65%;
+        max-width: 900px;
+        margin: 0 1.5%;
+        opacity: 0.6;
+        transform: scale(0.85);
+        transition: transform 0.6s ease, opacity 0.6s ease;
+        position: relative;
+    }
+    .interactive-carousel-slide.active {
+        opacity: 1;
+        transform: scale(1);
+    }
+    .interactive-carousel-slide-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
+    .interactive-carousel-slide-content {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+    .interactive-carousel-slide-bg-img {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+    }
+    .interactive-carousel-slide-overlay {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent 60%);
+    }
+    .interactive-carousel-slide-text {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+    }
+    .interactive-carousel-slide-text h3 {
+        color: #fff;
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: 700;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        margin: 0;
+    }
+    .interactive-carousel-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2.5rem;
+    }
+    .interactive-carousel-arrow {
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 2.5rem;
+        font-weight: 300;
+        padding: 0 1.5rem;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+    .interactive-carousel-arrow:hover {
+        transform: scale(1.1);
+    }
+    .interactive-carousel-dots { display: flex; }
+    .interactive-carousel-dot {
+        width: 10px; height: 10px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.4);
+        margin: 0 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .interactive-carousel-dot.active {
+        background-color: white;
+        transform: scale(1.2);
+    }
+    /* --- END INTERACTIVE CAROUSEL SECTION --- */
+
+
+    #services-section { background-color: var(--co-light-gray-bg); padding-top: 5rem; padding-bottom: 5rem; position: relative; z-index: 30; }
+    #services-section .section-heading { margin-bottom: 4rem; text-align: center; } #services-section .section-heading h2 { font-size: clamp(2.2rem, 5vw, 3rem); } #services-section .section-heading p { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--co-medium-gray-text); max-width: 700px; margin-left: auto; margin-right: auto; }
+    .services-images-column .service-image-item { height: 75vh; max-height: 650px; margin-bottom: 40vh;  border-radius: 20px; overflow: hidden; box-shadow: 0 12px 35px rgba(0,0,0,0.1); }
+    .services-images-column .service-image-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .services-images-column .service-image-item:last-child { margin-bottom: 10vh; }
+    .services-content-sticky-wrapper { position: sticky; top: var(--services-sticky-content-top); height: calc(100vh - var(--services-sticky-content-top) - 3rem); max-height: 580px; background: linear-gradient(145deg, var(--co-gradient-yellow-start) 0%, var(--co-gradient-white-end) 70%); border-radius: 25px; padding: 0;  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px var(--co-premium-border); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center;  overflow: hidden; }
+    .service-content-block { opacity: 0; visibility: hidden;  position: absolute; top: 0; left: 0;  width: 100%; height: 100%;  padding: clamp(1.5rem, 3vw, 2.5rem); display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; }
+    .service-content-block h3 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin-bottom: 1.2rem; color: var(--co-dark-text);  }
+    .service-content-block p { font-size: clamp(0.95rem, 1.6vw, 1.05rem); line-height: 1.75; color: var(--co-medium-gray-text);  }
+    .service-content-block .btn { margin-top: 1.5rem; padding: 0.6rem 1.5rem; font-size: 0.9rem; border-radius: 25px;  }
+
+    /* --- UPDATED VISION BROCHURE SECTION STYLES --- */
+    #vision-section-brochure {
+        background-color: #e9eef2;
+        min-height: 100vh; /* Increased height */
+        padding: 2rem;
+        overflow: hidden;
+        position: relative;
+        z-index: 40;
+        display: flex; /* Added for vertical centering */
+        align-items: center; /* Added for vertical centering */
+        justify-content: center; /* Added for horizontal centering */
+    }
+    .brochure-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 2000px;
+    }
+    .brochure {
+        display: flex;
+        transform: rotateY(-12deg) rotateX(4deg); /* Initial 3D angle */
+        transform-style: preserve-3d;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+    }
+    .brochure-panel {
+        background-color: #ffffff;
+        width: 320px;
+        padding: 2.5rem;
+        box-sizing: border-box;
+        position: relative;
+        border: 1px solid rgba(0,0,0,0.07);
+    }
+    .brochure-panel h3 {
+        font-family: 'Anonymous Pro', monospace;
+        font-size: 2.2rem;
+        color: var(--co-dark-text);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 3px solid var(--co-yellow);
+        display: inline-block;
+    }
+    .brochure-panel p {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        color: var(--co-medium-gray-text);
+        line-height: 1.8;
+    }
+    .panel-left {
+        /* Set transform-origin in JS for reliability with GSAP */
+        z-index: 10;
+        transform: rotateY(25deg); /* Start slightly folded */
+    }
+    .panel-left::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -1px;
+        bottom: 0;
+        width: 100%;
+        background: linear-gradient(to left, rgba(0,0,0,0.18), transparent 25px);
+        pointer-events: none;
+    }
+    .panel-right {
+        /* Set transform-origin in JS */
+        z-index: 10;
+        transform: rotateY(-25deg); /* Start slightly folded */
+    }
+    .panel-right::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -1px;
+        bottom: 0;
+        width: 100%;
+        background: linear-gradient(to right, rgba(0,0,0,0.18), transparent 25px);
+        pointer-events: none;
+    }
+    .panel-center {
+        z-index: 20;
+    }
+    /* --- END UPDATED VISION BROCHURE STYLES --- */
+
+
+    #blog-section-wrapper { background-color: var(--co-matte-black); color: #FFFFFF; padding: 6rem 0; position: relative; z-index: 50; overflow: hidden; }
+    .blog-cards-row { margin-bottom: 4rem; }
+    .blog-card-item { margin-bottom: 2rem; display: flex; flex-direction: column; }
+    .blog-card-image { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; margin-bottom: 1.5rem; background-color: #333; }
+    .blog-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease-out; }
+    .blog-card-item:hover .blog-card-image img { transform: scale(1.05); }
+    .blog-card-caption { text-align: left; }
+    .blog-card-caption .blog-card-category { font-family: 'Anonymous Pro', monospace; font-size: 0.75rem; font-weight: 700; color: #A0A0A0; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.5rem; }
+    .blog-card-caption .blog-card-category::before { content: '●'; color: #FFFFFF; margin-right: 0.5em; font-size: 0.9em; }
+    .blog-card-caption .blog-card-title { font-family: 'Inter', sans-serif; font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 600; color: #FFFFFF; line-height: 1.4; margin-bottom: 0; }
+    .see-all-blogs-container { text-align: center; width: 100%; }
+    .see-all-blogs-link { font-family: 'Inter', sans-serif; font-weight: 800; font-size: clamp(3rem, 12vw, 10rem); color: #383838; text-decoration: none; line-height: 1; display: inline-block; transition: color 0.3s ease; text-transform: lowercase; }
+    .see-all-blogs-link:hover { color: #505050; }
+
+    #case-studies-section { background-color: #FFFFFF; color: var(--co-dark-text); padding: 5rem 0; position: relative; z-index: 60; }
+    #case-studies-section .section-main-title { font-family: 'Inter', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; color: var(--co-dark-text); margin-bottom: 3rem; text-align: left; }
+    .case-studies-content-row { align-items: flex-start; }
+    .case-study-card { /* Wrap entire content in an <a> tag */ background-color: #FFFFFF; border-radius: 8px; overflow: hidden; margin-bottom: 1.5rem; transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; display: block; /* Make the link a block */ text-decoration: none; color: inherit; }
+    .case-study-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* More subtle hover shadow */ }
+    .case-study-image-wrapper { position: relative; overflow: hidden; background-color: #e9ecef; }
+    .case-study-image-wrapper img { display: block; width: 100%; height: 100%; object-fit: cover; } /* height 100% and object-fit cover is for large and small case studies to fill aspect-ratio defined parent */
+    .case-study-type-tag { position: absolute; top: 1rem; left: 1rem; background-color: rgba(255, 255, 255, 0.9); color: var(--co-dark-text); font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.03em; z-index: 2; }
+    .large-case-study .case-study-image-wrapper { aspect-ratio: 16 / 10; }
+    .small-case-study .case-study-image-wrapper { aspect-ratio: 16 / 9; }
+    .case-study-tags-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 1rem; background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0)); display: flex; flex-wrap: wrap; gap: 0.5rem; z-index: 1; }
+    .case-study-tags-overlay .tag, .case-study-tags-small .tag { font-size: 0.7rem; padding: 0.3rem 0.7rem; border-radius: 15px; color: #FFFFFF; font-weight: 500; letter-spacing: 0.02em; margin-right: 0.4rem; margin-bottom: 0.4rem; display: inline-block; }
+    .case-study-tags-small .tag { font-size: 0.65rem; padding: 0.25rem 0.6rem; border-radius: 12px; }
+    .tag:nth-child(4n+1) { background-color: #6f42c1; }
+    .tag:nth-child(4n+2) { background-color: #0d6efd; }
+    .tag:nth-child(4n+3) { background-color: #198754; }
+    .tag:nth-child(4n+4) { background-color: #dc3545; }
+    .case-study-info-large { padding: 1.5rem; background-color: #f8f9fa; }
+    .case-study-meta-large { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--co-medium-gray-text); margin-bottom: 0.75rem; font-family: 'Inter', sans-serif; }
+    .case-study-title-large { font-family: 'Inter', sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.8rem); font-weight: 600; color: var(--co-dark-text); line-height: 1.3; margin-bottom: 0; }
+    .case-study-info-small { padding: 1rem; }
+    .case-study-meta-small { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--co-medium-gray-text); margin-bottom: 0.5rem; font-family: 'Inter', sans-serif; }
+    .case-study-title-small { font-family: 'Inter', sans-serif; font-size: clamp(1rem, 1.8vw, 1.2rem); font-weight: 600; color: var(--co-dark-text); line-height: 1.4; margin-bottom: 0.75rem; }
+    .case-study-excerpt { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--co-medium-gray-text); line-height: 1.6; margin-bottom: 1rem; }
+    /* New button for case studies section */
+    .btn-cta-dark-bg {
+        font-family: 'Anonymous Pro', monospace;
+        background-color: var(--co-dark-text); /* Use dark text color as button background */
+        border-color: var(--co-dark-text);
+        color: var(--co-yellow); /* Yellow text on dark button */
+        padding: 0.9rem 2.2rem;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        margin-top: 2rem; /* Space below case studies */
+    }
+    .btn-cta-dark-bg:hover {
+        background-color: var(--co-matte-black); /* Slightly darker on hover */
+        border-color: var(--co-matte-black);
+        transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        color: var(--co-yellow); /* Ensure color stays yellow */
+    }
+
+
+    /* Our Work & Clients Section */
+    #our-work-clients-section { display: flex; min-height: auto; background-color: var(--co-off-white); position: relative; z-index: 70; overflow: hidden; align-items: center; }
+    .work-column { flex: 0 0 65%; max-width: 65%; padding: 2rem; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+    .work-image-carousel { position: relative; width: 100%; aspect-ratio: 1.8; overflow: hidden; background-color: #e0e0e0; margin-bottom: 1.5rem; }
+    .work-image-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.7s ease-in-out; visibility: hidden; }
+    .work-image-slide.active { opacity: 1; visibility: visible; }
+    .work-image-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .work-info-navigation-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+    .work-details { text-align: left; }
+    .work-project-title { font-family: 'Inter', sans-serif; font-size: clamp(1rem, 1.5vw, 1.25rem); font-weight: 700; color: var(--co-dark-text); margin-bottom: 0.15rem; }
+    .work-project-categories { font-family: 'Inter', sans-serif; font-size: clamp(0.7rem, 1vw, 0.8rem); color: var(--co-medium-gray-text); margin-bottom: 0; line-height: 1.4; }
+    .work-carousel-controls { display: flex; align-items: center; }
+    .work-carousel-controls button { background: none; border: none; color: var(--co-dark-text); font-size: 1.5rem; font-weight: 300; padding: 0.2rem 0.4rem; cursor: pointer; line-height: 1; transition: color 0.2s ease; }
+    .work-carousel-controls button:hover { color: var(--co-yellow); }
+    .carousel-slide-indicator { font-family: 'Anonymous Pro', monospace; font-size: 0.9rem; color: var(--co-dark-text); margin: 0 0.7rem; font-weight: 400; }
+    .work-carousel-progress-bar-container { width: 100%; height: 2px; background-color: #ccc; }
+    .work-carousel-progress-bar { height: 100%; width: 0%; background-color: var(--co-dark-text); transition: width 0.4s ease-out; }
+
+    .marquee-column { flex: 0 0 35%; max-width: 35%; background-color: var(--co-matte-black); padding: 0.5rem 0; display: flex; flex-direction: column; justify-content: center; overflow: hidden; position: relative; z-index: 1; }
+    .client-names-marquee-wrapper { overflow: hidden; width: 100%; position: relative; display: flex; align-items: center; }
+    .client-names-marquee-content { display: inline-block; white-space: nowrap; padding: 0.6rem 0; animation: horizontal-right-to-left-marquee 40s linear infinite; }
+    .client-names-marquee-content span { font-family: 'Inter', sans-serif; font-size: clamp(1.1rem, 1.8vw, 1.6rem); font-weight: 600; color: var(--co-dark-ash); margin: 0 0.75rem; display: inline-block; }
+    .client-names-marquee-content .separator { color: var(--co-yellow); font-size: clamp(1.1rem, 1.8vw, 1.6rem); font-weight: 700; margin: 0 0.75rem; display: inline-block; }
+
+    @keyframes horizontal-right-to-left-marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+
+    /* Footer Styles */
+    .site-footer { background-color: #FFFFFF; padding: 3rem 0 2rem 0; border-top: 1px solid var(--co-border-gray); font-family: 'Inter', sans-serif; color: var(--co-dark-text); }
+    .site-footer .container { max-width: 1300px;  }
+    .footer-main-content { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2.5rem; gap: 2rem;  }
+    .footer-brand-block { flex: 0 0 28%;  max-width: 28%; }
+    .footer-logo { max-width: 200px;  height: auto; margin-bottom: 1.2rem; }
+    .footer-slogan { font-size: 1rem;  font-weight: 500;  color: var(--co-dark-text); line-height: 1.5; margin-bottom: 0; font-family: 'Anonymous Pro', monospace;  } /* Adjusted font */
+    .footer-links-area { flex: 1; display: flex; justify-content: space-between; gap: 1.5rem;  }
+    .footer-links-column { flex: 1; min-width: 150px;  }
+    .footer-links-column h4 { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--co-medium-gray-text);  text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+    .footer-links-column ul { list-style: none; padding: 0; margin: 0; }
+    .footer-links-column ul li a { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--co-dark-text); text-decoration: none; display: block; padding: 0.35rem 0; transition: color 0.2s ease; font-weight: 500; }
+    .footer-links-column ul li a:hover { color: var(--co-yellow); }
+    .footer-legal-link { font-family: 'Inter', sans-serif; display: block; font-size: 0.8rem; font-weight: 500; color: var(--co-medium-gray-text); text-decoration: none; margin-top: 1rem;  padding: 0.35rem 0; transition: color 0.2s ease; }
+    .footer-legal-link:hover { color: var(--co-yellow); }
+    .footer-bottom-bar { display: flex; justify-content: space-between; align-items: flex-end;  padding-top: 2rem; border-top: 1px solid var(--co-border-gray); }
+    .footer-copyright-text p { font-family: 'Inter', sans-serif; font-size: 0.75rem;  color: #707070;  line-height: 1.6; margin: 0; }
+    .footer-social-media { display: flex; align-items: center; }
+    .footer-social-media a { color: var(--co-dark-text); margin-left: 1rem;  font-size: 1.1rem;  text-decoration: none; transition: color 0.2s ease; }
+    .footer-social-media a:first-child { margin-left: 0; }
+    .footer-social-media a:hover { color: var(--co-yellow); }
+
+
+    /* --- ALL MOBILE STYLES --- */
+    @media (max-width: 991.98px) {
+      body { padding-top: calc(var(--navbar-top-gap) + 60px); }
+      #mainNav { width: 95%; padding: 0.75rem; max-width: calc(100% - 20px); border-radius: 0; }
+      #mainNav .navbar-brand .logo-img { height: 32px; }
+      #mainNav .navbar-collapse { background-color: #FFFFFF; padding: 1rem; margin-top: 0.75rem; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: absolute; top: 100%; left: 0; right: 0; width: 100%; }
+      #mainNav .navbar-nav .nav-item { margin-bottom: 0.3rem; }
+      #mainNav .navbar-nav .nav-link { padding: 0.6rem 0.5rem; font-size: 0.9rem; }
+      #mainNav .navbar-collapse .d-lg-flex { margin-top: 1rem; display: block !important; text-align: center; }
+      #mainNav .navbar-collapse .nav-cta-btn { width: 100%; display: block; margin: 0.5rem auto 0; font-size: 0.9rem; }
+
+      .hero-banner-section { height: 100vh; background-attachment: scroll; display: flex; }
+      .hero-banner-inner-content { justify-content: space-between; align-items: center; text-align: center; padding-top: calc(var(--navbar-total-initial-offset) + 1rem); }
+      .hero-ai-text { font-size: clamp(1.2rem, 5vw, 1.8rem); text-align: center; align-self: center; margin-bottom: auto; margin-top: auto; }
+      .hero-bottom-details { position: static; text-align: center; padding-top: 1rem; width: 100%; }
+      .tagline-hero { font-size: clamp(0.8rem, 2.5vw, 1rem); }
+      .time-location-hero { font-size: clamp(0.7rem, 2.2vw, 0.85rem); }
+
+      /* Interactive Carousel Mobile */
+      #interactive-carousel-section { padding: 3rem 0; }
+      .interactive-carousel-slide {
+          flex-basis: 80%;
+          margin: 0 2.5%;
+      }
+      .interactive-carousel-slide-text h3 {
+          font-size: clamp(1.2rem, 5vw, 1.8rem);
+      }
+      .interactive-carousel-nav { margin-top: 1.5rem; }
+      .interactive-carousel-arrow { font-size: 2rem; padding: 0 1rem; }
+      /* End Interactive Carousel Mobile */
+
+      #services-section {
+        position: static !important;
+        padding: 3rem 0;
+        min-height: auto;
+        z-index: auto !important;
+      }
+      .services-images-column .service-image-item {
+        height: auto; max-height: 50vh;
+        margin-bottom: 1.5rem;
+        border-radius: 15px;
+      }
+      .services-images-column .service-image-item:last-child { margin-bottom: 1.5rem; }
+
+      .services-content-sticky-wrapper {
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 1rem;
+        margin-top: 1.5rem;
+
+        position: static !important;
+        height: auto !important; max-height: none !important;
+        background: none !important; backdrop-filter: none !important;
+        box-shadow: none !important; border-radius: 0 !important;
+      }
+      .services-content-sticky-wrapper::-webkit-scrollbar { display: none; }
+      .services-content-sticky-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
+
+      .service-content-block {
+        flex: 0 0 80vw;
+        max-width: 80vw;
+        margin-right: 1rem;
+        scroll-snap-align: start;
+
+        background: linear-gradient(145deg, var(--co-gradient-yellow-start) 0%, var(--co-gradient-white-end) 70%);
+        border-radius: 20px;
+        padding: 1.8rem 1.5rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        border: 1px solid var(--co-premium-border);
+        text-align: center;
+
+        min-height: 320px;
+        display: flex; flex-direction: column; justify-content: center;
+
+        position: relative !important; /* Keep original to prevent JS from overriding when static */
+        opacity: 1 !important; visibility: visible !important; transform: none !important;
+        margin-bottom: 0;
+      }
+      .service-content-block:last-child { margin-right: 0; }
+      .service-content-block h3 { font-size: clamp(1.3rem, 4vw, 1.7rem); margin-bottom: 0.8rem; }
+      .service-content-block p { font-size: clamp(0.8rem, 2.5vw, 0.9rem); line-height: 1.6; margin-bottom: 1rem; }
+      .service-content-block .btn { margin-top: 1rem; padding: 0.5rem 1.2rem; font-size: 0.85rem; }
+
+      /* Brochure mobile styles - 3D animation disabled for mobile */
+      #vision-section-brochure {
+          padding: 4rem 1rem;
+          min-height: auto; /* Revert height */
+          height: auto;
+      }
+      .brochure {
+          flex-direction: column;
+          transform: none !important; /* Disable 3D effect on mobile */
+          box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+          width: 90%;
+      }
+      .brochure-panel {
+          width: 100%;
+          transform: none !important; /* Disable panel transforms */
+          border-bottom: 1px solid #eee;
+          padding: 1.8rem 1.5rem;
+      }
+      .brochure-panel:last-child {
+          border-bottom: none;
+      }
+      .brochure-panel::before {
+          display: none; /* Hide fold shadows */
+      }
+      .brochure-panel h3 { font-size: 1.8rem; }
+      .brochure-panel p { font-size: 0.85rem; }
+
+
+      #blog-section-wrapper { padding: 4rem 1rem; }
+      .blog-card-item { padding-left: 0; padding-right: 0;}
+
+      #case-studies-section { padding: 4rem 1rem; }
+      #case-studies-section .section-main-title { text-align: center; margin-bottom: 2.5rem; }
+      .large-case-study .case-study-image-wrapper { aspect-ratio: 16 / 11; }
+
+      /* Our Work & Clients Section (MOBILE) */
+      #our-work-clients-section { flex-direction: column; min-height: auto; align-items: stretch; }
+      .work-column, .marquee-column { flex: 1 1 100%; max-width: 100%; }
+      .work-column { padding: 1.5rem; order: 1; }
+      .work-image-carousel { aspect-ratio: 16/10; margin-bottom: 1rem; }
+      .work-info-navigation-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; }
+       .work-carousel-controls { width: 100%; justify-content: flex-start; }
+      .marquee-column { padding: 0.5rem 0; min-height: auto; order: 2; }
+      .client-names-marquee-content span, .client-names-marquee-content .separator { font-size: clamp(1rem, 4vw, 1.2rem); margin: 0 0.5rem; }
+      /* Case study button on mobile */
+      .case-studies-section-cta-container { text-align: center; padding-top: 1.5rem; }
+
+      /* Footer Mobile Styles */
+      .footer-main-content { flex-direction: column; align-items: flex-start;  gap: 0;  }
+      .footer-brand-block { flex-basis: auto; width: 100%; max-width: 100%; margin-bottom: 2rem; }
+      .footer-links-area { flex-direction: column; width: 100%; gap: 0; }
+      .footer-links-column { width: 100%; margin-bottom: 2rem; } .footer-links-column:last-child { margin-bottom: 0; }
+      .footer-bottom-bar { flex-direction: column; align-items: flex-start;  text-align: left;  }
+      .footer-copyright-text { margin-bottom: 1.5rem; }
+      .footer-social-media { width: 100%; justify-content: flex-start;  }
+      .footer-social-media a { margin-left: 0; margin-right: 1rem;  }
+
+       @media (max-width: 767.98px) {
+          .blog-card-image { aspect-ratio: 16 / 11; }
+          .see-all-blogs-link { font-size: clamp(2.5rem, 15vw, 6rem); }
+          .case-study-meta-large, .case-study-meta-small { flex-direction: column; gap: 0.2rem; align-items: flex-start; }
+          .case-study-info-large { padding: 1.2rem; }
+          .case-study-info-small { padding: 0.8rem; }
+          .small-case-study .case-study-image-wrapper { aspect-ratio: 4 / 3; }
+      }
+    }
+    .float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 8px rgba(0,0,0,0.2); z-index: 1000; display: flex; align-items: center; justify-content: center; }
+   
+   
+  </style>
+</head>
+<body>
+  <div id="mouse-shadow"></div>
+
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-light"> <div class="container d-flex justify-content-between align-items-center"> <a class="navbar-brand" href="index.html"> <img src="./img/logo-dark.png" alt="CrudOps Logo" class="logo-img"> </a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"> <span class="navbar-toggler-icon"></span> </button> <div class="collapse navbar-collapse" id="navbarSupportedContent"> <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0"> <li class="nav-item"> <a class="nav-link" href="services.html">Services</a> </li> <li class="nav-item"> <a class="nav-link" href="industries.html">Industries</a> </li> <li class="nav-item"> <a class="nav-link" href="about.html">About Us</a> </li> <li class="nav-item"> <a class="nav-link crudops-hub border-link" href="index.html">Crudops Hub</a> </li> <li class="nav-item"> <a class="nav-link" href="casestudies.html">Case Studies</a> </li> <li class="nav-item"> <a class="nav-link" href="portfolio.html">Portfolio</a> </li> <li class="nav-item"> <a class="nav-link" href="blog.html">Blogs</a> </li></ul> <div class="d-lg-flex align-items-center"> <a href="contact.html" class="btn nav-cta-btn btn-sm">Contact Us</a> </div> </div> </div> </nav>
+  <a href="https://api.whatsapp.com/send?phone=+916238575185&text=Hi, I visited your website and would like to know more." class="float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa fa-whatsapp"></i></a>
+
+<main>
+    <section class="hero-banner-section"> <div class="hero-banner-inner-content" data-aos="fade-in" data-aos-duration="1000"> <div class="hero-ai-text">We have touched  <span class="highlight-yellow">the</span> AI </div> <div class="hero-bottom-details"> <div> <p class="tagline-hero"> <span class="highlight-yellow">Intelligence.</span> Integrated. </p> <p class="time-location-hero"> <span id="kochi-time">--:-- --</span> – KOCHI, INDIA </p> </div> </div> </div> </section>
+
+    <section id="interactive-carousel-section">
+        <div class="interactive-carousel-container">
+            <div class="interactive-carousel-track">
+                <div class="interactive-carousel-slide">
+                    <a href="service-ai-ml.html" class="interactive-carousel-slide-link">
+                        <div class="interactive-carousel-slide-content">
+                            <img src="img/industry1.jpg" alt="Visionary AI Integration" class="interactive-carousel-slide-bg-img">
+                            <div class="interactive-carousel-slide-overlay"></div>
+                            <div class="interactive-carousel-slide-text">
+                                <h3>Visionary AI Integration</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="interactive-carousel-slide">
+                    <a href="industries.html" class="interactive-carousel-slide-link">
+                        <div class="interactive-carousel-slide-content">
+                            <img src="img/industry2.jpg" alt="Partnering Across Industries" class="interactive-carousel-slide-bg-img">
+                            <div class="interactive-carousel-slide-overlay"></div>
+                            <div class="interactive-carousel-slide-text">
+                                <h3>Partnering Across Industries.</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="interactive-carousel-slide">
+                    <a href="casestudies.html" class="interactive-carousel-slide-link">
+                        <div class="interactive-carousel-slide-content">
+                            <img src="img/industry3.jpg" alt="Beyond Theory" class="interactive-carousel-slide-bg-img">
+                            <div class="interactive-carousel-slide-overlay"></div>
+                            <div class="interactive-carousel-slide-text">
+                                <h3>Beyond Theory</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="interactive-carousel-nav">
+            <button class="interactive-carousel-arrow prev-arrow"><</button>
+            <div class="interactive-carousel-dots"></div>
+            <button class="interactive-carousel-arrow next-arrow">></button>
+        </div>
+    </section>
+
+    <section id="services-section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Our Core Expertise</h2>
+          <p>Innovating Solutions with AI and Custom Technology
+        </p>
+        </div>
+        <div class="row services-layout-row">
+          <div class="col-lg-6 services-images-column">
+            <div class="service-image-item" data-service="custom-software"> <img src="img/custom_dev.png" alt="Custom Software Development"> </div>
+            <div class="service-image-item" data-service="web-dev"> <img src="img/web_dev.png" alt="Web Development UX/UI"> </div>
+            <div class="service-image-item" data-service="mobile-app"> <img src="img/mobile app dev.jpg" alt="Mobile App Development Case Study"> </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="services-content-sticky-wrapper">
+              <div id="custom-software-content" class="service-content-block">
+                <h3>Custom Software Development</h3>
+                <p>Our team designs custom software that addresses the specific problems you face as a business. With the help of AI and sturdy technologies, we develop software that both streamlines business processes and improves how things get done. Collaborate with us to make your idea into real industry tools that do more for your company.
+                </p>
+                <a href="service-software-dev.html" class="btn btn-warning btn-sm">Explore Solutions</a>
+              </div>
+              <div id="web-dev-content" class="service-content-block">
+                <h3>Web Development</h3> <p>Our team creates sites that are responsive and user-friendly, to raise the visibility of your company online. We are skilled in building e-commerce sites, job boards and educational platforms for the arts, all intended to encourage users to use these services. We make your website completely usable on any device and help it secure a high spot on search engine results by combining the best technology and SEO tips.</p>
+                <a href="service-web-dev.html" class="btn btn-warning btn-sm">View Web Services</a>
+              </div>
+              <div id="mobile-app-content" class="service-content-block">
+                <h3>Mobile App Development</h3>
+                <p>We build applications that are simple to use and function well for iOS and Android systems. If we build a communication system, a travel guide or an app for managing money, we keep the user’s experience simple and personal using AI tools like automation. It’s time to design a mobile application that lets your audience connect and interact even while traveling.
+                </p>
+                <a href="service-app-dev.html" class="btn btn-warning btn-sm">See App Portfolio</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vision-section-brochure">
+        <div class="brochure-container">
+            <div class="brochure">
+                <div class="brochure-panel panel-left">
+                    <h3>Our Vision</h3>
+                    <p>At Crudops, our vision extends beyond code; we aim to be the most trusted digital transformation partner for businesses seeking impactful results.</p>
+                </div>
+                <div class="brochure-panel panel-center">
+                    <p>We envision a world where our custom software solutions and expert technology consulting empower clients to overcome complex challenges, optimize operations, and achieve unprecedented market leadership.</p>
+                </div>
+                <div class="brochure-panel panel-right">
+                    <p>Our commitment is to forge lasting partnerships built on delivering measurable value and future-ready platforms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog-section-wrapper">
+        <div class="container-fluid">
+            <div class="row blog-cards-row justify-content-center">
+                <div class="col-lg-4 col-md-6 blog-card-item">
+                    <div class="blog-card-image"> <img src="img/blog1.jpg" alt="Blog Post 1 Image"> </div>
+                    <div class="blog-card-caption"> <span class="blog-card-category">ARTIFICIAL INTELLIGENCE</span> <h3 class="blog-card-title">The Future of AI in Web Development: A Deep Dive
+                    </h3> </div>
+                </div>
+                <div class="col-lg-4 col-md-6 blog-card-item">
+                    <div class="blog-card-image"> <img src="img/blog2.jpg" alt="Blog Post 2 Image"> </div>
+                    <div class="blog-card-caption"> <span class="blog-card-category">Billing Application</span> <h3 class="blog-card-title">Breaking Waves: Latest News in Software Development
+                    </h3> </div>
+                </div>
+                <div class="col-lg-4 col-md-6 blog-card-item">
+                    <div class="blog-card-image"> <img src="img/blog3.jpg" alt="Blog Post 3 Image"> </div>
+                    <div class="blog-card-caption"> <span class="blog-card-category">Artificial Inteligence</span> <h3 class="blog-card-title">Navigating the Pulse: Current Tech Market Insights
+
+                    </h3> </div>
+                </div>
+            </div>
+        </div>
+        <div class="see-all-blogs-container">
+            <a href="blog.html" class="see-all-blogs-link">See All Blogs</a>
+        </div>
+    </section>
+
+    <section id="case-studies-section">
+        <div class="container">
+            <div class="row section-title-row">
+                <div class="col-12">
+                    <h2 class="section-main-title">Case Studies</h2>
+                </div>
+            </div>
+            <div class="row case-studies-content-row">
+                <div class="col-lg-7 col-md-12">
+                    <!-- Wrapped in <a> tag -->
+                    <a href="case-study-single-1.html" class="case-study-card large-case-study">
+                        <div class="case-study-image-wrapper">
+                            <img src="img/blog1.jpg" alt="Case Study 1 Image">
+                            <span class="case-study-type-tag">Featured Case</span>
+                            <div class="case-study-tags-overlay">
+                                <span class="tag">AI Governance</span>
+                                <span class="tag">AI Chat Support</span>
+                                <span class="tag">Ecommerce</span>
+                                <span class="tag">Customer Support</span>
+                            </div>
+                        </div>
+                        <div class="case-study-info-large">
+                            <div class="case-study-meta-large">
+                                
+                            </div>
+                            <h3 class="case-study-title-large">
+                                AI-Driven Customer Support Chatbot: Enhancing Service Efficiency
+                            </h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-5 col-md-12">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-6 mb-4 mb-lg-4">
+                            <!-- Wrapped in <a> tag -->
+                            <a href="case-study-single-2.html" class="case-study-card small-case-study">
+                                <div class="case-study-image-wrapper">
+                                    <img src="img/blog2.jpg" alt="Case Study 2 Image">
+                                    <span class="case-study-type-tag">Insights</span>
+                                </div>
+                                <div class="case-study-info-small">
+                                    <div class="case-study-meta-small">
+                                        
+                                        <span class="case-study-date">21 May 2025</span>
+                                    </div>
+                                    <h4 class="case-study-title-small">
+                                        Customized Billing Software: Streamlining Financial Operations
+
+                                    </h4>
+                                    <p class="case-study-excerpt">
+                                        A recovery that is medium-heavy grapples with a long-standing billing system, which was ...
+                                    </p>
+                                    <div class="case-study-tags-small">
+                                        <span class="tag">Retail</span>
+                                        <span class="tag">Billing</span>
+                                        <span class="tag">Accounting</span>
+                                        <span class="tag">Cross-Industry</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-12 col-md-6">
+                            <!-- Wrapped in <a> tag -->
+                             <a href="case-study-single-3.html" class="case-study-card small-case-study">
+                                <div class="case-study-image-wrapper">
+                                    <img src="img/blog3.jpg" alt="Case Study 3 Image">
+                                     <span class="case-study-type-tag">Report</span>
+                                </div>
+                                <div class="case-study-info-small">
+                                    <div class="case-study-meta-small">
+                                        <span class="case-study-client">Mike Connors</span>
+                                        <span class="case-study-date">20 May 2025</span>
+                                    </div>
+                                    <h4 class="case-study-title-small">
+                                        AI in Healthcare: Improving Patient Care with Smart Technology
+
+                                    </h4>
+                                     <p class="case-study-excerpt">
+                                        A community of clinics struggled with not on time diagnoses because of guide statistics evaluation...
+                                    </p>
+                                    <div class="case-study-tags-small">
+                                        <span class="tag">Healthcare</span>
+                                        <span class="tag">GenAI</span>
+                                        <span class="tag">Financial Services</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- View All Case Studies Button -->
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <a href="casestudies.html" class="btn btn-cta-dark-bg btn-lg">View All Case Studies</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="our-work-clients-section">
+        <div class="work-column">
+            <div class="work-image-carousel">
+                 <div class="work-image-slide active"><img src="img/work1.png" alt="Project 1: Real Estate Web Design"></div>
+                 <div class="work-image-slide"><img src="img/work2.png" alt="Project 2: Analytics Dashboard"></div>
+                 <div class="work-image-slide"><img src="img/work3.png" alt="Project 3: E-commerce Mobile App"></div>
+                 <div class="work-image-slide"><img src="img/work4.png" alt="Project 4: Logistics Platform"></div>
+            </div>
+            <div class="work-info-navigation-row">
+                <div class="work-details">
+                    <h3 class="work-project-title">Loading Project...</h3>
+                    <p class="work-project-categories">Loading categories...</p>
+                </div>
+                <div class="work-carousel-controls">
+                    <button class="carousel-prev-btn" aria-label="Previous Work"><</button>
+                    <span class="carousel-slide-indicator">-- / --</span>
+                    <button class="carousel-next-btn" aria-label="Next Work">></button>
+                </div>
+            </div>
+            <div class="work-carousel-progress-bar-container">
+                <div class="work-carousel-progress-bar"></div>
+            </div>
+        </div>
+
+        <div class="marquee-column">
+            <div class="client-names-marquee-wrapper">
+                <div class="client-names-marquee-content">
+                    <!-- Client names and separators will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <!-- Footer content remains the same as previous version -->
+    <div class="container"> <div class="footer-main-content"> <div class="footer-brand-block"> <img src="img/logo-dark.png" alt="CrudOps AI Logo" class="footer-logo"> <p class="footer-slogan">Reshape. Redefine. Revelutionize</p> </div> <div class="footer-links-area"> <div class="footer-links-column products"> <h4>Services</h4> <ul> <li><a href="service-ai-ml.html">AI/ML Solutions</a></li> <li><a href="service-web-dev.html">Web Development</a></li> <li><a href="service-app-dev.html">App Development</a></li> <li><a href="service-erp-dev.html">ERP Development</a></li> <li><a href="service-ecommerce-dev.html">E-Commerce</a></li> <li><a href="service-software-dev.html">Software Development</a></li> </ul> <a href="privacy.html" class="footer-legal-link">PRIVACY POLICY</a> </div> <div class="footer-links-column role"> <h4>Explore</h4> <ul> <li><a href="industries.html">Industries Served</a></li> <li><a href="casestudies.html">Case Studies</a></li> <li><a href="portfolio.html">Our Portfolio</a></li> <li><a href="blog.html" target="_blank">Blogs</a></li> <li><a href="career.html">Careers</a></li> </ul> <a href="terms.html" class="footer-legal-link">TERMS OF USE</a> </div> <div class="footer-links-column company"> <h4>Company</h4> <ul> <li><a href="about.html">About Us</a></li> <li><a href="contact.html">Contact</a></li>  </ul> </div> </div> </div> <div class="footer-bottom-bar"> <div class="footer-copyright-text"> <p> © <span id="currentYear"></span> CrudOps. All rights reserved. <br> CrudOps™ and the CrudOps logo are trademarks of CrudOps Pvt. Ltd. </p> </div> 
+   
+    </div> 
+</div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script>
+    if (typeof AOS !== 'undefined') { AOS.init({ duration: 1000, once: true, offset: 100 }); }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const header = document.querySelector("#mainNav");
+    if (header) {
+        const add_class_on_scroll = () => header.classList.add("scrolled");
+        const remove_class_on_scroll = () => header.classList.remove("scrolled");
+        const updateNavbarAndBodyPadding = () => {
+            requestAnimationFrame(() => {
+                const currentNavbarHeight = header.offsetHeight;
+                const rootStyles = getComputedStyle(document.documentElement);
+                const navbarTopGap = parseInt(rootStyles.getPropertyValue('--navbar-top-gap').trim()) || 0;
+                let newBodyPaddingTop = navbarTopGap + currentNavbarHeight;
+                if (window.innerWidth >= 992) {
+                    document.body.style.paddingTop = `${newBodyPaddingTop}px`;
+                } else {
+                    document.body.style.paddingTop = `calc(var(--navbar-top-gap) + 60px)`;
+                }
+                document.documentElement.style.setProperty('--navbar-total-initial-offset', `${newBodyPaddingTop}px`);
+                const mainNavElForScrollSpy = document.getElementById('mainNav');
+                if (typeof bootstrap !== 'undefined' && bootstrap.ScrollSpy && mainNavElForScrollSpy) {
+                    let scrollSpyOffset = newBodyPaddingTop + 20;
+                    const bsScrollSpyInstance = bootstrap.ScrollSpy.getInstance(document.body);
+                    if (bsScrollSpyInstance) {
+                        bsScrollSpyInstance._config.offset = scrollSpyOffset;
+                        bsScrollSpyInstance.refresh();
+                    } else {
+                        try { new bootstrap.ScrollSpy(document.body, { target: '#mainNav', offset: scrollSpyOffset }); } catch (e) { /* console.error("ScrollSpy init error on resize:", e); */ }
+                    }
+                }
+            });
+        };
+        window.addEventListener('resize', updateNavbarAndBodyPadding);
+        const observer = new MutationObserver(mutationsList => {
+            for(let mutation of mutationsList) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    if (mutation.target.classList.contains('navbar-collapse')) {
+                        updateNavbarAndBodyPadding();
+                    }
+                }
+            }
+        });
+        const navbarCollapseElement = header.querySelector('.navbar-collapse');
+        if (navbarCollapseElement) {
+            observer.observe(navbarCollapseElement, { attributes: true });
+        }
+        updateNavbarAndBodyPadding();
+        let scrollpos = window.scrollY;
+        window.addEventListener('scroll', () => {
+            scrollpos = window.scrollY;
+            if (scrollpos >= (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navbar-top-gap').trim()) || 0) / 2 ) {
+                add_class_on_scroll();
+            } else {
+                remove_class_on_scroll();
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const navLinks = document.querySelectorAll('#mainNav .nav-link');
+        if (navLinks.length > 0) { const currentPath = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1) || "index.html"; navLinks.forEach(link => { if (link.getAttribute('href') === currentPath) { link.classList.add('active'); } else { link.classList.remove('active'); } }); }
+        function updateKochiTime() { const kochiTimeEl = document.getElementById('kochi-time'); if (!kochiTimeEl) return; kochiTimeEl.textContent = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: true }); }
+        if (document.getElementById('kochi-time')) { updateKochiTime(); setInterval(updateKochiTime, 60000); }
+
+        const mouseShadow = document.getElementById('mouse-shadow');
+        if (mouseShadow && window.matchMedia("(pointer: fine)").matches) { document.addEventListener('mousemove', (e) => { requestAnimationFrame(() => { mouseShadow.style.transform = `translate(${e.clientX - (mouseShadow.offsetWidth / 2)}px, ${e.clientY - (mouseShadow.offsetHeight / 2)}px)`; }); }); } else if (mouseShadow) { mouseShadow.style.display = 'none'; }
+
+        // --- NEW INTERACTIVE CAROUSEL SCRIPT ---
+        const carousel = document.querySelector("#interactive-carousel-section");
+        if (carousel) {
+            const track = carousel.querySelector('.interactive-carousel-track');
+            const slides = Array.from(track.children);
+            const nextButton = carousel.querySelector('.next-arrow');
+            const prevButton = carousel.querySelector('.prev-arrow');
+            const dotsNav = carousel.querySelector('.interactive-carousel-dots');
+
+            // Create dots
+            slides.forEach((slide, index) => {
+                const dot = document.createElement('button');
+                dot.classList.add('interactive-carousel-dot');
+                if (index === 0) dot.classList.add('active');
+                dotsNav.appendChild(dot);
+            });
+            const dots = Array.from(dotsNav.children);
+
+            let currentIndex = 0;
+
+            const moveToSlide = (targetIndex) => {
+                if (targetIndex < 0) targetIndex = slides.length - 1;
+                if (targetIndex >= slides.length) targetIndex = 0;
+
+                const container = carousel.querySelector('.interactive-carousel-container');
+                const slideWidth = slides[0].offsetWidth;
+                const slideMargin = parseFloat(getComputedStyle(slides[0]).marginLeft) + parseFloat(getComputedStyle(slides[0]).marginRight);
+                const totalSlideWidth = slideWidth + slideMargin;
+                
+                // Calculate the offset to center the target slide
+                const offset = (container.offsetWidth / 2) - (slideWidth / 2) - (targetIndex * totalSlideWidth);
+                track.style.transform = `translateX(${offset}px)`;
+
+                // Update active classes
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[targetIndex].classList.add('active');
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[targetIndex].classList.add('active');
+
+                currentIndex = targetIndex;
+            };
+
+            nextButton.addEventListener('click', e => {
+                moveToSlide(currentIndex + 1);
+            });
+
+            prevButton.addEventListener('click', e => {
+                moveToSlide(currentIndex - 1);
+            });
+
+            dotsNav.addEventListener('click', e => {
+                const targetDot = e.target.closest('button');
+                if (!targetDot) return;
+                const targetIndex = dots.findIndex(dot => dot === targetDot);
+                moveToSlide(targetIndex);
+            });
+
+            // Initial position
+            moveToSlide(0);
+
+            // Recalculate on resize
+            window.addEventListener('resize', () => moveToSlide(currentIndex));
+        }
+        // --- END INTERACTIVE CAROUSEL SCRIPT ---
+
+        const servicesSection = document.querySelector("#services-section");
+        if (servicesSection) {
+            const imageItems = gsap.utils.toArray(".services-images-column .service-image-item");
+            const contentBlocks = gsap.utils.toArray(".services-content-sticky-wrapper .service-content-block");
+
+            if (window.innerWidth >= 992) {
+                gsap.set(contentBlocks, { opacity: 0, visibility: 'hidden', position: 'absolute', yPercent: 20, top:0, left:0, width: '100%', height: '100%' });
+                if (contentBlocks.length > 0) { gsap.set(contentBlocks[0], { opacity: 1, visibility: 'visible', yPercent: 0, position: 'relative' }); contentBlocks[0].classList.add("is-active-gsap"); }
+
+                imageItems.forEach((imgItem, i) => { ScrollTrigger.create({ trigger: imgItem, start: "top center+=5%", end: "bottom center-=5%", onEnter: () => activateContent(i), onEnterBack: () => activateContent(i), invalidateOnRefresh: true }); });
+
+                function activateContent(activeIndex) {
+                    contentBlocks.forEach((block, i) => {
+                        const isActive = block.classList.contains("is-active-gsap");
+                        if (i === activeIndex) {
+                            if (!isActive) {
+                                gsap.killTweensOf(block); block.style.position = 'absolute';
+                                gsap.fromTo(block, { opacity: 0, yPercent: 20, visibility: 'visible' }, { opacity: 1, yPercent: 0, duration: 0.6, ease: "power2.out", onStart: () => block.style.visibility = 'visible', onComplete: () => { block.style.position = 'relative'; block.classList.add("is-active-gsap"); } });
+                            }
+                        } else {
+                            if (isActive) {
+                                gsap.killTweensOf(block); block.style.position = 'absolute';
+                                gsap.to(block, { opacity: 0, yPercent: -20, duration: 0.5, ease: "power1.in", onComplete: () => { block.style.visibility = 'hidden'; block.classList.remove("is-active-gsap"); gsap.set(block, {yPercent: 20}); } });
+                            } else { if (block.style.visibility !== 'hidden') { gsap.set(block, { opacity: 0, visibility: 'hidden', yPercent: 20, position: 'absolute' }); } }
+                        }
+                    });
+                }
+            }
+        }
+        
+        // --- GSAP SCROLL-DRIVEN BROCHURE ANIMATION ---
+        // This animation only runs on screens wider than 992px
+        if (window.matchMedia("(min-width: 992px)").matches) {
+            const brochureSection = document.querySelector("#vision-section-brochure");
+            const brochure = document.querySelector(".brochure");
+            const panelLeft = document.querySelector(".panel-left");
+            const panelRight = document.querySelector(".panel-right");
+
+            // Set transform origins for proper folding effect
+            gsap.set(panelLeft, { transformOrigin: "right center" });
+            gsap.set(panelRight, { transformOrigin: "left center" });
+
+            // Create a timeline for the animation
+            const brochureTimeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: brochureSection,
+                    start: "top top", // Start animation when the top of the section hits the top of the viewport
+                    end: "+=2500",   // The animation will play out over 2500px of scrolling
+                    scrub: 1,        // Smoothly links animation progress to scroll position
+                    pin: true,       // Pins the section in place during the animation
+                    anticipatePin: 1 // Helps prevent jarring on pin activation
+                }
+            });
+
+            // Add animations to the timeline sequentially
+            brochureTimeline
+                // 1. Straighten and scale the brochure to face the user
+                .to(brochure, { 
+                    rotationX: 0, 
+                    rotationY: 0, 
+                    scale: 1.1,
+                    duration: 2, // Takes up 2 parts of the scroll duration
+                    ease: "power1.inOut" 
+                })
+                // 2. Unfold the left panel
+                .to(panelLeft, { 
+                    rotationY: 0, 
+                    duration: 1.5, // Takes up 1.5 parts
+                    ease: "power1.inOut" 
+                }, "-=1") // Overlap with the previous animation for a smoother effect
+                // 3. Unfold the right panel
+                .to(panelRight, { 
+                    rotationY: 0, 
+                    duration: 1.5, // Takes up 1.5 parts
+                    ease: "power1.inOut" 
+                }, "<"); // Starts at the same time as the left panel unfold
+        }
+        
+
+        const workSlidesData = [
+            { image: "img/work1.png", title: "SJP Properties Real Estate Web Design", categories: "Web Design / UI/UX / Luxury / Real Estate" },
+            { image: "img/work2.png", title: "Advanced Analytics Dashboard", categories: "Data Visualization / Business Intelligence / SaaS" },
+            { image: "img/work3.png", title: "Mobile First E-commerce App", categories: "Mobile App Development / Retail / UX Strategy" },
+            { image: "img/work4.png", title: "AI-Powered Logistics Platform", categories: "Artificial Intelligence / Web Platform / Supply Chain" }
+        ];
+
+        const workCarouselContainer = document.querySelector('#our-work-clients-section .work-image-carousel');
+        const workProjectTitleEl = document.querySelector('#our-work-clients-section .work-project-title');
+        const workProjectCategoriesEl = document.querySelector('#our-work-clients-section .work-project-categories');
+        const workSlideIndicatorEl = document.querySelector('#our-work-clients-section .carousel-slide-indicator');
+        const workPrevBtn = document.querySelector('#our-work-clients-section .carousel-prev-btn');
+        const workNextBtn = document.querySelector('#our-work-clients-section .carousel-next-btn');
+        const workProgressBarEl = document.querySelector('#our-work-clients-section .work-carousel-progress-bar');
+        let currentWorkSlideIndex = 0;
+        let workSlideInterval;
+        const autoSlideDelay = 5000;
+
+        function initWorkSlider() {
+            if (!workCarouselContainer || !workProjectTitleEl || !workProjectCategoriesEl || !workSlideIndicatorEl || !workPrevBtn || !workNextBtn || !workProgressBarEl) { return; }
+
+            const slidesFromHTML = document.querySelectorAll('#our-work-clients-section .work-image-carousel .work-image-slide');
+            if(slidesFromHTML.length > 0) { 
+                slidesFromHTML.forEach(slide => slide.classList.remove('active'));
+                if(slidesFromHTML[0]) slidesFromHTML[0].classList.add('active'); 
+            } else {
+                 workCarouselContainer.innerHTML = '';
+                 workSlidesData.forEach((slide, index) => {
+                     const slideDiv = document.createElement('div');
+                     slideDiv.classList.add('work-image-slide');
+                     if (index === 0) slideDiv.classList.add('active');
+                     const img = document.createElement('img');
+                     img.src = slide.image; img.alt = slide.title;
+                     if (index === 0) { const preloadLink = document.createElement('link'); preloadLink.rel = 'preload'; preloadLink.as = 'image'; preloadLink.href = slide.image; document.head.appendChild(preloadLink); }
+                     slideDiv.appendChild(img);
+                     workCarouselContainer.appendChild(slideDiv);
+                 });
+            }
+
+            updateWorkSliderContent();
+            startAutoSlide();
+
+            workPrevBtn.addEventListener('click', () => { showWorkSlide(currentWorkSlideIndex - 1); resetAutoSlide(); });
+            workNextBtn.addEventListener('click', () => { showWorkSlide(currentWorkSlideIndex + 1); resetAutoSlide(); });
+        }
+
+        function startAutoSlide() { stopAutoSlide(); if (workSlidesData.length > 1) { workSlideInterval = setInterval(() => { showWorkSlide(currentWorkSlideIndex + 1); }, autoSlideDelay); } }
+        function stopAutoSlide() { clearInterval(workSlideInterval); }
+        function resetAutoSlide() { stopAutoSlide(); startAutoSlide(); }
+
+        function showWorkSlide(index) {
+            if (workSlidesData.length === 0) return;
+            const slides = document.querySelectorAll('#our-work-clients-section .work-image-carousel .work-image-slide');
+            const totalSlides = slides.length;
+            if (index >= totalSlides) index = 0; else if (index < 0) index = totalSlides - 1;
+            slides.forEach(slide => slide.classList.remove('active'));
+            if(slides[index]) slides[index].classList.add('active');
+            currentWorkSlideIndex = index;
+            updateWorkSliderContent();
+        }
+
+        function updateWorkSliderContent() {
+            if (workSlidesData.length === 0 || !workSlidesData[currentWorkSlideIndex]) {
+                if (workProjectTitleEl) workProjectTitleEl.textContent = "No project data";
+                if (workProjectCategoriesEl) workProjectCategoriesEl.textContent = "";
+                if (workSlideIndicatorEl) workSlideIndicatorEl.textContent = "00 / 00";
+                if (workProgressBarEl) workProgressBarEl.style.width = `0%`;
+                return;
+            }
+            const currentData = workSlidesData[currentWorkSlideIndex];
+            if(workProjectTitleEl) workProjectTitleEl.textContent = currentData.title;
+            if(workProjectCategoriesEl) workProjectCategoriesEl.textContent = currentData.categories;
+            if(workSlideIndicatorEl) workSlideIndicatorEl.textContent = `${String(currentWorkSlideIndex + 1).padStart(2, '0')} / ${String(workSlidesData.length).padStart(2, '0')}`;
+            const progressPercentage = workSlidesData.length > 0 ? ((currentWorkSlideIndex + 1) / workSlidesData.length) * 100 : 0;
+            if(workProgressBarEl) workProgressBarEl.style.width = `${progressPercentage}%`;
+        }
+        initWorkSlider();
+
+        const clientNames = ["ringme", "aaharya", "gaming sijori", "david's lad", "KAD Homes", "Pickframes", "Super Logistics", "Snwoman"];
+        const clientMarqueeContentEl = document.querySelector('#our-work-clients-section .client-names-marquee-content');
+        if (clientMarqueeContentEl && clientNames.length > 0) {
+            clientMarqueeContentEl.innerHTML = '';
+            const addNamesWithSeparators = (namesArray) => {
+                namesArray.forEach((name) => {
+                    const nameSpan = document.createElement('span'); nameSpan.textContent = name; clientMarqueeContentEl.appendChild(nameSpan);
+                    const separatorSpan = document.createElement('span'); separatorSpan.classList.add('separator'); separatorSpan.textContent = '*'; clientMarqueeContentEl.appendChild(separatorSpan);
+                });
+            };
+            addNamesWithSeparators(clientNames); addNamesWithSeparators(clientNames);
+        } else if (clientMarqueeContentEl) { clientMarqueeContentEl.innerHTML = '<span>No client names to display.</span>'; }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { const href = this.getAttribute('href'); if (href !== "#" && href !== "#!") { /* CSS handles smooth scroll */ } }); });
+
+        if(document.getElementById('currentYear')) { document.getElementById('currentYear').textContent = new Date().getFullYear(); }
+    });
+  </script>
+</body>
+</html>

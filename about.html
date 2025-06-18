@@ -1,0 +1,819 @@
+<!doctype html>
+<html class="h-100" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <!-- SEO OPTIMIZATION START -->
+  <title>About CrudOps - Custom Software Development & AI Solutions in Kochi, Kerala</title>
+  <meta name="description" content="Learn about CrudOps, a leading software development company in Kochi, Kerala. We specialize in bespoke AI solutions, custom ERP systems, web, and mobile app development for healthcare, e-commerce, logistics, and more across India.">
+  <meta name="keywords" content="about CrudOps, software development company Kochi, AI solutions Kerala, custom software development India, bespoke software Kochi, ERP system development, web development Kochi, mobile app development Kerala, healthcare software, e-commerce solutions, logistics software, IT solutions Kuruppampady, digital transformation Kerala, software development India, CrudOps mission, software expertise">
+  <!-- SEO OPTIMIZATION END -->
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
+  <meta name="author" content="CrudOps Team">
+  <meta name="HandheldFriendly" content="true">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+
+  <style>
+    :root {
+      --co-yellow: #FFC107;
+      --co-dark-text: #212529;
+      --co-matte-black: #1a1a1a; 
+      --co-border-gray: #DEE2E6;
+      --co-off-white: #fdfdfd;
+      --co-medium-gray-text: #555;
+      --co-light-gray-bg: #f8f9fa;
+      --co-dark-ash: #AAAAAA; 
+      --co-blue-link: #0062ff; 
+
+      --font-primary: 'Anonymous Pro', monospace;
+      --font-secondary: 'Inter', sans-serif;
+
+      --navbar-top-gap: 20px;
+      --navbar-element-initial-height: 70px;
+      --navbar-total-initial-offset: calc(var(--navbar-top-gap) + var(--navbar-element-initial-height));
+    }
+
+    html { scroll-behavior: smooth; } 
+    body { font-family: var(--font-primary); background-color: #FFFFFF; color: var(--co-dark-text); line-height: 1.7; overflow-x: hidden; }
+    h1,h2,h3,h4,h5,h6 { font-family: var(--font-primary); font-weight: 700; color: var(--co-dark-text); margin-bottom: 1.5rem; }
+    p { margin-bottom: 1.5rem; font-weight: 400; font-family: var(--font-secondary); }
+    .force-font-primary { font-family: var(--font-primary) !important; }
+
+    #mainNav { position: fixed; top: var(--navbar-top-gap); left: 50%; transform: translateX(-50%); width: 95%; max-width: 1300px; padding: 1rem; background-color: #FFFFFF; border-radius: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.08); z-index: 1050; transition: all 0.3s ease-in-out; }
+    #mainNav .container { width: 100%; padding: 0; } #mainNav .navbar-brand .logo-img { height: 38px; width:auto; transition: height 0.3s ease-in-out; } #mainNav.scrolled .navbar-brand .logo-img { height: 32px; } 
+    #mainNav .navbar-nav .nav-link { font-family: var(--font-primary); color: var(--co-dark-text); font-weight: 400; padding: 0.5rem 1rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.3s ease; } 
+    #mainNav .navbar-nav .nav-link:hover, #mainNav .navbar-nav .nav-link:focus { color: var(--co-yellow); } #mainNav .navbar-nav .nav-item .nav-link.active { color: var(--co-yellow); font-weight: 700; } 
+    #mainNav .navbar-nav .nav-link.crudops-hub { font-family: var(--font-primary); color: var(--co-yellow) !important; font-weight: 1000; font-size: 1rem; letter-spacing: .5cap;  } 
+    #mainNav.scrolled { padding: 0.75rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); } .navbar-toggler { border-color: rgba(0, 0, 0, 0.1); margin-left: auto; } 
+    .nav-cta-btn { font-family: var(--font-primary); background-color: var(--co-yellow); border-color: var(--co-yellow); color: var(--co-dark-text); border-radius: 20px; font-weight: 700; padding: 0.45rem 1.3rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; transition: all 0.3s ease; } 
+    .nav-cta-btn:hover { background-color: #e0a800; border-color: #e0a800; transform: translateY(-2px); }
+
+    #mouse-shadow {
+      position: fixed;
+      /* Keep the originating element small and transparent */
+      width: 1px;
+      height: 1px;
+      background-color: transparent; /* Essential to avoid the center circle */
+      border-radius: 50%;
+      /* For an approximate 400px diameter glow: */
+      box-shadow: 0 0 200px 100px var(--co-yellow); /* blur 200px, spread 100px */
+      opacity: 0.6; /* Adjust for desired transparency of the glow */
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      transition: transform 0.08s ease-out;
+    }    @media (pointer: coarse) { #mouse-shadow { display: none; } }
+
+    .site-footer { background-color: #FFFFFF; padding: 3rem 0 2rem 0; border-top: 1px solid var(--co-border-gray); font-family: var(--font-secondary); color: var(--co-dark-text); }
+    .site-footer .container { max-width: 1300px;  }
+    .footer-main-content { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2.5rem; gap: 2rem;  }
+    .footer-brand-block { flex: 0 0 28%;  max-width: 28%; }
+    .footer-logo { max-width: 200px;  height: auto; margin-bottom: 1.2rem; }
+    .footer-slogan { font-size: 1rem;  font-weight: 500;  color: var(--co-dark-text); line-height: 1.5; margin-bottom: 0; font-family: var(--font-primary);  }
+    .footer-links-area { flex: 1; display: flex; justify-content: space-between; gap: 1.5rem;  }
+    .footer-links-column { flex: 1; min-width: 150px;  }
+    .footer-links-column h4 { font-family: var(--font-secondary); font-size: 0.8rem; font-weight: 700; color: var(--co-medium-gray-text);  text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+    .footer-links-column ul { list-style: none; padding: 0; margin: 0; }
+    .footer-links-column ul li a { font-family: var(--font-secondary); font-size: 0.9rem; color: var(--co-dark-text); text-decoration: none; display: block; padding: 0.35rem 0; transition: color 0.2s ease; font-weight: 500; }
+    .footer-links-column ul li a:hover { color: var(--co-yellow); }
+    .footer-legal-link { font-family: var(--font-secondary); display: block; font-size: 0.8rem; font-weight: 500; color: var(--co-medium-gray-text); text-decoration: none; margin-top: 1rem;  padding: 0.35rem 0; transition: color 0.2s ease; }
+    .footer-legal-link:hover { color: var(--co-yellow); }
+    .footer-bottom-bar { display: flex; justify-content: space-between; align-items: flex-end;  padding-top: 2rem; border-top: 1px solid var(--co-border-gray); }
+    .footer-copyright-text p { font-family: var(--font-secondary); font-size: 0.75rem;  color: #707070;  line-height: 1.6; margin: 0; }
+    .footer-social-media { display: flex; align-items: center; }
+    .footer-social-media a { color: var(--co-dark-text); margin-left: 1rem;  font-size: 1.1rem;  text-decoration: none; transition: color 0.2s ease; }
+    .footer-social-media a:first-child { margin-left: 0; }
+    .footer-social-media a:hover { color: var(--co-yellow); }
+
+    .about-hero-section { position: relative; background-color: #fff;  overflow: hidden;  }
+    .about-hero-section .top-yellow-bar { height: 8px;  background-color: var(--co-yellow); width: 100%; } 
+    .about-hero-section .row { min-height: 75vh;  max-height: 650px;  }
+    .about-hero-left { background-color: #2d2d2d; color: #FFFFFF; padding: 4rem clamp(1.5rem, 5vw, 4rem); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+    .about-hero-left .hero-title { font-family: var(--font-primary); font-size: clamp(3rem, 7vw, 5rem); font-weight: 700; color: #FFFFFF; margin-bottom: 1.5rem; line-height: 1.2; }
+    .about-hero-left .hero-subtitle { font-family: var(--font-secondary); font-size: clamp(1.1rem, 2.2vw, 1.35rem); line-height: 1.6; margin-bottom: 2.5rem; max-width: 500px; font-weight: 300; }
+    .about-hero-btn { font-family: var(--font-primary); background-color: var(--co-yellow); border-color: var(--co-yellow); color: var(--co-dark-text); border-radius: 0px; font-weight: 700; padding: 0.8rem 2rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.04em; transition: all 0.3s ease; text-decoration: none;  display: inline-flex; align-items: center; }
+    .about-hero-btn .fa-arrow-right { transition: transform 0.2s ease-in-out; }
+    .about-hero-btn:hover { background-color: #e0a800; border-color: #e0a800; color: var(--co-dark-text); }
+    .about-hero-btn:hover .fa-arrow-right { transform: translateX(4px); }
+    .about-hero-right { padding: 0;  display: flex;  }
+    .about-hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .about-mission-section { background-color: #FFFFFF; padding: 5rem 0; }
+    .about-mission-section .container { max-width: 1140px; }
+    .what-we-do-title { font-family: var(--font-primary);  font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; color: var(--co-dark-text); margin-bottom: 0; text-align: left; }
+    .mission-text { font-family: var(--font-secondary); font-size: clamp(1.05rem, 1.8vw, 1.15rem); line-height: 1.75; color: var(--co-dark-text); font-weight: 400; text-align: left;}
+
+    .about-facts-services-section { background-color: #FFFFFF; padding-bottom: 5rem; }
+    .about-facts-services-section .top-yellow-bar { height: 8px; background-color: var(--co-yellow); width: 100%; margin-bottom: 4rem; }
+    .about-facts-services-section .container { max-width: 1140px; }
+    .facts-title { font-family: var(--font-primary); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; color: var(--co-dark-text); margin-bottom: 3rem; text-align: left; }
+    .facts-grid { margin-bottom: 5rem; }
+    .fact-item { margin-bottom: 2rem; text-align: left; }
+    .fact-number { font-family: var(--font-secondary); font-size: clamp(2.8rem, 6vw, 4.2rem); font-weight: 300; color: var(--co-yellow); line-height: 1.1; display: block; margin-bottom: 0.5rem; }
+    .fact-description { font-family: var(--font-secondary); font-size: clamp(0.85rem, 1.5vw, 0.95rem); color: var(--co-dark-text); line-height: 1.5; }
+    .tech-services-main-title { font-family: var(--font-primary); font-size: clamp(2rem, 4.5vw, 2.8rem); font-weight: 700; color: var(--co-dark-text); line-height: 1.3; margin-bottom: 0; text-align: left;} 
+    .services-item-grid-wrapper { padding-top: 0.5rem; }
+    .service-item { margin-bottom: 2.5rem; text-align: left; display: flex; flex-direction: column; }
+    .service-icon { margin-bottom: 1rem; }
+    .service-icon .fa { font-size: clamp(2.2rem, 4vw, 2.8rem); color: var(--co-yellow); }
+    .service-title-text { font-family: var(--font-primary); font-size: clamp(1.1rem, 1.8vw, 1.3rem); font-weight: 600; color: var(--co-dark-text); margin-bottom: 0.75rem; }
+    .service-description-text { font-family: var(--font-secondary); font-size: clamp(0.9rem, 1.6vw, 1rem); color: var(--co-medium-gray-text); line-height: 1.6; margin-bottom: 1rem; flex-grow: 1; }
+    .service-learn-more { font-family: var(--font-primary); font-size: 0.95rem; font-weight: 600; color: var(--co-yellow); text-decoration: none; display: inline-flex; align-items: center; transition: color 0.2s ease; }
+    .service-learn-more:hover { color: #e0a800; }
+    .service-learn-more .fa-arrow-right { transition: transform 0.2s ease-in-out; font-size: 0.9em; }
+    .service-learn-more:hover .fa-arrow-right { transform: translateX(3px); }
+
+    .about-timeline-section { background-color: #FFFFFF; padding-bottom: 5rem; }
+    .about-timeline-section .top-yellow-bar { height: 8px; background-color: var(--co-yellow); width: 100%;}
+    .about-timeline-section .container { max-width: 1140px; margin-top:0; padding-top:0; }
+    .timeline-nav-tabs { border-bottom: 1px solid var(--co-border-gray); margin-bottom: 3rem; padding-top: 0.5rem; display: flex; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: var(--co-yellow) transparent; }
+    .timeline-nav-tabs::-webkit-scrollbar { height: 4px; }
+    .timeline-nav-tabs::-webkit-scrollbar-thumb { background-color: var(--co-yellow); border-radius: 2px; }
+    .timeline-nav-tabs .nav-item { margin-right: 0; }
+    .timeline-nav-tabs .nav-link { font-family: var(--font-primary); font-size: clamp(0.85rem, 1.8vw, 1rem); font-weight: 500; color: var(--co-medium-gray-text); border: none; border-radius: 0; padding: 0.8rem clamp(0.75rem, 2.5vw, 1.5rem); text-align: center; white-space: nowrap; border-bottom: 4px solid transparent; transition: color 0.2s ease, border-color 0.2s ease; }
+    .timeline-nav-tabs .nav-link:hover { color: var(--co-dark-text); }
+    .timeline-nav-tabs .nav-link.active { color: var(--co-dark-text); font-weight: 700; border-bottom-color: var(--co-yellow); background-color: transparent; }
+    .timeline-tab-content .tab-pane { padding: 0; }
+    .timeline-tab-content .content-title { font-family: var(--font-primary); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: var(--co-dark-text); margin-bottom: 1.5rem; text-align: left; }
+    .timeline-tab-content .content-text { font-family: var(--font-secondary); font-size: clamp(0.95rem, 1.7vw, 1.05rem); line-height: 1.7; color: var(--co-dark-text); text-align: left; }
+    .timeline-tab-content .content-image img { width: 100%; height: auto; max-height: 450px; object-fit: cover; border-radius: 0px; }
+    .timeline-tab-content .placeholder-content { padding: 2rem; background-color: var(--co-light-gray-bg); border-radius: 8px; text-align: left; }
+
+    .about-global-impact-section { background-color: #FFFFFF; padding: 5rem 0; }
+    .global-impact-title { font-family: var(--font-primary); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; color: var(--co-dark-text); margin-bottom: 3rem; text-align: left; }
+    .global-impact-card { border: 1px solid #e0e0e0; border-radius: 0; display: flex; flex-direction: column; height: 100%; background-color: #FFFFFF; transition: box-shadow 0.3s ease; }
+    .impact-card-image-wrapper { position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; background-color: #f0f0f0; }
+    .impact-card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    .impact-card-play-button { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background-color: rgba(0, 0, 0, 0.6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #FFF; font-size: 1.5rem; cursor: pointer; transition: background-color 0.2s ease; }
+    .impact-card-play-button:hover { background-color: rgba(0, 0, 0, 0.8); }
+    .impact-card-text-overlay { position: absolute; top: 1.5rem; left: 1.5rem; font-family: var(--font-primary); font-size: clamp(1.2rem, 2.5vw, 1.6rem); color: #FFF; font-weight: 700; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); line-height: 1.2; }
+    .impact-card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+    .impact-card-title { font-family: var(--font-primary); font-size: clamp(1.1rem, 1.8vw, 1.4rem); font-weight: 700; color: var(--co-dark-text); margin-bottom: 0.75rem; line-height: 1.3; }
+    .impact-card-description { font-family: var(--font-secondary); font-size: clamp(0.85rem, 1.5vw, 0.95rem); color: var(--co-medium-gray-text); line-height: 1.6; margin-bottom: 1rem; flex-grow: 1; }
+    .impact-card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 1rem; border-top: 1px solid #f0f0f0; }
+    .impact-card-duration, .impact-card-arrow { font-family: var(--font-primary); font-size: 0.9rem; font-weight: 600; color: var(--co-yellow); }
+    .impact-card-arrow .fa { font-size: 1.1em; }
+    .swiper-global-impact-nav { display: flex; align-items: center; justify-content: flex-end; margin-top: 2rem; }
+    .swiper-global-impact-nav .swiper-button-prev, .swiper-global-impact-nav .swiper-button-next { position: static; width: 40px; height: 40px; margin: 0 5px; color: var(--co-dark-text); background-color: #f0f0f0; border-radius: 0; transition: background-color 0.2s ease, color 0.2s ease; }
+    .swiper-global-impact-nav .swiper-button-prev::after, .swiper-global-impact-nav .swiper-button-next::after { font-size: 1rem; font-weight: 900; }
+    .swiper-global-impact-nav .swiper-button-prev:hover, .swiper-global-impact-nav .swiper-button-next:hover { background-color: #e0e0e0; }
+    .swiper-global-impact-nav .swiper-pagination-fraction { position: static; width: auto; font-family: var(--font-primary); font-size: 0.9rem; color: var(--co-dark-text); margin: 0 1rem;  }
+    .fixed-bottom-right-icon { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background-color: var(--co-yellow); color: var(--co-dark-text); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); cursor: pointer; }
+    .fixed-bottom-right-icon .fa { transform: rotate(-45deg); }
+
+    /* Commitments Section Styles */
+    .about-commitments-section { background-color: #FFFFFF; padding: 5rem 0; }
+    .commitments-title { font-family: var(--font-primary); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; color: var(--co-dark-text); margin-bottom: 2.5rem; text-align: left; }
+    .commitments-nav-tabs { border-bottom: 1px solid var(--co-border-gray); margin-bottom: 3rem; display: flex; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: var(--co-yellow) transparent; }
+    .commitments-nav-tabs::-webkit-scrollbar { height: 4px; }
+    .commitments-nav-tabs::-webkit-scrollbar-thumb { background-color: var(--co-yellow); border-radius: 2px; }
+    .commitments-nav-tabs .nav-item { margin-right: 0; }
+    .commitments-nav-tabs .nav-link {
+        font-family: var(--font-primary); /* Switched to primary font */
+        font-size: clamp(0.9rem, 1.9vw, 1.1rem);
+        font-weight: 500;
+        color: var(--co-medium-gray-text);
+        border: none; border-radius: 0;
+        padding: 0.8rem clamp(0.8rem, 3vw, 1.8rem);
+        text-align: center; white-space: nowrap;
+        border-top: 4px solid transparent; /* Changed to top border for active */
+        border-bottom: none; /* Ensure no bottom border conflict */
+        margin-bottom: -1px; /* Overlap border-bottom of .commitments-nav-tabs */
+        transition: color 0.2s ease, border-color 0.2s ease;
+        position: relative; 
+    }
+    .commitments-nav-tabs .nav-link:hover { color: var(--co-dark-text); }
+    .commitments-nav-tabs .nav-link.active {
+        color: var(--co-dark-text);
+        font-weight: 700;
+        border-top-color: var(--co-yellow); /* Active indicator on top */
+        background-color: transparent;
+    }
+    .commitments-tab-content .tab-pane { padding: 1.5rem 0 0 0; } /* Add padding-top to tab-pane content */
+    .commitments-tab-content .content-text { font-family: var(--font-secondary); font-size: clamp(0.95rem, 1.7vw, 1.05rem); line-height: 1.7; color: var(--co-dark-text); text-align: left; margin-bottom: 1.5rem; }
+    .commitments-tab-content .content-link { font-family: var(--font-primary); font-size: 0.95rem; font-weight: 600; color: var(--co-yellow); text-decoration: none; display: inline-flex; align-items: center; transition: color 0.2s ease; }
+    .commitments-tab-content .content-link:hover { color: #e0a800; }
+    .commitments-tab-content .content-link .fa { transition: transform 0.2s ease-in-out; font-size: 0.9em; }
+    .commitments-tab-content .content-link:hover .fa { transform: translateX(3px); }
+    .commitments-tab-content .content-image img { width: 100%; height: auto; max-height: 400px; object-fit: cover; border-radius: 0px;}
+     /* === STYLES FOR ABOUT.HTML PAGE SPECIFIC SECTIONS END === */
+
+    /* --- MOBILE STYLES --- */
+    @media (max-width: 991.98px) {
+      body { padding-top: calc(var(--navbar-top-gap) + 60px); } 
+      #mainNav { width: 95%; padding: 0.75rem; max-width: calc(100% - 20px); border-radius: 0; } 
+      #mainNav .navbar-brand .logo-img { height: 32px; } 
+      #mainNav .navbar-collapse { background-color: #FFFFFF; padding: 1rem; margin-top: 0.75rem; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: absolute; top: 100%; left: 0; right: 0; width: 100%; } 
+      #mainNav .navbar-nav .nav-item { margin-bottom: 0.3rem; } 
+      #mainNav .navbar-nav .nav-link { padding: 0.6rem 0.5rem; font-size: 0.9rem; } 
+      #mainNav .navbar-collapse .d-lg-flex { margin-top: 1rem; display: block !important; text-align: center; } 
+      #mainNav .navbar-collapse .nav-cta-btn { width: 100%; display: block; margin: 0.5rem auto 0; font-size: 0.9rem; }
+      
+      .about-hero-section .row { flex-direction: column;  min-height: auto; max-height: none; }
+      .about-hero-left, .about-hero-right { width: 100%; flex-basis: auto; }
+      .about-hero-left { padding: 3rem 1.5rem; align-items: flex-start;  }
+      .about-hero-left .hero-title { font-size: clamp(2.2rem, 8vw, 3.2rem);  }
+      .about-hero-left .hero-subtitle { font-size: clamp(1.0rem, 3vw, 1.15rem); max-width: 100%; }
+      .about-hero-right { min-height: 300px;  max-height: 45vh; }
+      
+      .about-mission-section { padding: 3rem 1rem; }
+      .what-we-do-title { font-size: clamp(1.8rem, 6vw, 2.5rem); margin-bottom: 1.5rem;  }
+      .mission-text { font-size: clamp(0.95rem, 2.5vw, 1.05rem); }
+
+      .about-facts-services-section {padding: 0 1rem 3rem 1rem;}
+      .about-facts-services-section .top-yellow-bar { margin-bottom: 2.5rem; }
+      .facts-title { font-size: clamp(1.5rem, 5vw, 2rem); margin-bottom: 2rem; text-align: left; }
+      .facts-grid .col-md-3 { flex: 0 0 50%; max-width: 50%; } 
+      .fact-item { text-align: left; } 
+      .fact-number { font-size: clamp(2.2rem, 7vw, 3.5rem); }
+      .tech-services-main-title { font-size: clamp(1.7rem, 5.5vw, 2.3rem); text-align: left; margin-bottom: 2rem; }
+      .services-layout-row > .col-lg-4 {  margin-bottom: 1.5rem; }
+      .services-item-grid-wrapper .col-lg-4 {  flex: 0 0 100%; max-width: 100%; }
+      .service-item { text-align: left; } 
+
+      .about-timeline-section {padding: 0 1rem 3rem 1rem;} 
+      .timeline-nav-tabs { margin-bottom: 2rem; }
+      .timeline-nav-tabs .nav-link { padding: 0.7rem 1rem; font-size: clamp(0.8rem, 2vw, 0.9rem); }
+      .timeline-tab-content .content-title { font-size: clamp(1.4rem, 4vw, 1.8rem); }
+      .timeline-tab-content .col-md-6.content-image { margin-top: 2rem; }
+
+      .about-global-impact-section { padding: 3rem 1rem; }
+      .global-impact-title { font-size: clamp(1.8rem, 6vw, 2.5rem); margin-bottom: 2rem; }
+      .swiper-global-impact-nav { justify-content: center; }
+
+      .about-commitments-section { padding: 3rem 1rem; }
+      .commitments-title { font-size: clamp(1.8rem, 6vw, 2.5rem); margin-bottom: 2rem; }
+      .commitments-nav-tabs .nav-link { padding: 0.7rem 1rem; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+      .commitments-tab-content .col-md-7.content-image { margin-top: 2rem; }
+
+
+      /* --- FOOTER MOBILE STYLES --- */
+      .footer-main-content { flex-direction: column; align-items: flex-start;  gap: 0;  }
+      .footer-brand-block { flex-basis: auto; width: 100%; max-width: 100%; margin-bottom: 2rem; }
+      .footer-links-area { flex-direction: column; width: 100%; gap: 0; }
+      .footer-links-column { width: 100%; margin-bottom: 2rem; }
+      .footer-links-column:last-child { margin-bottom: 0; }
+      .footer-bottom-bar { flex-direction: column; align-items: flex-start;  text-align: left;  }
+      .footer-copyright-text { margin-bottom: 1.5rem; }
+      .footer-social-media { width: 100%; justify-content: flex-start;  }
+      .footer-social-media a { margin-left: 0; margin-right: 1rem;  }
+      /* --- END FOOTER MOBILE STYLES --- */
+    }
+
+    @media (max-width: 767.98px) { 
+        .facts-grid .col-md-3 { flex: 0 0 100%; max-width: 100%; } 
+        .timeline-tab-content .row,
+        .commitments-tab-content .row { flex-direction: column; } 
+        .timeline-tab-content .col-md-6,
+        .commitments-tab-content .col-md-5,
+        .commitments-tab-content .col-md-7 { width: 100%; max-width: 100%;}
+    }
+
+    .float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 8px rgba(0,0,0,0.2); z-index: 1000; display: flex; align-items: center; justify-content: center; }
+  </style>
+</head>
+<body>
+  <div id="mouse-shadow"></div>
+
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-light"> <div class="container d-flex justify-content-between align-items-center"> <a class="navbar-brand" href="index.html"> <img src="./img/logo-dark.png" alt="CrudOps Logo" class="logo-img"> </a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"> <span class="navbar-toggler-icon"></span> </button> <div class="collapse navbar-collapse" id="navbarSupportedContent"> <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0"> <li class="nav-item"> <a class="nav-link" href="services.html">Services</a> </li> <li class="nav-item"> <a class="nav-link" href="industries.html">Industries</a> </li> <li class="nav-item"> <a class="nav-link" href="about.html">About Us</a> </li> <li class="nav-item"> <a class="nav-link crudops-hub" href="index.html">Crudops Hub</a> </li> <li class="nav-item"> <a class="nav-link" href="casestudies.html">Case Studies</a> </li> <li class="nav-item"> <a class="nav-link" href="portfolio.html">Portfolio</a> </li> <li class="nav-item"> <a class="nav-link" href="blog.html">Blogs</a> </li></ul> <div class="d-lg-flex align-items-center"> <a href="contact.html" class="btn nav-cta-btn btn-sm">Contact Us</a> </div> </div> </div> </nav>
+  <a href="https://api.whatsapp.com/send?phone=+916238575185&text=Hi" class="float" target="_blank"><i class="fa fa-whatsapp"></i></a>
+
+<main>
+    <section class="about-hero-section">
+        <div class="top-yellow-bar"></div>
+        <div class="container-fluid g-0"> 
+            <div class="row g-0">
+                <div class="col-lg-5 about-hero-left">
+                    <!-- SEO OPTIMIZATION: H1 updated for keywords and location -->
+                    <h1 class="hero-title">Custom Software Development & AI Solutions in Kochi, Kerala</h1>
+                    <p class="hero-subtitle">
+                        CrudOps, your trusted software development company in Kuruppampady, Kochi, Kerala, specializes in AI-driven and bespoke software solutions. Our expert team delivers tailored, efficient, and scalable technology to empower your business success and drive digital transformation across India.
+                    </p>
+                    <a href="contact.html" class="btn about-hero-btn">
+                        Get a Free Consultation <i class="fa fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+                <div class="col-lg-7 about-hero-right">
+                    <img src="imgs/about us cover.jpg" alt="Modern office collaborative space for software development team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-mission-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <!-- SEO OPTIMIZATION: H2 updated for clarity and keywords -->
+                    <h2 class="what-we-do-title">Our Mission: Driving Digital Transformation with Bespoke Solutions</h2>
+                </div>
+                <div class="col-lg-7">
+                    <p class="mission-text">
+                        At CrudOps, we specialize in developing bespoke software solutions, seamlessly blending AI expertise with versatile development to transform industries like healthcare, e-commerce, logistics, and more. Our team crafts intuitive applications, robust ERP systems, and dynamic platforms tailored to your unique business needs, ensuring efficiency, scalability, and measurable results. From streamlining operations with tools like Vila and David’s Lad to powering online success with Picframes and Gaming Sijori, we deliver technology that drives growth and fosters innovation. Partner with us to turn your vision into reality with solutions designed for today and built for tomorrow, right here in Kochi, Kerala, India.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-facts-services-section">
+        <div class="top-yellow-bar"></div>
+        <div class="container">
+            <!-- SEO OPTIMIZATION: H2 updated -->
+            <h2 class="facts-title">Key Facts: Our Impact in Software Development</h2>
+            <div class="row facts-grid">
+                <div class="col-lg-3 col-md-6 fact-item">
+                    <span class="fact-number">50+</span>
+                    <p class="fact-description">Successful software projects delivered across diverse industries</p>
+                </div>
+                <div class="col-lg-3 col-md-6 fact-item">
+                    <span class="fact-number">5+</span>
+                    <p class="fact-description">Years of expertise in custom software development & AI</p>
+                </div>
+                <div class="col-lg-3 col-md-6 fact-item">
+                    <span class="fact-number">10+</span>
+                    <p class="fact-description">Industries transformed with custom IT solutions </p>
+                </div>
+                <div class="col-lg-3 col-md-6 fact-item">
+                    <span class="fact-number">100%</span>
+                    <p class="fact-description">Agile methodology adoption for faster time-to-market solutions</p>
+                </div>
+            </div>
+
+            <div class="row services-layout-row align-items-start">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <!-- SEO OPTIMIZATION: H2 updated -->
+                    <h2 class="tech-services-main-title">Our Technology & Core Software Development Services</h2>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row services-item-grid-wrapper">
+                        <div class="col-lg-4 col-md-6 service-item">
+                            <div class="service-icon"><i class="fa fa-users"></i></div>
+                            <!-- SEO OPTIMIZATION: Service title slightly rephrased -->
+                            <h4 class="service-title-text">AI-Driven Software Development</h4>
+                            <p class="service-description-text">We excel at integrating AI into applications to boost both operational efficiency and user experience. Solutions like Ringme and WanderGuide nicely demonstrate our ability to make communication and travel seamlessly convenient through intelligent automation.</p>
+                            <a href="services.html#ai-ml" class="service-learn-more">Learn more <i class="fa fa-arrow-right ms-1"></i></a>
+                        </div>
+                        <div class="col-lg-4 col-md-6 service-item">
+                            <div class="service-icon"><i class="fa fa-cogs"></i></div>
+                            <!-- SEO OPTIMIZATION: Service title -->
+                            <h4 class="service-title-text">Responsive Web Development</h4>
+                            <p class="service-description-text">Our web development services create responsive, user-focused platforms for diverse industries. From e-commerce stores like Picframes and Gaming Sijori to job portals like Tharakcas, we ensure engaging digital experiences for businesses in Kochi and beyond.
+                            </p>
+                            <a href="services.html#web-dev" class="service-learn-more">Learn more <i class="fa fa-arrow-right ms-1"></i></a>
+                        </div>
+                        <div class="col-lg-4 col-md-6 service-item">
+                           <div class="service-icon"><i class="fa fa-server"></i></div>
+                            <!-- SEO OPTIMIZATION: Service title -->
+                            <h4 class="service-title-text">Intuitive Mobile App Development</h4>
+                            <p class="service-description-text">We build intuitive mobile applications that simplify complex tasks for users. Solutions like Ringme and our personal finance management tool deliver secure, user-friendly experiences for communication and financial tracking, providing custom app development services in Kerala.</p>
+                            <a href="services.html#app-dev" class="service-learn-more">Learn more <i class="fa fa-arrow-right ms-1"></i></a>
+                        </div>
+                        <div class="col-lg-4 col-md-6 service-item">
+                            <div class="service-icon"><i class="fa fa-share-alt"></i></div>
+                            <!-- SEO OPTIMIZATION: Service title -->
+                            <h4 class="service-title-text">Robust ERP System Development</h4>
+                            <p class="service-description-text">Our ERP development team ensures businesses operate better with custom-fitted, scalable solutions. Super Logistics and David’s Lad highlight our advantage at making logistics and restaurant billing more efficient through powerful enterprise resource planning systems.</p>
+                            <a href="services.html#erp-dev" class="service-learn-more">Learn more <i class="fa fa-arrow-right ms-1"></i></a>
+                        </div>
+                        <div class="col-lg-4 col-md-6 service-item">
+                            <div class="service-icon"><i class="fa fa-shopping-cart"></i></div> <!-- Changed icon for e-commerce -->
+                            <!-- SEO OPTIMIZATION: Service title -->
+                            <h4 class="service-title-text">Comprehensive E-commerce Platforms</h4>
+                            <p class="service-description-text">We craft robust e-commerce platforms to drive online success and customer satisfaction. Picframes and Gaming Sijori highlight our ability to create seamless shopping experiences with diverse product offerings, perfect for online businesses in India.</p>
+                            <a href="services.html#ecommerce-dev" class="service-learn-more">Learn more <i class="fa fa-arrow-right ms-1"></i></a>
+                        </div>
+                        <div class="col-lg-4 col-md-6 service-item">
+                            <div class="service-icon"><i class="fa fa-wrench"></i></div> <!-- Changed icon for custom software -->
+                            <!-- SEO OPTIMIZATION: Service title -->
+                            <h4 class="service-title-text">Tailored Custom Software Solutions</h4>
+                            <p class="service-description-text">Our custom software development addresses unique business challenges with precision. Applications like Vila and Aharya empower businesses with tailored billing and arts education platforms, providing truly bespoke software for your exact needs.</p>
+                            <a href="services.html#software-dev" class="service-learn-more">Learn more <i class="fa fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-timeline-section">
+        <div class="top-yellow-bar"></div>
+        <div class="container">
+            <ul class="nav timeline-nav-tabs" id="crudOpsTimelineTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="timeline-innovation-tab" data-bs-toggle="tab" data-bs-target="#timeline-innovation" type="button" role="tab" aria-controls="timeline-innovation" aria-selected="false">Innovation in Technology
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="timeline-client-tab" data-bs-toggle="tab" data-bs-target="#timeline-client" type="button" role="tab" aria-controls="timeline-client" aria-selected="false">Client-Centric Approach</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="timeline-quality-tab" data-bs-toggle="tab" data-bs-target="#timeline-1950" type="button" role="tab" aria-controls="timeline-1950" aria-selected="false">Quality and Excellence</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="timeline-sustainability-tab" data-bs-toggle="tab" data-bs-target="#timeline-1980" type="button" role="tab" aria-controls="timeline-1980" aria-selected="false">Sustainability Focus</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="timeline-collaboration-tab" data-bs-toggle="tab" data-bs-target="#timeline-2000" type="button" role="tab" aria-controls="timeline-2000" aria-selected="false">Collaborative Growth</button>
+                </li>
+                
+            </ul>
+            <div class="tab-content timeline-tab-content" id="crudOpsTimelineTabContent">
+                <div class="tab-pane fade" id="timeline-innovation" role="tabpanel" aria-labelledby="timeline-innovation-tab">
+                    <div class="placeholder-content">
+                        <!-- SEO OPTIMIZATION: Content refined with keywords -->
+                        <h3 class="content-title">Leading the Future with AI and Modern Software Development</h3>
+                        <p class="content-text">At CrudOps, we are committed to staying ahead through advanced AI and cutting-edge software development. Our focus on emerging trends ensures businesses in Kochi and beyond benefit from innovative tools designed to tackle complex challenges and drive future growth.</p>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="timeline-client" role="tabpanel" aria-labelledby="timeline-client-tab">
+                     <div class="placeholder-content">
+                        <h3 class="content-title">Your Success, Our Priority in Custom Software</h3>
+                        <p class="content-text">We ensure your success by individualizing each of our software solutions for your unique needs. We support our clients through strong partnerships based on custom software they trust and can count on, solidifying our reputation as a reliable software development company.</p>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="timeline-1950" role="tabpanel" aria-labelledby="timeline-quality-tab">
+                    <div class="placeholder-content">
+                        <h3 class="content-title">Driven by Quality, Defined by Excellence in Development</h3>
+                        <p class="content-text">Our software development process follows the strictest guidelines, allowing us to build secure and user-friendly applications. With a strong commitment to quality, we ensure your users always enjoy a smooth and reliable experience with every bespoke solution we deliver.</p>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="timeline-1980" role="tabpanel" aria-labelledby="timeline-sustainability-tab">
+                    <div class="placeholder-content">
+                        <h3 class="content-title">Building a Greener Future with Sustainable Technology</h3>
+                        <p class="content-text">During our software development work, we look for opportunities to use green and sustainable technology. We provide IT solutions that aid business growth while benefiting the environment too, reflecting our commitment to responsible innovation.</p>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="timeline-2000" role="tabpanel" aria-labelledby="timeline-collaboration-tab">
+                     <div class="placeholder-content">
+                        <h3 class="content-title">Collaboration at the Core of Our Software Projects</h3>
+                        <p class="content-text">We believe in strong partnerships with clients to achieve shared goals. Through transparent communication and active participation, we ensure our clients are involved at every stage of their software project, leading to successful outcomes and mutual growth.</p>
+                    </div>
+                </div>
+                <div class="tab-pane fade show active" id="timeline-present" role="tabpanel" aria-labelledby="timeline-present-tab">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h3 class="content-title">The Future of Technology and Sustainable Software in India</h3>
+                            <p class="content-text">
+                                CrudOps continues to push the boundaries of AI, quantum computing, and sustainability. As a leader in ethical AI, CrudOps shapes transparent systems to address global challenges, from healthcare to environmental sustainability. The company also aims to drive innovation through partnerships in space technology, cloud computing, and data-driven industries, establishing our footprint as a forward-thinking software development company in India.
+                            </p>
+                        </div>
+                        <div class="col-md-6 content-image">
+                            <img src="img/hand-shake.png" alt="Handshake symbolizing collaboration in future technology and software development">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-global-impact-section">
+        <div class="container">
+            <!-- SEO OPTIMIZATION: H2 updated -->
+            <h2 class="global-impact-title">Our Global Impact: Driving Digital Transformation</h2>
+            <div class="swiper globalImpactSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="global-impact-card">
+                            <div class="impact-card-image-wrapper">
+                                <img src="imgs/empowering digital tranformation.avif" alt="Abstract digital cityscape representing digital transformation">
+                                
+                                <div class="impact-card-play-button"><i class="fa fa-play"></i></div>
+                            </div>
+                            <div class="impact-card-body">
+                                <!-- SEO OPTIMIZATION: Card title updated -->
+                                <h4 class="impact-card-title">Empowering Digital Transformation with Bespoke Software</h4>
+                                <p class="impact-card-description">The use of our custom software tools allows companies to grow their operations with modern technology. We equip businesses with solutions that simplify their systems and create better customer experiences, enabling them to succeed in the era of digital transformation.</p>
+                            </div>
+                            <div class="impact-card-footer">
+                                <span class="impact-card-duration"> </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="global-impact-card">
+                            <div class="impact-card-image-wrapper">
+                                <img src="imgs/crudops impact report.avif" alt="Man smiling in a bright office, symbolizing positive impact">
+                            </div>
+                            <div class="impact-card-body">
+                                <!-- SEO OPTIMIZATION: Card title updated -->
+                                <h4 class="impact-card-title">CrudOps Impact Report: Scalable Software for Business Growth</h4>
+                                <p class="impact-card-description">Learn how our software development work enhances efficiency and scalability for businesses. We focus on creating smarter operations, supporting industries in building a more sustainable and innovative future through our tailored IT solutions.</p>
+                            </div>
+                            <div class="impact-card-footer">
+                                <span class="impact-card-duration"> </span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                         <div class="global-impact-card">
+                            <div class="impact-card-image-wrapper">
+                                <img src="imgs/driving progress across industries.avif" alt="Scientist working in a lab, driving industry progress">
+                                 
+                                <div class="impact-card-play-button"><i class="fa fa-play"></i></div>
+                            </div>
+                            <div class="impact-card-body">
+                                <!-- SEO OPTIMIZATION: Card title updated -->
+                                <h4 class="impact-card-title">Driving Progress Across Industries with Custom Solutions</h4>
+                                <p class="impact-card-description">We develop tailored technology that has improved e-commerce, education, and logistics. We support businesses in becoming more efficient and satisfying their customers more completely through our expert custom software solutions.</p>
+                            </div>
+                            <div class="impact-card-footer">
+                                <span class="impact-card-duration"> </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="global-impact-card">
+                            <div class="impact-card-image-wrapper">
+                                <img src="imgs/Sustainability-accelarator.avif" alt="Modern building with green vegetation, symbolizing sustainability">
+                            </div>
+                            <div class="impact-card-body">
+                                <!-- SEO OPTIMIZATION: Card title updated -->
+                                <h4 class="impact-card-title">CrudOps Sustainability Accelerator for Green Technology</h4>
+                                <p class="impact-card-description">One of our main goals is making innovation as sustainable as possible, using technologies like Web3 blockchain for it. The work we do allows businesses to use more sustainable methods and improve their technology, aligning with our green IT initiatives.</p>
+                            </div>
+                            <div class="impact-card-footer">
+                                <span class="impact-card-duration"> </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-global-impact-nav">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination-fraction"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-commitments-section">
+        <div class="container">
+            <!-- SEO OPTIMIZATION: H2 updated -->
+            <h2 class="commitments-title">Our Commitments to the Future of Software & AI</h2>
+            <ul class="nav commitments-nav-tabs" id="commitmentsTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="future-crudops-tab" data-bs-toggle="tab" data-bs-target="#future-crudops" type="button" role="tab" aria-controls="future-crudops" aria-selected="true">Future of CrudOps</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="future-ai-tab" data-bs-toggle="tab" data-bs-target="#future-ai" type="button" role="tab" aria-controls="future-ai" aria-selected="false">Future of AI</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="future-work-tab" data-bs-toggle="tab" data-bs-target="#future-work" type="button" role="tab" aria-controls="future-work" aria-selected="false">Future of work</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="future-sustainability-tab" data-bs-toggle="tab" data-bs-target="#future-sustainability" type="button" role="tab" aria-controls="future-sustainability" aria-selected="false">Future of sustainability</button>
+                </li>
+            </ul>
+            <div class="tab-content commitments-tab-content" id="commitmentsTabContent">
+                <div class="tab-pane fade show active" id="future-crudops" role="tabpanel" aria-labelledby="future-crudops-tab">
+                    <div class="row align-items-center">
+                        <div class="col-md-5">
+                            <p class="content-text">
+                                We customize AI solutions for every industry using our extensive software development skills. Because we always strive for quality and innovation, your technology needs will always be met by scalable custom solutions designed for lasting impact.
+                            </p>
+                        </div>
+                        <div class="col-md-7 content-image">
+                             <img src="imgs/fature of crudops.avif" alt="Modern skyscraper building at dusk, symbolizing CrudOps' future growth">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="future-ai" role="tabpanel" aria-labelledby="future-ai-tab">
+                    <div class="row align-items-center">
+                        <div class="col-md-5">
+                            <p class="content-text">
+                                Our AI solutions enhance applications with smart automation, predictive analytics, and personalized user experiences. We integrate intelligent technology to streamline operations and boost engagement for businesses, driving the future of AI in practical applications.
+                            </p>
+                        </div>
+                        <div class="col-md-7 content-image">
+                            <img src="imgs/feature -of-AI(2).avif" alt="Abstract representation of Artificial Intelligence in future">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="future-work" role="tabpanel" aria-labelledby="future-work-tab">
+                    <div class="row align-items-center">
+                        <div class="col-md-5">
+                            <p class="content-text">
+                                In our agile development methodology, we stress teamwork, openness, and delivering on time. Our custom software is designed to serve users, supporting your goals and making everything more efficient, shaping the future of work with smart tools.
+                            </p>
+                        </div>
+                        <div class="col-md-7 content-image">
+                           <img src="imgs/feature-of-work.avif" alt="Diverse team collaborating in a modern office, representing future of work">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="future-sustainability" role="tabpanel" aria-labelledby="future-sustainability-tab">
+                    <div class="row align-items-center">
+                        <div class="col-md-5">
+                           <p class="content-text">
+                            We ensure our AI and software development practices are sustainable. Our products allow businesses to improve their footprint on the environment as they grow and enhance their efficiency, aligning with the future of sustainability in technology.
+                            </p>
+                        </div>
+                        <div class="col-md-7 content-image">
+                            <img src="imgs/feature of sustainability.avif" alt="Wind turbines in a green landscape, symbolizing sustainable future">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Removed the IBM India link section -->
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-main-content">
+            <div class="footer-brand-block">
+                <img src="img/logo-dark.png" alt="CrudOps AI Logo" class="footer-logo">
+                <p class="footer-slogan">Reshape. Redefine. Revolutionize.</p>
+            </div>
+            <div class="footer-links-area">
+                <div class="footer-links-column products">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="service-ai-ml.html">AI/ML Solutions</a></li>
+                        <li><a href="service-web-dev.html">Web Development</a></li>
+                        <li><a href="service-app-dev.html">App Development</a></li>
+                        <li><a href="service-erp-dev.html">ERP Development</a></li>
+                        <li><a href="service-ecommerce-dev.html">E-Commerce</a></li>
+                        <li><a href="service-software-dev.html">Software Development</a></li>
+                    </ul>
+                    <a href="privacy.html" class="footer-legal-link">PRIVACY POLICY</a>
+                </div>
+                <div class="footer-links-column role">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="industries.html">Industries Served</a></li>
+                        <li><a href="casestudies.html">Case Studies</a></li>
+                        <li><a href="portfolio.html">Our Portfolio</a></li>
+                        <li><a href="blog.html" target="_blank">Blogs</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                    <a href="terms.html" class="footer-legal-link">TERMS OF USE</a>
+                </div>
+                <div class="footer-links-column company">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <div class="footer-copyright-text">
+                <p>
+                    © <span id="currentYear"></span> CrudOps. All rights reserved. <br>
+                    CrudOps™ and the CrudOps logo are trademarks of CrudOps Pvt. Ltd. <br>
+                    <!-- SEO OPTIMIZATION: Footer Statement -->
+                    A leading Software Development Company specializing in AI Solutions and Custom Software in Kochi, Kerala, India.
+                </p>
+            </div>
+            <!-- Assuming you'd add social media links here eventually -->
+            <!-- <div class="footer-social-media">
+                <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+            </div> -->
+        </div>
+    </div>
+</footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger); 
+
+    const header = document.querySelector("#mainNav"); 
+    if (header) { 
+        const add_class_on_scroll = () => header.classList.add("scrolled"); 
+        const remove_class_on_scroll = () => header.classList.remove("scrolled"); 
+        const updateNavbarAndBodyPadding = () => { 
+            requestAnimationFrame(() => { 
+                const currentNavbarHeight = header.offsetHeight; 
+                const rootStyles = getComputedStyle(document.documentElement); 
+                const navbarTopGap = parseInt(rootStyles.getPropertyValue('--navbar-top-gap').trim()) || 0; 
+                let newBodyPaddingTop = navbarTopGap + currentNavbarHeight; 
+                if (window.innerWidth >= 992) { 
+                    document.body.style.paddingTop = `${newBodyPaddingTop}px`;
+                } else {
+                    document.body.style.paddingTop = `calc(var(--navbar-top-gap) + 60px)`; 
+                }
+                document.documentElement.style.setProperty('--navbar-total-initial-offset', `${newBodyPaddingTop}px`); 
+                const mainNavElForScrollSpy = document.getElementById('mainNav'); 
+                if (typeof bootstrap !== 'undefined' && bootstrap.ScrollSpy && mainNavElForScrollSpy) { 
+                    let scrollSpyOffset = newBodyPaddingTop + 20; 
+                    const bsScrollSpyInstance = bootstrap.ScrollSpy.getInstance(document.body); 
+                    if (bsScrollSpyInstance) { 
+                        bsScrollSpyInstance._config.offset = scrollSpyOffset; 
+                        bsScrollSpyInstance.refresh(); 
+                    } else { 
+                        try { new bootstrap.ScrollSpy(document.body, { target: '#mainNav', offset: scrollSpyOffset }); } catch (e) { /* console.warn("ScrollSpy init error:", e); */ } 
+                    } 
+                } 
+            }); 
+        }; 
+        window.addEventListener('resize', updateNavbarAndBodyPadding); 
+        const observer = new MutationObserver(mutationsList => { 
+            for(let mutation of mutationsList) { 
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') { 
+                    if (mutation.target.classList.contains('navbar-collapse')) { 
+                        updateNavbarAndBodyPadding(); 
+                    } 
+                } 
+            } 
+        }); 
+        const navbarCollapseElement = header.querySelector('.navbar-collapse'); 
+        if (navbarCollapseElement) { 
+            observer.observe(navbarCollapseElement, { attributes: true }); 
+        } 
+        updateNavbarAndBodyPadding(); 
+        let scrollpos = window.scrollY; 
+        window.addEventListener('scroll', () => { 
+            scrollpos = window.scrollY; 
+            if (scrollpos >= (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navbar-top-gap').trim()) || 0) / 2 ) { 
+                add_class_on_scroll(); 
+            } else { 
+                remove_class_on_scroll(); 
+            } 
+        }); 
+    }
+    
+    document.addEventListener("DOMContentLoaded", function() { 
+        const navLinks = document.querySelectorAll('#mainNav .nav-link'); 
+        if (navLinks.length > 0) { 
+            const currentPath = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1) || "index.html"; 
+            navLinks.forEach(link => { 
+                if (link.getAttribute('href') === currentPath || (currentPath === "about.html" && link.getAttribute('href') === "about.html") ) { 
+                    link.classList.add('active'); 
+                } else { 
+                    link.classList.remove('active'); 
+                } 
+            }); 
+        } 
+        
+        const mouseShadow = document.getElementById('mouse-shadow'); 
+        if (mouseShadow && window.matchMedia("(pointer: fine)").matches) { 
+            document.addEventListener('mousemove', (e) => { 
+                requestAnimationFrame(() => { 
+                    mouseShadow.style.transform = `translate(${e.clientX - (mouseShadow.offsetWidth / 2)}px, ${e.clientY - (mouseShadow.offsetHeight / 2)}px)`; 
+                }); 
+            }); 
+        } else if (mouseShadow) { 
+            mouseShadow.style.display = 'none'; 
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== "#" && href !== "#!" && document.querySelector(href)) { 
+                    // Smooth scroll handled by CSS
+                }
+            });
+        });
+
+        const globalImpactSwiper = new Swiper('.globalImpactSwiper', {
+            slidesPerView: 1, spaceBetween: 20, loop: false, 
+            pagination: { el: '.swiper-global-impact-nav .swiper-pagination-fraction', type: 'fraction', },
+            navigation: { nextEl: '.swiper-global-impact-nav .swiper-button-next', prevEl: '.swiper-global-impact-nav .swiper-button-prev', },
+            breakpoints: { 768: { slidesPerView: 2, spaceBetween: 25, }, 992: { slidesPerView: 3, spaceBetween: 30, }, 1200: { slidesPerView: 4, spaceBetween: 30 } }
+        });
+
+        // Initialize the first tab as active for timeline section (if not already active)
+        const timelineFirstTab = document.getElementById('timeline-innovation-tab');
+        const timelineFirstTabContent = document.getElementById('timeline-innovation');
+        if (timelineFirstTab && timelineFirstTabContent && !timelineFirstTab.classList.contains('active')) {
+            timelineFirstTab.classList.add('active');
+            timelineFirstTabContent.classList.add('show', 'active');
+        }
+
+        // Initialize the first tab as active for commitments section (if not already active)
+        const commitmentsFirstTab = document.getElementById('future-crudops-tab');
+        const commitmentsFirstTabContent = document.getElementById('future-crudops');
+        if (commitmentsFirstTab && commitmentsFirstTabContent && !commitmentsFirstTab.classList.contains('active')) {
+            commitmentsFirstTab.classList.add('active');
+            commitmentsFirstTabContent.classList.add('show', 'active');
+        }
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>
