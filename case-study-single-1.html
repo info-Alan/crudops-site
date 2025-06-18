@@ -1,0 +1,653 @@
+<!doctype html>
+<html class="h-100" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="description" content="CrudOps Case Studies - Detailed look into our success with Alpha Corp.">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
+  <meta name="author" content="CrudOps Team">
+  <meta name="HandheldFriendly" content="true">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>CrudOps Case Study: Our Project Journey</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <style>
+    :root {
+      --co-yellow: #FFC107;
+      --co-light-yellow-card: #ffffff; 
+      --co-dark-text: #212529; 
+      --co-subtle-text: #4B5563; 
+      --co-matte-black: #1a1a1a; 
+      --co-border-gray: #DEE2E6;
+      --co-off-white: #fdfdfd;
+      --co-medium-gray-text: #555;
+      --co-blue-link: #0062ff; 
+      --co-accent-blue: #fbee3e; 
+      --co-shop-icon-blue: #4285F4; 
+      
+      --co-card-bg-services: var(--co-light-yellow-card); 
+      --co-card-text-services: var(--co-dark-text); 
+      --co-explore-gradient-start: #FFFDE7; 
+      --co-explore-gradient-end: #FFFFFF;   
+
+      --font-primary: 'Anonymous Pro', monospace;
+      --font-secondary: 'Inter', sans-serif; 
+
+      --navbar-top-gap: 20px;
+      --navbar-element-initial-height: 70px;
+      --navbar-total-initial-offset: calc(var(--navbar-top-gap) + var(--navbar-element-initial-height));
+    }
+
+    html { scroll-behavior: smooth; } 
+    body { font-family: var(--font-primary); background-color: #FFFFFF; color: var(--co-dark-text); line-height: 1.7; overflow-x: hidden; }
+    h1,h2,h3,h4,h5,h6 { font-family: var(--font-primary); font-weight: 700; color: var(--co-dark-text); margin-bottom: 1.5rem; }
+    p { margin-bottom: 1.5rem; font-weight: 400; font-family: var(--font-secondary); }
+    .force-font-primary { font-family: var(--font-primary) !important; }
+
+    #mainNav { position: fixed; top: var(--navbar-top-gap); left: 50%; transform: translateX(-50%); width: 95%; max-width: 1300px; padding: 1rem; background-color: #FFFFFF; border-radius: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.08); z-index: 1050; transition: all 0.3s ease-in-out; }
+    #mainNav .container { width: 100%; padding: 0; } #mainNav .navbar-brand .logo-img { height: 38px; width:auto; transition: height 0.3s ease-in-out; } #mainNav.scrolled .navbar-brand .logo-img { height: 32px; } 
+    #mainNav .navbar-nav .nav-link { font-family: var(--font-primary); color: var(--co-dark-text); font-weight: 400; padding: 0.5rem 1rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.3s ease; } 
+    #mainNav .navbar-nav .nav-link:hover, #mainNav .navbar-nav .nav-link:focus { color: var(--co-yellow); } #mainNav .navbar-nav .nav-item .nav-link.active { color: var(--co-yellow); font-weight: 700; } 
+    #mainNav .navbar-nav .nav-link.crudops-hub { font-family: var(--font-primary); color: var(--co-yellow) !important; font-weight: 700; font-size: 0.9rem; } 
+    #mainNav.scrolled { padding: 0.75rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); } .navbar-toggler { border-color: rgba(0, 0, 0, 0.1); margin-left: auto; } 
+    .nav-cta-btn { font-family: var(--font-primary); background-color: var(--co-yellow); border-color: var(--co-yellow); color: var(--co-dark-text); border-radius: 20px; font-weight: 700; padding: 0.45rem 1.3rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; transition: all 0.3s ease; } 
+    .nav-cta-btn:hover { background-color: #e0a800; border-color: #e0a800; transform: translateY(-2px); }
+
+    #mouse-shadow {
+      position: fixed;
+      width: 1px;
+      height: 1px;
+      background-color: transparent; 
+      border-radius: 50%;
+      box-shadow: 0 0 200px 100px var(--co-yellow);
+      opacity: 0.6;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      transition: transform 0.08s ease-out;
+    }    @media (pointer: coarse) { #mouse-shadow { display: none; } }
+
+    .site-footer { background-color: #FFFFFF; padding: 3rem 0 2rem 0; border-top: 1px solid var(--co-border-gray); font-family: var(--font-secondary); color: var(--co-dark-text); }
+    .site-footer .container { max-width: 1300px;  }
+    .footer-main-content { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2.5rem; gap: 2rem;  }
+    .footer-brand-block { flex: 0 0 28%;  max-width: 28%; }
+    .footer-logo { max-width: 200px;  height: auto; margin-bottom: 1.2rem; }
+    .footer-slogan { font-size: 1rem;  font-weight: 500;  color: var(--co-dark-text); line-height: 1.5; margin-bottom: 0; font-family: var(--font-primary);  }
+    .footer-links-area { flex: 1; display: flex; justify-content: space-between; gap: 1.5rem;  }
+    .footer-links-column { flex: 1; min-width: 150px;  }
+    .footer-links-column h4 { font-family: var(--font-secondary); font-size: 0.8rem; font-weight: 700; color: var(--co-medium-gray-text);  text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+    .footer-links-column ul { list-style: none; padding: 0; margin: 0; }
+    .footer-links-column ul li a { font-family: var(--font-secondary); font-size: 0.9rem; color: var(--co-dark-text); text-decoration: none; display: block; padding: 0.35rem 0; transition: color 0.2s ease; font-weight: 500; }
+    .footer-links-column ul li a:hover { color: var(--co-yellow); }
+    .footer-legal-link { font-family: var(--font-secondary); display: block; font-size: 0.8rem; font-weight: 500; color: var(--co-medium-gray-text); text-decoration: none; margin-top: 1rem;  padding: 0.35rem 0; transition: color 0.2s ease; }
+    .footer-legal-link:hover { color: var(--co-yellow); }
+    .footer-bottom-bar { display: flex; justify-content: space-between; align-items: flex-end;  padding-top: 2rem; border-top: 1px solid var(--co-border-gray); }
+    .footer-copyright-text p { font-family: var(--font-secondary); font-size: 0.75rem;  color: #707070;  line-height: 1.6; margin: 0; }
+    .footer-social-media { display: flex; align-items: center; }
+    .footer-social-media a { color: var(--co-dark-text); margin-left: 1rem;  font-size: 1.1rem;  text-decoration: none; transition: color 0.2s ease; }
+    .footer-social-media a:first-child { margin-left: 0; }
+    .footer-social-media a:hover { color: var(--co-yellow); }
+    
+    .section-title {
+        font-family: var(--font-secondary);
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        font-weight: 700;
+        color: var(--co-dark-text);
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .content-block h3 {
+        font-family: var(--font-primary);
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
+        margin-bottom: 1rem;
+        color: var(--co-dark-text);
+    }
+    .content-block p {
+        font-family: var(--font-secondary);
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--co-subtle-text);
+    }
+    .content-block ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 1.5rem;
+    }
+    .content-block ul li {
+        font-family: var(--font-secondary);
+        font-size: 1rem;
+        color: var(--co-subtle-text);
+        margin-bottom: 0.5rem;
+        position: relative;
+        padding-left: 25px;
+    }
+    .content-block ul li::before {
+        content: "\f00c"; /* Font Awesome check icon */
+        font-family: "FontAwesome";
+        position: absolute;
+        left: 0;
+        color: var(--co-yellow);
+    }
+
+    /* ======================================== */
+    /* === CASE STUDY ROADMAP SECTION STYLES === */
+    /* ======================================== */
+    .single-case-study-roadmap {
+        background-color: var(--co-off-white);
+        padding: 8rem 0;
+        overflow-x: hidden; /* Important: Prevents horizontal scroll during SVG path animation */
+    }
+
+    .roadmap-main-container {
+        position: relative; /* Establishes positioning context for absolute children */
+        max-width: 900px; /* Limits container width on large screens */
+        margin: 0 auto; /* Centers the container */
+        min-height: 1700px; /* **ADJUSTED: Greatly increased vertical space for the SVG path and all items.** */
+        padding: 20px 0 60px; /* Top/bottom padding for content */
+        box-sizing: border-box; /* Include padding in element's total width and height */
+    }
+
+    /* SVG Path for the Curved Road */
+    .roadmap-svg-path {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%; /* SVG container fills the parent */
+        height: 100%;
+        z-index: 0; /* Placed behind roadmap items */
+    }
+
+    #curved-road-path-bg {
+        stroke: var(--co-yellow); /* **ADJUSTED: Yellow road color** */
+        stroke-width: 40; /* **ADJUSTED: Wider road** */
+        fill: none; /* No fill for the path */
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+    #curved-road-path-lane {
+        stroke: #FFFFFF; /* White dashes */
+        stroke-width: 4; /* Thinner dashed line */
+        fill: none;
+        stroke-linecap: butt; /* Flat ends for dashes */
+        stroke-linejoin: round;
+        stroke-dasharray: 20 15; /* 20px dash, 15px gap */
+    }
+
+
+    /* Roadmap Items (Pins and Content Cards) - Absolute Positioning for Desktop */
+    .roadmap-item {
+        display: flex; /* Uses flexbox for pin-content arrangement */
+        align-items: flex-start; /* Aligns items to the top of their flex container */
+        position: absolute; /* Essential for placing along the curved path */
+        z-index: 1; /* Ensures items are above the SVG road */
+        opacity: 0; /* Initial state for GSAP fade-in animation */
+        transform: translateY(30px); /* Initial state for GSAP slide-up animation */
+        width: 48%; /* Each item takes roughly half the container width */
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    /* Individual item vertical and horizontal positioning - **ADJUSTED FOR MAX SPACING & FIXING ORDER** */
+    /* These top values are now much more spread out */
+    .roadmap-item:nth-child(1) { top: 0px;     left: 50%; }   /* BRIEF (Right of path) */
+    .roadmap-item:nth-child(2) { top: 300px;   right: 50%; }  /* SKETCH (Left of path) */
+    .roadmap-item:nth-child(3) { top: 600px;   left: 50%; }   /* SOLUTION (Right of path) */
+    .roadmap-item:nth-child(4) { top: 900px;   right: 50%; }  /* DESIGN (Left of path) */
+    .roadmap-item:nth-child(5) { top: 1250px;  left: 50%; }  /* PRESENTATION (Right of path) */
+    .roadmap-item:nth-child(6) { top: 1500px;  right: 50%; }  /* REVISION (Left of path) */
+
+
+    /* Roadmap Pin (Numbered Circle) */
+    .roadmap-pin {
+        flex-shrink: 0; /* Prevents pin from shrinking */
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-primary);
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #FFF; /* White text for number */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        position: absolute; /* Absolute positioning within its .roadmap-item */
+        top: 0; /* Aligns pin to the top of the .roadmap-item */
+        z-index: 2; /* Ensures pin is on top of content card and path edge */
+    }
+
+    /* Pin Pointer (Triangle) using ::after pseudo-element */
+    .roadmap-pin::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        z-index: 1; /* Behind the number, connects pin to the road visually */
+        top: 15px; /* Vertical alignment for the pointer */
+    }
+
+    /* Specific Pin Colors (Matching the provided image colors) */
+    .pin-1 { background-color: #E91E63; } /* Pink */
+    .pin-2 { background-color: #FF9800; } /* Orange */
+    .pin-3 { background-color: #9C27B0; } /* Purple */
+    .pin-4 { background-color: #009688; } /* Teal/Green */
+    .pin-5 { background-color: #F44336; } /* Red */
+    .pin-6 { background-color: #2196F3; } /* Light Blue */
+
+    /* Positioning pins and their pointers for items on the RIGHT side of the page (left: 50%) */
+    .roadmap-item:nth-child(odd) { /* Applies to: Brief, Solution, Presentation */
+        justify-content: flex-start; /* Puts the pin on the left and content to its right */
+        padding-left: 70px; /* Space for the pin (60px) and its pointer (10px margin) */
+        text-align: left; /* Ensures content text is left-aligned */
+    }
+    .roadmap-item:nth-child(odd) .roadmap-pin {
+        left: 0; /* Aligns the pin to the start of the padding-left */
+    }
+    .roadmap-item:nth-child(odd) .roadmap-pin::after { /* Pointer for right-side items points LEFT towards the road */
+        border-width: 15px 15px 15px 0; /* Creates left-pointing triangle */
+        left: -15px; /* Pushed out by its own width, ensuring it aligns with the path */
+        right: auto; /* Reset any 'right' positioning */
+    }
+    .roadmap-item:nth-child(odd) .pin-1::after { border-color: transparent #E91E63 transparent transparent; }
+    .roadmap-item:nth-child(odd) .pin-3::after { border-color: transparent #9C27B0 transparent transparent; }
+    .roadmap-item:nth-child(odd) .pin-5::after { border-color: transparent #F44336 transparent transparent; }
+
+
+    /* Positioning pins and their pointers for items on the LEFT side of the page (right: 50%) */
+    .roadmap-item:nth-child(even) { /* Applies to: Sketch, Design, Revision */
+        justify-content: flex-end; /* Puts the content to the left and pin to its right */
+        padding-right: 70px; /* Space for the pin and its pointer */
+        text-align: left; /* Ensures content text is left-aligned */
+    }
+    .roadmap-item:nth-child(even) .roadmap-pin {
+        right: 0; /* Aligns the pin to the end of the padding-right */
+    }
+    .roadmap-item:nth-child(even) .roadmap-pin::after { /* Pointer for left-side items points RIGHT towards the road */
+        border-width: 15px 0 15px 15px; /* Creates right-pointing triangle */
+        right: -15px; /* Pushed out by its own width */
+        left: auto; /* Reset any 'left' positioning */
+    }
+    .roadmap-item:nth-child(even) .pin-2::after { border-color: transparent transparent transparent #FF9800; }
+    .roadmap-item:nth-child(even) .pin-4::after { border-color: transparent transparent transparent #009688; }
+    .roadmap-item:nth-child(even) .pin-6::after { border-color: transparent transparent transparent #2196F3; }
+
+
+    /* Content Card */
+    .roadmap-content {
+        background-color: #FFFFFF;
+        border: 1px solid var(--co-border-gray);
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        flex-grow: 1; /* Allows content card to fill available space */
+        max-width: 100%; /* Important since .roadmap-item sets overall width */
+    }
+    .roadmap-content h3 {
+        font-family: var(--font-primary);
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        color: var(--co-dark-text);
+    }
+    .roadmap-content p {
+        font-family: var(--font-secondary);
+        font-size: 0.95rem;
+        color: var(--co-subtle-text);
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* ============================ */
+    /* === MOBILE OPTIMIZATIONS === */
+    /* ============================ */
+    @media (max-width: 767.98px) {
+        .single-case-study-roadmap {
+            padding: 5rem 0; /* Reduced vertical padding */
+        }
+        .roadmap-main-container {
+            max-width: 100%; /* Container takes full width */
+            min-height: auto; /* Allow height to adjust based on stacked content */
+            padding: 0 1rem 3rem; /* Adjusted horizontal padding */
+            position: relative; /* Still a positioning context */
+        }
+
+        .roadmap-svg-path {
+            display: none; /* **IMPORTANT: Hide the complex SVG on mobile for performance/layout** */
+        }
+
+        /* Mobile Vertical Road Line - New for mobile fallback */
+        .roadmap-main-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px; /* Position from left edge of container */
+            width: 15px; /* Mobile road width */
+            background-color: var(--co-yellow); /* **ADJUSTED: Yellow road color for mobile** */
+            z-index: 0;
+        }
+
+        /* Mobile Dashed Line on Mobile Road */
+        .roadmap-main-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 25px; /* Offset to center within the 15px road */
+            width: 5px; /* Width of the dashed line */
+            background: repeating-linear-gradient(to bottom, white 0, white 10px, transparent 10px, transparent 25px);
+            z-index: 1;
+        }
+
+        /* All roadmap items stack and align on the right side of the simplified vertical road line */
+        .roadmap-item {
+            position: relative; /* Switch to relative positioning for stacking */
+            width: 100%; /* Take full available width */
+            margin-bottom: 40px; /* Spacing between stacked items */
+            left: auto !important; /* Override desktop absolute 'left' */
+            right: auto !important; /* Override desktop absolute 'right' */
+            top: auto !important; /* Override desktop absolute 'top' */
+            transform: none !important; /* Remove initial Y transform from GSAP to avoid issues with new flow */
+            
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start; /* Force pin to the left of content */
+            padding-left: 70px; /* Space for the pin on the left of content */
+            padding-right: 0; /* No right padding */
+            opacity: 1; /* Reset opacity on mobile to ensure visible without JS issues */
+            /* y: 0; no explicit y transform */
+        }
+
+        /* Ensure text within content block remains left-aligned for consistency */
+        .roadmap-item .roadmap-content h3,
+        .roadmap-item .roadmap-content p {
+            text-align: left;
+        }
+
+        /* Roadmap Pin on Mobile (adjusts to be positioned on the mobile road line) */
+        .roadmap-pin {
+            position: absolute; /* Keeps pin relative to its .roadmap-item (which is now relative) */
+            left: 0; /* Always position to the left edge of the .roadmap-item's content area */
+            right: auto; /* Reset from potential desktop settings */
+            top: 0; /* Align to the top of the item */
+        }
+
+        /* All pin pointers (triangles) point RIGHT on mobile (towards the content card) */
+        .roadmap-pin::after {
+            border-width: 15px 0 15px 15px; /* Creates right-pointing triangle */
+            left: auto;
+            right: -15px; /* Comes from the right edge of the pin towards the content */
+            top: 15px; /* Vertical alignment */
+        }
+
+        /* Apply correct pointer color based on pin color for mobile (important: use !important to override desktop specificity) */
+        .pin-1::after { border-color: transparent transparent transparent #E91E63 !important; }
+        .pin-2::after { border-color: transparent transparent transparent #FF9800 !important; }
+        .pin-3::after { border-color: transparent transparent transparent #9C27B0 !important; }
+        .pin-4::after { border-color: transparent transparent transparent #009688 !important; }
+        .pin-5::after { border-color: transparent transparent transparent #F44336 !important; }
+        .pin-6::after { border-color: transparent transparent transparent #2196F3 !important; }
+    }
+    .float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 8px rgba(0,0,0,0.2); z-index: 1000; display: flex; align-items: center; justify-content: center; }
+  </style>
+</head>
+<body>
+  <div id="mouse-shadow"></div>
+
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-light"> <div class="container d-flex justify-content-between align-items-center"> <a class="navbar-brand" href="index.html"> <img src="./img/logo-dark.png" alt="CrudOps Logo" class="logo-img"> </a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"> <span class="navbar-toggler-icon"></span> </button> <div class="collapse navbar-collapse" id="navbarSupportedContent"> <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0"> <li class="nav-item"> <a class="nav-link" href="services.html">Services</a> </li> <li class="nav-item"> <a class="nav-link" href="industries.html">Industries</a> </li> <li class="nav-item"> <a class="nav-link" href="about.html">About Us</a> </li> <li class="nav-item"> <a class="nav-link crudops-hub" href="index.html">Crudops Hub</a> </li> <li class="nav-item"> <a class="nav-link" href="casestudies.html">Case Studies</a> </li> <li class="nav-item"> <a class="nav-link" href="portfolio.html">Portfolio</a> </li> <li class="nav-item"> <a class="nav-link" href="blog.html">Blogs</a> </li></ul> <div class="d-lg-flex align-items-center"> <a href="contact.html" class="btn nav-cta-btn btn-sm">Contact Us</a> </div> </div> </div> </nav>
+  <a href="https://api.whatsapp.com/send?phone=+916238575185&text=Hi" class="float" target="_blank"><i class="fa fa-whatsapp"></i></a>
+
+<main>
+    <!-- Our Process: Roadmap Section - THIS IS THE ONLY CONTENT LEFT -->
+    <section class="single-case-study-roadmap">
+        <h2 class="section-title">Our Project Journey</h2>
+        <div class="roadmap-main-container">
+            <!-- The SVG defines the curved road path - DESKTOP ONLY -->
+            <!-- Adjusted viewBox height for increased overall vertical space -->
+            <svg class="roadmap-svg-path" width="100%" height="100%" viewBox="0 0 900 1550" preserveAspectRatio="xMidYMin meet">
+                <!-- Background Road (Yellow and wider) - Adjusted d path for smoother curves and more spacing -->
+                <path id="curved-road-path-bg"
+                      d="
+                        M450, 20
+                        C 580, 50, 750, 180, 700, 310
+                        C 650, 440, 200, 500, 250, 680
+                        C 300, 810, 750, 910, 700, 1100
+                        C 650, 1280, 200, 1380, 250, 1530"
+                      />
+                <!-- Dashed Lane Markers (White and thinner) - Uses the exact same path -->
+                <path id="curved-road-path-lane"
+                      d="
+                        M450, 20
+                        C 580, 50, 750, 180, 700, 310
+                        C 650, 440, 200, 500, 250, 680
+                        C 300, 810, 750, 910, 700, 1100
+                        C 650, 1280, 200, 1380, 250, 1530"
+                      />
+            </svg>
+
+            <!-- Step 1: Brief & Discovery (Right Side) -->
+            <div class="roadmap-item" id="brief-step">
+                <div class="roadmap-pin pin-1"><span>1</span></div>
+                <div class="roadmap-content">
+                    <h3>Identifying the Challenge of Overloaded Support Teams</h3>
+                    <p>An expanding e-commerce business enterprise fought against excessive patron inquiries, specially during height seasons, that overwhelmed their help teams. This created sluggish responses, longer functioning costs, and dipping consumer pride, emphasizing the need for an automated, scalable solution.</p>
+                </div>
+            </div>
+
+            <!-- Step 2: Strategy & UX/UI Design (Left Side) -->
+            <div class="roadmap-item" id="sketch-step">
+                <div class="roadmap-pin pin-2"><span>2</span></div>
+                <div class="roadmap-content">
+                    <h3>Designing an AI-Powered Chatbot with NLP
+                    </h3>
+                    <p>We created a bespoke chatbot embedded in the client's website and mobile application, leveraging natural language processing (NLP) to learn and respond to questions across various languages. The chatbot was also trained on the client's past support data to cater to frequent questions such as order tracking and returns, to provide precise and context-sensitive responses.</p>
+                </div>
+            </div>
+
+            <!-- Step 3: Solution Architecture & Development (Right Side) -->
+            <div class="roadmap-item" id="solution-step">
+                <div class="roadmap-pin pin-3"><span>3</span></div>
+                <div class="roadmap-content">
+                    <h3>Implementing Escalation and Learning Mechanisms
+                    </h3>
+                    <p>The system was designed to increase complicated issues to human agents, while learning from frequent interactions to improve their reactions. The machine learning algorithm enabled the chatbot to enable the new query pattern and user behavior, increasing its effectiveness over time.</p>
+                </div>
+            </div>
+
+            <!-- Step 4: Integration & Quality Assurance (Left Side) -->
+            <div class="roadmap-item" id="design-step">
+                <div class="roadmap-pin pin-4"><span>4</span></div>
+                <div class="roadmap-content">
+                    <h3>Seamless Integration and Multilingual Support</h3>
+                    <p>The system was designed to increase complex issues to human agents, while learning from frequent interactions to improve their reactions. The machine learning algorithm enabled the chatbot to enable the new query pattern and user behavior, increasing its effectiveness over time.</p>
+                </div>
+            </div>
+
+            <!-- Step 5: Deployment & Launch (Right Side) -->
+            <div class="roadmap-item" id="presentation-step">
+                <div class="roadmap-pin pin-5"><span>5</span></div>
+                <div class="roadmap-content">
+                    <h3>Measuring Impact and Optimizing Performance
+                    </h3>
+                    <p>Post-Launch, Chatbot handled 70% inquiries independently, cutting the response time ranging from 10 minutes to 30 seconds to 50%. Customer satisfaction increased by 25% due to immediate 24/7 support, and the customer saved 30% in the support cost, making his team focus on strategic priorities.</p>
+                </div>
+            </div>
+
+          
+
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <!-- Footer content remains the same as previous version -->
+    <div class="container"> <div class="footer-main-content"> <div class="footer-brand-block"> <img src="img/logo-dark.png" alt="CrudOps AI Logo" class="footer-logo"> <p class="footer-slogan">Reshape. Redefine. Revelutionize</p> </div> <div class="footer-links-area"> <div class="footer-links-column products"> <h4>Services</h4> <ul> <li><a href="service-ai-ml.html">AI/ML Solutions</a></li> <li><a href="service-web-dev.html">Web Development</a></li> <li><a href="service-app-dev.html">App Development</a></li> <li><a href="service-erp-dev.html">ERP Development</a></li> <li><a href="service-ecommerce-dev.html">E-Commerce</a></li> <li><a href="service-software-dev.html">Software Development</a></li> </ul> <a href="privacy.html" class="footer-legal-link">PRIVACY POLICY</a> </div> <div class="footer-links-column role"> <h4>Explore</h4> <ul> <li><a href="industries.html">Industries Served</a></li> <li><a href="casestudies.html">Case Studies</a></li> <li><a href="portfolio.html">Our Portfolio</a></li> <li><a href="blog.html" target="_blank">Blogs</a></li> <li><a href="career.html">Careers</a></li> </ul> <a href="terms.html" class="footer-legal-link">TERMS OF USE</a> </div> <div class="footer-links-column company"> <h4>Company</h4> <ul> <li><a href="about.html">About Us</a></li> <li><a href="contact.html">Contact</a></li>  </ul> </div> </div> </div> <div class="footer-bottom-bar"> <div class="footer-copyright-text"> <p> © <span id="currentYear"></span> CrudOps. All rights reserved. <br> CrudOps™ and the CrudOps logo are trademarks of CrudOps Pvt. Ltd. </p> </div> 
+   
+    </div> 
+</div>
+</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger); 
+
+    const header = document.querySelector("#mainNav"); 
+    if (header) { 
+        const add_class_on_scroll = () => header.classList.add("scrolled"); 
+        const remove_class_on_scroll = () => header.classList.remove("scrolled"); 
+        const updateNavbarAndBodyPadding = () => { 
+            requestAnimationFrame(() => { 
+                const currentNavbarHeight = header.offsetHeight; 
+                const rootStyles = getComputedStyle(document.documentElement); 
+                const navbarTopGap = parseInt(rootStyles.getPropertyValue('--navbar-top-gap').trim()) || 0; 
+                let newBodyPaddingTop = navbarTopGap + currentNavbarHeight; 
+                if (window.innerWidth >= 992) { 
+                    document.body.style.paddingTop = `${newBodyPaddingTop}px`;
+                } else {
+                    document.body.style.paddingTop = `calc(var(--navbar-top-gap) + 60px)`; 
+                }
+                document.documentElement.style.setProperty('--navbar-total-initial-offset', `${newBodyPaddingTop}px`); 
+                const mainNavElForScrollSpy = document.getElementById('mainNav'); 
+                if (typeof bootstrap !== 'undefined' && bootstrap.ScrollSpy && mainNavElForScrollSpy) { 
+                    let scrollSpyOffset = newBodyPaddingTop + 20; 
+                    const bsScrollSpyInstance = bootstrap.ScrollSpy.getInstance(document.body); 
+                    if (bsScrollSpyInstance) { 
+                        bsScrollSpyInstance._config.offset = scrollSpyOffset; 
+                        bsScrollSpyInstance.refresh(); 
+                    } else { 
+                        try { new bootstrap.ScrollSpy(document.body, { target: '#mainNav', offset: scrollSpyOffset }); } catch (e) { /* console.warn("ScrollSpy init error:", e); */ } 
+                    } 
+                } 
+            }); 
+        }; 
+        window.addEventListener('resize', updateNavbarAndBodyPadding); 
+        const observer = new MutationObserver(mutationsList => { 
+            for(let mutation of mutationsList) { 
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') { 
+                    if (mutation.target.classList.contains('navbar-collapse')) { 
+                        updateNavbarAndBodyPadding(); 
+                    } 
+                } 
+            } 
+        }); 
+        const navbarCollapseElement = header.querySelector('.navbar-collapse'); 
+        if (navbarCollapseElement) { 
+            observer.observe(navbarCollapseElement, { attributes: true }); 
+        } 
+        updateNavbarAndBodyPadding(); 
+        let scrollpos = window.scrollY; 
+        window.addEventListener('scroll', () => { 
+            scrollpos = window.scrollY; 
+            if (scrollpos >= (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navbar-top-gap').trim()) || 0) / 2 ) { 
+                add_class_on_scroll(); 
+            } else { 
+                remove_class_on_scroll(); 
+            } 
+        }); 
+    }
+    
+    document.addEventListener("DOMContentLoaded", function() { 
+        const navLinks = document.querySelectorAll('#mainNav .nav-link'); 
+        if (navLinks.length > 0) { 
+            const currentFile = window.location.pathname.split("/").pop() || "index.html";
+            navLinks.forEach(link => {
+                link.classList.remove('active'); 
+                const linkFile = link.getAttribute('href').split("/").pop();
+                if (linkFile === currentFile) { 
+                    link.classList.add('active'); 
+                } else if (currentFile.startsWith("case-study-single-") && linkFile === "casestudies.html") {
+                    link.classList.add('active'); // Keep "Case Studies" active if on a single case study page
+                }
+            }); 
+        } 
+        
+        const mouseShadow = document.getElementById('mouse-shadow'); 
+        if (mouseShadow && window.matchMedia("(pointer: fine)").matches) { 
+            document.addEventListener('mousemove', (e) => { 
+                requestAnimationFrame(() => { 
+                    mouseShadow.style.transform = `translate(${e.clientX - (mouseShadow.offsetWidth / 2)}px, ${e.clientY - (mouseShadow.offsetHeight / 2)}px)`; 
+                }); 
+            }); 
+        } else if (mouseShadow) { 
+            mouseShadow.style.display = 'none'; 
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== "#" && href !== "#!" && document.querySelector(href)) { 
+                    // Potential smooth scroll logic
+                }
+            });
+        });
+
+        // GSAP Roadmap Animation for drawing paths
+        gsap.registerPlugin(ScrollTrigger);
+
+        const pathBg = document.getElementById('curved-road-path-bg');
+        const pathLane = document.getElementById('curved-road-path-lane');
+        
+        // Only apply path animation for desktop (>= 768px breakpoint)
+        if (pathBg && pathLane && window.matchMedia("(min-width: 768px)").matches) { // Added media query check
+            const length = pathBg.getTotalLength(); 
+            
+            // Set initial dasharray and offset for both paths to hide them completely
+            // These lines are crucial to make the drawing animation work
+            pathBg.style.strokeDasharray = length;
+            pathBg.style.strokeDashoffset = length;
+            pathLane.style.strokeDasharray = length; 
+            pathLane.style.strokeDashoffset = length;
+
+            gsap.to([pathBg, pathLane], { 
+                strokeDashoffset: 0, // Animate offset to 0 to "draw" the path
+                ease: "none", // Linear animation, linked directly to scroll
+                scrollTrigger: {
+                    trigger: ".roadmap-main-container", // Trigger animation when this container enters view
+                    start: "top center", // Start drawing when container top is at viewport center
+                    end: "bottom center", // Finish drawing when container bottom is at viewport center
+                    scrub: true, // Link animation progress directly to scroll position
+                    // markers: true // Uncomment for visual debugging of scroll trigger points
+                }
+            });
+        }
+
+        // Individual roadmap item reveal animation (fade-in and slide-up)
+        // This animation applies to both desktop and mobile
+        gsap.utils.toArray(".roadmap-item").forEach(item => {
+            // Set initial state only if not on mobile, where items are static for simpler layout
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                gsap.fromTo(item, {
+                    opacity: 0,
+                    y: 50 // Start 50px below its final position
+                }, {
+                    opacity: 1,
+                    y: 0, // Animate to its final position
+                    duration: 0.8,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 85%", // Trigger when top of the item is 85% down from viewport top
+                        toggleActions: "play none none reverse", // Play when entering, reverse when leaving
+                        // markers: true // Uncomment for visual debugging
+                    }
+                });
+            } else {
+                // For mobile, ensure they are just visible and not trying to animate in weird ways from 0 opacity
+                gsap.set(item, { opacity: 1, y: 0 }); 
+            }
+        });
+    });
+  </script>
+</body>
+</html>

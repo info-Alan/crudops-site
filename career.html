@@ -1,0 +1,987 @@
+<!doctype html>
+<html class="h-100" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="description" content="Join the CrudOps Team - Build the Future of Software.">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
+  <meta name="author" content="CrudOps Team">
+  <meta name="HandheldFriendly" content="true">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>CrudOps - Careers | General Application</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <style>
+    :root {
+      --co-yellow: #FFC107;
+      --co-dark-text: #212529;
+      --co-matte-black: #1a1a1a;
+      --co-border-gray: #DEE2E6;
+      --co-off-white: #fdfdfd;
+      --co-medium-gray-text: #555;
+      --co-light-gray-bg: #f8f9fa;
+      --co-dark-ash: #AAAAAA;
+
+      --navbar-top-gap: 20px;
+      --navbar-element-initial-height: 70px;
+      --navbar-total-initial-offset: calc(var(--navbar-top-gap) + var(--navbar-element-initial-height));
+
+      /* Reused for careers page hero banner sizing */
+      --careers-hero-height: 60vh;
+      --careers-hero-min-height: 400px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Anonymous Pro', monospace;
+      background-color: #FFFFFF; color: var(--co-dark-text);
+      line-height: 1.7; overflow-x: hidden;
+      padding-top: var(--navbar-total-initial-offset); /* Ensure body padding top for fixed navbar */
+    }
+
+    h1,h2,h3,h4,h5,h6 { font-family: 'Anonymous Pro', monospace; font-weight: 700; color: var(--co-dark-text); margin-bottom: 1.5rem; }
+    p { margin-bottom: 1.5rem; font-weight: 400; font-family: 'Inter', sans-serif; /* Adjusted default p font */ }
+
+    /* Reused Navbar Styles */
+    #mainNav { position: fixed; top: var(--navbar-top-gap); left: 50%; transform: translateX(-50%); width: 95%; max-width: 1300px; padding: 1rem; background-color: #FFFFFF; border-radius: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.08); z-index: 1050; transition: all 0.3s ease-in-out; }
+    #mainNav .container { width: 100%; padding: 0; } #mainNav .navbar-brand .logo-img { height: 38px; width:auto; transition: height 0.3s ease-in-out; } #mainNav.scrolled .navbar-brand .logo-img { height: 32px; } #mainNav .navbar-nav .nav-link { font-family: 'Anonymous Pro', monospace; color: var(--co-dark-text); font-weight: 400; padding: 0.5rem 1rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.3s ease; } #mainNav .navbar-nav .nav-link:hover, #mainNav .navbar-nav .nav-link:focus { color: var(--co-yellow); } #mainNav .navbar-nav .nav-item .nav-link.active { color: var(--co-yellow); font-weight: 700; } #mainNav .navbar-nav .nav-link.crudops-hub { font-family: 'Anonymous Pro', monospace; color: var(--co-yellow) !important; font-weight: 700; font-size: 0.9rem; } #mainNav.scrolled { padding: 0.75rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); } .navbar-toggler { border-color: rgba(0, 0, 0, 0.1); margin-left: auto; } .nav-cta-btn { font-family: 'Anonymous Pro', monospace; background-color: var(--co-yellow); border-color: var(--co-yellow); color: var(--co-dark-text); border-radius: 20px; font-weight: 700; padding: 0.45rem 1.3rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; transition: all 0.3s ease; } .nav-cta-btn:hover { background-color: #e0a800; border-color: #e0a800; transform: translateY(-2px); }
+
+    /* New/Adapted Styles for Careers Page */
+    .careers-hero-section {
+        height: var(--careers-hero-height);
+        min-height: var(--careers-hero-min-height);
+        background-image: url('img/careers-banner.jpg'); /* REPLACE WITH YOUR CAREERS BANNER IMAGE */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #FFFFFF;
+        overflow: hidden;
+    }
+    .careers-hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 1;
+    }
+    .careers-hero-content {
+        position: relative;
+        z-index: 2;
+        padding: clamp(1.5rem, 5vw, 4rem);
+        max-width: 900px;
+    }
+    .careers-hero-content h1 {
+        font-family: 'Anonymous Pro', monospace;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        color: #FFFFFF;
+        font-weight: 700;
+        line-height: 1.2;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+        margin-bottom: 1.5rem;
+    }
+    .careers-hero-content h1 .highlight-yellow {
+        color: var(--co-yellow);
+    }
+    .careers-hero-content p {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        color: #f0f0f0;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        margin-bottom: 2rem;
+    }
+    .careers-hero-content .btn-careers {
+        background-color: var(--co-yellow);
+        border-color: var(--co-yellow);
+        color: var(--co-dark-text);
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+    }
+    .careers-hero-content .btn-careers:hover {
+        background-color: #e0a800;
+        border-color: #e0a800;
+        transform: translateY(-2px);
+    }
+
+    /* Section Styling */
+    .section-spacing {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+    .section-spacing.bg-light-gray {
+        background-color: var(--co-light-gray-bg);
+    }
+    .section-spacing.bg-white {
+        background-color: #FFFFFF;
+    }
+    .section-title {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+    .section-title h2 {
+        font-size: clamp(2.2rem, 5vw, 3rem);
+        margin-bottom: 1rem;
+    }
+    .section-title p {
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        color: var(--co-medium-gray-text);
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .section-title h2 .highlight-yellow {
+        color: var(--co-yellow);
+    }
+
+    /* Feature Cards (Why Join Us) - Reused from previous suggestion */
+    .feature-card {
+        background-color: #FFFFFF;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        text-align: center;
+        margin-bottom: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%; /* Ensure uniform height in grid */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    .feature-card .icon {
+        font-size: 2.5rem;
+        color: var(--co-yellow);
+        margin-bottom: 1rem;
+    }
+    .feature-card h3 {
+        font-family: 'Anonymous Pro', monospace;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--co-dark-text);
+        margin-bottom: 0.75rem;
+    }
+    .feature-card p {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        color: var(--co-medium-gray-text);
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* New: Current Openings specific styling - adapting feature-card concept */
+    .job-opening-card {
+        background-color: #FFFFFF;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        margin-bottom: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%; /* Ensure uniform height in grid */
+        display: flex;
+        flex-direction: column;
+    }
+    .job-opening-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    .job-opening-card h4 {
+        font-family: 'Anonymous Pro', monospace;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--co-dark-text);
+        margin-bottom: 0.5rem;
+    }
+    .job-opening-card .location {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        color: var(--co-medium-gray-text);
+        margin-bottom: 1rem;
+    }
+    .job-opening-card p {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        color: var(--co-medium-gray-text);
+        line-height: 1.6;
+        flex-grow: 1; /* Makes sure the text expands, pushing the button down */
+    }
+    .job-opening-card .btn-apply-job {
+        background-color: var(--co-yellow);
+        border-color: var(--co-yellow);
+        color: var(--co-dark-text);
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        align-self: flex-start; /* Align button to start if content varies */
+        margin-top: 1rem;
+    }
+    .job-opening-card .btn-apply-job:hover {
+        background-color: #e0a800;
+        border-color: #e0a800;
+        transform: translateY(-2px);
+    }
+
+
+    /* Application Form Styles */
+    .application-form-section .form-wrapper {
+        background-color: var(--co-off-white);
+        border-radius: 15px;
+        padding: 2.5rem 3rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .application-form-section .form-label {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--co-dark-text);
+        margin-bottom: 0.5rem;
+    }
+    .application-form-section .form-control,
+    .application-form-section .form-select,
+    .application-form-section .form-control-file { /* Added class for consistency if we want custom styling for file input */
+        font-family: 'Inter', sans-serif;
+        border-radius: 8px;
+        border: 1px solid var(--co-border-gray);
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .application-form-section .form-control:focus,
+    .application-form-section .form-select:focus,
+    .application-form-section .form-control-file:focus {
+        border-color: var(--co-yellow);
+        box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+    }
+    .application-form-section .form-control-file { /* Specific style for file input */
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+    .application-form-section .btn-submit {
+        background-color: var(--co-yellow);
+        border-color: var(--co-yellow);
+        color: var(--co-dark-text);
+        font-family: 'Anonymous Pro', monospace;
+        font-weight: 700;
+        padding: 0.8rem 2.2rem;
+        font-size: 1rem;
+        border-radius: 25px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        margin-top: 1rem; /* Spacing below the form */
+    }
+    .application-form-section .btn-submit:hover {
+        background-color: #e0a800;
+        border-color: #e0a800;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(255,193,7,0.2);
+    }
+    .application-form-section .required-note {
+        font-size: 0.85rem;
+        color: var(--co-medium-gray-text);
+        margin-top: 1rem;
+    }
+
+    /* "Mail Us" button/link outside the form */
+    .mail-us-cta {
+        margin-top: 2rem;
+        text-align: center;
+    }
+    .mail-us-cta p {
+        font-family: 'Inter', sans-serif;
+        color: var(--co-dark-text);
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+    .mail-us-cta .btn-mail {
+        background-color: var(--co-dark-text);
+        border-color: var(--co-dark-text);
+        color: var(--co-yellow);
+        font-family: 'Anonymous Pro', monospace;
+        font-weight: 700;
+        padding: 0.7rem 2rem;
+        font-size: 0.9rem;
+        border-radius: 25px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+    }
+    .mail-us-cta .btn-mail:hover {
+        background-color: var(--co-matte-black);
+        border-color: var(--co-matte-black);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Our Culture Section */
+    .culture-section .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    .culture-section .image-grid img {
+        width: 100%;
+        height: 250px; /* Uniform height for culture images */
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease;
+    }
+    .culture-section .image-grid img:hover {
+        transform: scale(1.03);
+    }
+    .culture-section .text-muted {
+        font-size: 0.75rem !important; /* Smaller for quote attribution */
+    }
+
+
+    /* CTA Section */
+    .cta-section-career {
+        background-color: var(--co-dark-text); /* Dark background for contrast */
+        color: #FFFFFF;
+        padding: 5rem 0;
+        text-align: center;
+    }
+    .cta-section-career h2 {
+        color: #FFFFFF;
+        margin-bottom: 1.5rem;
+    }
+    .cta-section-career p {
+        color: #f0f0f0;
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2.5rem;
+    }
+    .cta-section-career .btn-cta-light {
+        background-color: var(--co-yellow);
+        border-color: var(--co-yellow);
+        color: var(--co-dark-text);
+        padding: 0.9rem 2.2rem;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+    }
+    .cta-section-career .btn-cta-light:hover {
+        background-color: #e0a800;
+        border-color: #e0a800;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba(255,193,7,0.2);
+        color: var(--co-dark-text);
+    }
+
+
+    /* General mobile adjustments */
+    @media (max-width: 991.98px) {
+      body { padding-top: calc(var(--navbar-top-gap) + 60px); }
+      #mainNav { width: 95%; padding: 0.75rem; max-width: calc(100% - 20px); border-radius: 0; }
+      #mainNav .navbar-brand .logo-img { height: 32px; }
+      #mainNav .navbar-collapse { background-color: #FFFFFF; padding: 1rem; margin-top: 0.75rem; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: absolute; top: 100%; left: 0; right: 0; width: 100%; }
+      #mainNav .navbar-nav .nav-item { margin-bottom: 0.3rem; }
+      #mainNav .navbar-nav .nav-link { padding: 0.6rem 0.5rem; font-size: 0.9rem; }
+      #mainNav .navbar-collapse .d-lg-flex { margin-top: 1rem; display: block !important; text-align: center; }
+      #mainNav .navbar-collapse .nav-cta-btn { width: 100%; display: block; margin: 0.5rem auto 0; font-size: 0.9rem; }
+
+      .careers-hero-section {
+          height: 70vh; /* Adjust for mobile */
+          background-attachment: scroll;
+      }
+      .careers-hero-content h1 {
+          font-size: clamp(2rem, 8vw, 3.5rem);
+      }
+      .careers-hero-content p {
+          font-size: clamp(0.9rem, 3vw, 1.1rem);
+      }
+      .careers-hero-content .btn-careers {
+          font-size: 0.9rem;
+          padding: 0.7rem 1.8rem;
+      }
+      .section-spacing {
+          padding-top: 3rem;
+          padding-bottom: 3rem;
+      }
+      .section-title {
+          margin-bottom: 2.5rem;
+      }
+      .feature-card {
+            padding: 1.5rem;
+            /* text-align: left; Adjust for mobile to be less centered if needed */
+        }
+      .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+      .feature-card p {
+            font-size: 0.85rem;
+        }
+      .application-form-section .form-wrapper {
+        padding: 2rem 1.5rem; /* Reduce padding on mobile */
+      }
+      .application-form-section .btn-submit {
+        width: 100%; /* Full width button on mobile */
+      }
+      .mail-us-cta .btn-mail {
+        width: 100%; /* Full width button on mobile */
+        font-size: 0.85rem;
+        padding: 0.6rem 1.5rem;
+      }
+      .culture-section .image-grid {
+          grid-template-columns: 1fr; /* Stack images on very small screens */
+      }
+      .job-opening-card { /* Adapt new card style for mobile */
+          padding: 1.5rem;
+      }
+      .job-opening-card h4 {
+          font-size: 1.3rem;
+      }
+      .job-opening-card p {
+          font-size: 0.85rem;
+      }
+      .job-opening-card .location {
+          font-size: 0.8rem;
+      }
+    }
+    @media (max-width: 767.98px) {
+        .feature-card {
+            padding: 1.5rem;
+        }
+        .feature-card h3 {
+            font-size: 1.2rem;
+        }
+        .feature-card p {
+            font-size: 0.85rem;
+        }
+        .application-form-section .form-wrapper {
+            padding: 1.5rem 1rem; /* Even less padding on very small screens */
+        }
+        .culture-section .image-grid {
+            gap: 1rem;
+        }
+        .job-opening-card {
+            padding: 1.2rem;
+        }
+        .job-opening-card h4 {
+            font-size: 1.2rem;
+        }
+        .job-opening-card p {
+            font-size: 0.8rem;
+        }
+    }
+
+    .float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 8px rgba(0,0,0,0.2); z-index: 1000; display: flex; align-items: center; justify-content: center; }
+
+    /* CSS fix for footer lists to always remove bullet points across all screen sizes */
+    .site-footer { background-color: #FFFFFF; padding: 3rem 0 2rem 0; border-top: 1px solid var(--co-border-gray); font-family: var(--font-secondary); color: var(--co-dark-text); }
+    .site-footer .container { max-width: 1300px;  }
+    .footer-main-content { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2.5rem; gap: 2rem;  }
+    .footer-brand-block { flex: 0 0 28%;  max-width: 28%; }
+    .footer-logo { max-width: 200px;  height: auto; margin-bottom: 1.2rem; }
+    .footer-slogan { font-size: 1rem;  font-weight: 500;  color: var(--co-dark-text); line-height: 1.5; margin-bottom: 0; font-family: var(--font-primary);  }
+    .footer-links-area { flex: 1; display: flex; justify-content: space-between; gap: 1.5rem;  }
+    .footer-links-column { flex: 1; min-width: 150px;  }
+    .footer-links-column h4 { font-family: var(--font-secondary); font-size: 0.8rem; font-weight: 700; color: var(--co-medium-gray-text);  text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+    .footer-links-column ul { list-style: none; padding: 0; margin: 0; }
+    .footer-links-column ul li a { font-family: var(--font-secondary); font-size: 0.9rem; color: var(--co-dark-text); text-decoration: none; display: block; padding: 0.35rem 0; transition: color 0.2s ease; font-weight: 500; }
+    .footer-links-column ul li a:hover { color: var(--co-yellow); }
+    .footer-legal-link { font-family: var(--font-secondary); display: block; font-size: 0.8rem; font-weight: 500; color: var(--co-medium-gray-text); text-decoration: none; margin-top: 1rem;  padding: 0.35rem 0; transition: color 0.2s ease; }
+    .footer-legal-link:hover { color: var(--co-yellow); }
+    .footer-bottom-bar { display: flex; justify-content: space-between; align-items: flex-end;  padding-top: 2rem; border-top: 1px solid var(--co-border-gray); }
+    .footer-copyright-text p { font-family: var(--font-secondary); font-size: 0.75rem;  color: #707070;  line-height: 1.6; margin: 0; }
+    .footer-social-media { display: flex; align-items: center; }
+    .footer-social-media a { color: var(--co-dark-text); margin-left: 1rem;  font-size: 1.1rem;  text-decoration: none; transition: color 0.2s ease; }
+    .footer-social-media a:first-child { margin-left: 0; }
+    .footer-social-media a:hover { color: var(--co-yellow); }
+  </style>
+</head>
+<body>
+  <div id="mouse-shadow"></div>
+
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-light">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand" href="index.html">
+        <img src="./img/logo-dark.png" alt="CrudOps Logo" class="logo-img">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0">
+          <li class="nav-item"> <a class="nav-link" href="services.html">Services</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="industries.html">Industries</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="about.html">About Us</a> </li>
+          <li class="nav-item"> <a class="nav-link crudops-hub" href="index.html">Crudops Hub</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="casestudies.html">Case Studies</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="portfolio.html">Portfolio</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="blog.html">Blogs</a> </li>
+         
+        </ul>
+        <div class="d-lg-flex align-items-center">
+          <a href="contact.html" class="btn nav-cta-btn btn-sm">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <a href="https://api.whatsapp.com/send?phone=+916238575185&text=Hi, I visited your website and would like to know more." class="float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa fa-whatsapp"></i></a>
+
+<main>
+    <!-- Careers Hero Section -->
+    <section class="careers-hero-section">
+        <div class="careers-hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1>Ready to <span class="highlight-yellow">Build</span> with CrudOps?</h1>
+            <p>While we may not always list specific openings, we are constantly seeking passionate, talented individuals who can contribute to our vision. Submit your general application below!</p>
+            <a href="#current-openings-section" class="btn btn-careers">View Openings</a>
+            <a href="#application-form-section" class="btn btn-careers ms-2">Apply Now (General)</a>
+        </div>
+    </section>
+
+    <!-- Why Join Us Section -->
+    <section id="why-join-us-section" class="section-spacing bg-light-gray">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Why Choose <span class="highlight-yellow">CrudOps</span>?</h2>
+                <p>We're more than just a company; we're a community. Discover what makes CrudOps a unique and rewarding place to advance your career.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="icon"><i class="fa fa-lightbulb-o"></i></div>
+                        <h3>Innovation Hub</h3>
+                        <p>Engage with challenging, high-impact projects that push technological boundaries and define new industry standards.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="icon"><i class="fa fa-users"></i></div>
+                        <h3>Team-Centric Culture</h3>
+                        <p>Flourish in a collaborative and diverse environment where every voice is heard and every team member contributes.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="icon"><i class="fa fa-line-chart"></i></div>
+                        <h3>Accelerated Growth</h3>
+                        <p>Benefit from continuous learning programs, mentorship, and clear opportunities for professional and personal development.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-card">
+                        <div class="icon"><i class="fa fa-cubes"></i></div>
+                        <h3>Dynamic Projects</h3>
+                        <p>Work on a diverse portfolio of projects across various industries, keeping your skills sharp and experience broad.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-card">
+                        <div class="icon"><i class="fa fa-code"></i></div>
+                        <h3>Cutting-Edge Tech</h3>
+                        <p>Stay ahead by working with the latest frameworks, tools, and methodologies in software development and AI.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-card">
+                        <div class="icon"><i class="fa fa-coffee"></i></div>
+                        <h3>Inclusive Environment</h3>
+                        <p>Experience a welcoming workplace that values respect, integrity, and encourages a healthy work-life integration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Current Openings Section -->
+    <section id="current-openings-section" class="section-spacing bg-white">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our <span class="highlight-yellow">Current Openings</span></h2>
+                <p>Excited to join our team? Browse our active job listings and find the perfect fit for your skills and career aspirations.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="job-opening-card">
+                        <h4>Senior Software Engineer (Backend)</h4>
+                        <p class="location"><i class="fa fa-map-marker"></i> Bangalore, India (Hybrid)</p>
+                        <p>Design, develop, and maintain robust backend systems and APIs using modern frameworks. Lead technical discussions and mentor junior developers. Strong experience with Node.js/Python required.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="job-opening-card">
+                        <h4>UI/UX Designer</h4>
+                        <p class="location"><i class="fa fa-map-marker"></i> Remote / India</p>
+                        <p>Create intuitive and aesthetically pleasing user interfaces. Conduct user research, wireframe, prototype, and test designs to optimize user experience. Proficiency in Figma/Sketch required.</p>
+                    </div>
+                </div>
+                <!-- You can uncomment more job opening cards here if you have specific roles -->
+                <!--
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="job-opening-card">
+                        <h4>Junior Frontend Developer (React)</h4>
+                        <p class="location"><i class="fa fa-map-marker"></i> Bangalore, India</p>
+                        <p>Join our agile team to develop responsive web applications using React.js. Collaborate with designers and backend engineers to deliver high-quality features. Basic experience preferred.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="job-opening-card">
+                        <h4>Data Scientist (AI/ML)</h4>
+                        <p class="location"><i class="fa fa-map-marker"></i> Remote / India</p>
+                        <p>Analyze complex datasets, build predictive models, and implement machine learning algorithms to drive insights. Python, R, and strong statistical skills are essential for this role.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="job-opening-card">
+                        <h4>DevOps Engineer</h4>
+                        <p class="location"><i class="fa fa-map-marker"></i> Remote / India</p>
+                        <p>Manage and optimize our CI/CD pipelines, cloud infrastructure (AWS/Azure), and monitoring systems. Expertise in Docker, Kubernetes, and scripting (Bash/Python) is a must.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="job-opening-card">
+                        <h4>Quality Assurance (QA) Engineer</h4>
+                        <p class="location"><i class="fa fa-map-marker"></i> Bangalore, India</p>
+                        <p>Develop and execute test plans, identify bugs, and ensure the quality of our software products. Experience with automated testing frameworks and agile methodologies preferred.</p>
+                    </div>
+                </div> -->
+            </div>
+            <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="700">
+                <p>Don't see a role that fits perfectly? Submit a general application, and we'll keep you in mind!</p>
+                <a href="#application-form-section" class="btn btn-cta-light">Submit General Application</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section id="application-form-section" class="section-spacing bg-light-gray application-form-section"> <!-- Changed bg for contrast -->
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Submit Your <span class="highlight-yellow">Application</span></h2>
+                <p>We're excited to learn more about you! Please fill out the form below, and our HR team will review your qualifications for potential future opportunities.</p>
+            </div>
+
+            <div class="form-wrapper" data-aos="fade-up" data-aos-delay="100">
+                <!-- IMPORTANT: This form requires a server-side script to handle submissions, especially file uploads.
+                    Without a backend (e.g., PHP, Node.js, Python), submissions will not be processed.
+                    Consider using a service like Formspree.io or Netlify Forms if you do not have a backend.
+                    Example for Formspree: <form action="https://formspree.io/f/your_unique_id" method="POST" enctype="multipart/form-data">
+                -->
+                <form action="/submit-application" method="POST" enctype="multipart/form-data" novalidate>
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label">Full Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="fullName" name="fullName" required placeholder="John Doe">
+                        <div class="invalid-feedback">Please enter your full name.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailAddress" class="form-label">Email Address <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="emailAddress" name="emailAddress" required placeholder="john.doe@example.com">
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phoneNumber" class="form-label">Phone Number <span class="text-danger">*</span></label>
+                        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required placeholder="+91 12345 67890">
+                        <div class="invalid-feedback">Please enter your phone number.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="desiredRoleSelect" class="form-label">Desired Role / Area of Interest <span class="text-danger">*</span></label>
+                        <select class="form-select" id="desiredRoleSelect" name="desiredRole" required>
+                            <option value="">Select an option</option>
+                            <!-- Options manually added from "Current Openings" -->
+                            <option value="Senior Software Engineer (Backend)">Senior Software Engineer (Backend)</option>
+                            <option value="UI/UX Designer">UI/UX Designer</option>
+                            <option value="Junior Frontend Developer (React)">Junior Frontend Developer (React)</option>
+                            <option value="Data Scientist (AI/ML)">Data Scientist (AI/ML)</option>
+                            <option value="DevOps Engineer">DevOps Engineer</option>
+                            <option value="Quality Assurance (QA) Engineer">Quality Assurance (QA) Engineer</option>
+                            <option value="Other">Other (Please specify in Cover Letter)</option>
+                        </select>
+                        <div class="invalid-feedback">Please select your desired role or area of interest.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="experienceLevel" class="form-label">Years of Experience <span class="text-danger">*</span></label>
+                        <select class="form-select" id="experienceLevel" name="experienceLevel" required>
+                            <option value="">Select an option</option>
+                            <option value="Fresher">Fresher (Less than 1 year)</option>
+                            <option value="1-3 Years">1 - 3 Years</option>
+                            <option value="3-5 Years">3 - 5 Years</option>
+                            <option value="5-7 Years">5 - 7 Years</option>
+                            <option value="7+ Years">7+ Years</option>
+                        </select>
+                        <div class="invalid-feedback">Please select your experience level.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="linkedIn" class="form-label">LinkedIn Profile URL (Optional)</label>
+                        <input type="url" class="form-control" id="linkedIn" name="linkedIn" placeholder="https://www.linkedin.com/in/yourprofile">
+                    </div>
+                    <div class="mb-3">
+                        <label for="portfolioUrl" class="form-label">Portfolio / GitHub URL (Optional)</label>
+                        <input type="url" class="form-control" id="portfolioUrl" name="portfolioUrl" placeholder="https://github.com/yourprofile">
+                    </div>
+                    <div class="mb-3">
+                        <label for="coverLetter" class="form-label">Cover Letter / Message (Optional)</label>
+                        <textarea class="form-control" id="coverLetter" name="coverLetter" rows="4" placeholder="Tell us about your interest in CrudOps and what you can bring to the team. If you selected 'Other' for the role, please specify it here."></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="resumeFile" class="form-label">Upload Resume <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control-file" id="resumeFile" name="resumeFile" accept=".pdf,.doc,.docx" required>
+                        <div class="form-text">Accepted formats: PDF, DOC, DOCX. Max file size: 5MB.</div>
+                        <div class="invalid-feedback">Please upload your resume.</div>
+                    </div>
+
+                    <p class="required-note mt-4 small text-danger">Fields marked with <span class="text-danger">*</span> are mandatory.</p>
+
+                    <button type="submit" class="btn btn-submit">Submit Application</button>
+                </form>
+            </div>
+            <div class="mail-us-cta" data-aos="fade-up" data-aos-delay="200">
+                <p class="small">Prefer to reach out directly? You can also email us for general inquiries.</p>
+                <a href="mailto:hrm@crudops.com?subject=General Inquiry about CrudOps Careers" class="btn btn-mail">Mail Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Call to Action Section -->
+    <section class="cta-section-career">
+        <div class="container" data-aos="fade-up">
+            <h2>Ready to <span class="highlight-yellow">Innovate</span> with Us?</h2>
+            <p>We're always looking for passionate individuals who are eager to make an impact. If you're driven by technology and innovation, we want to hear from you.</p>
+            <a href="contact.html" class="btn btn-cta-light">Get in Touch With Us</a>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-main-content">
+            <div class="footer-brand-block">
+                <img src="img/logo-dark.png" alt="CrudOps AI Logo" class="footer-logo">
+                <p class="footer-slogan">Reshape. Redefine. Revolutionise.</p> <!-- Corrected spelling here -->
+            </div>
+            <div class="footer-links-area">
+                <div class="footer-links-column products">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="service-ai-ml.html">AI/ML Solutions</a></li>
+                        <li><a href="service-web-dev.html">Web Development</a></li>
+                        <li><a href="service-app-dev.html">App Development</a></li>
+                        <li><a href="service-erp-dev.html">ERP Development</a></li>
+                        <li><a href="service-ecommerce-dev.html">E-Commerce</a></li>
+                        <li><a href="service-software-dev.html">Software Development</a></li>
+                    </ul>
+                    <a href="privacy.html" class="footer-legal-link">PRIVACY POLICY</a>
+                </div>
+                <div class="footer-links-column role">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="industries.html">Industries Served</a></li>
+                        <li><a href="casestudies.html">Case Studies</a></li>
+                        <li><a href="portfolio.html">Our Portfolio</a></li>
+                        <li><a href="blog.html" target="_blank">Blogs</a></li> <!-- Updated text and added target_blank -->
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                    <a href="terms.html" class="footer-legal-link">TERMS OF USE</a>
+                </div>
+                <div class="footer-links-column company">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <div class="footer-copyright-text">
+                <p>
+                    © <span id="currentYear"></span> CrudOps. All rights reserved. <br>
+                    CrudOps™ and the CrudOps logo are trademarks of CrudOps Pvt. Ltd. <br>
+                    <!-- SEO OPTIMIZATION: Footer Statement -->
+                    A leading Software Development Company specializing in AI Solutions and Custom Software in Kochi, Kerala, India.
+                </p>
+            </div>
+            <!-- Social media links - THIS SECTION IS NOW GUARANTEED TO BE UNCOMMENTED AND HAS LINKS -->
+            <div class="footer-social-media">
+                <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script>
+    if (typeof AOS !== 'undefined') { AOS.init({ duration: 1000, once: true, offset: 100 }); }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const header = document.querySelector("#mainNav");
+    if (header) {
+        const add_class_on_scroll = () => header.classList.add("scrolled");
+        const remove_class_on_scroll = () => header.classList.remove("scrolled");
+        const updateNavbarAndBodyPadding = () => {
+            requestAnimationFrame(() => {
+                const currentNavbarHeight = header.offsetHeight;
+                const rootStyles = getComputedStyle(document.documentElement);
+                const navbarTopGap = parseInt(rootStyles.getPropertyValue('--navbar-top-gap').trim()) || 0;
+                let newBodyPaddingTop = navbarTopGap + currentNavbarHeight;
+                if (window.innerWidth >= 992) {
+                    document.body.style.paddingTop = `${newBodyPaddingTop}px`;
+                } else {
+                    document.body.style.paddingTop = `calc(var(--navbar-top-gap) + 60px)`;
+                }
+                document.documentElement.style.setProperty('--navbar-total-initial-offset', `${newBodyPaddingTop}px`);
+                const mainNavElForScrollSpy = document.getElementById('mainNav');
+                if (typeof bootstrap !== 'undefined' && bootstrap.ScrollSpy && mainNavElForScrollSpy) {
+                    let scrollSpyOffset = newBodyPaddingTop + 20;
+                    const bsScrollSpyInstance = bootstrap.ScrollSpy.getInstance(document.body);
+                    if (bsScrollSpyInstance) {
+                        bsScrollSpyInstance._config.offset = scrollSpyOffset;
+                        bsScrollSpyInstance.refresh();
+                    } else {
+                        // Prevent error if ScrollSpy isn't on a section targeted by navbar
+                        try { new bootstrap.ScrollSpy(document.body, { target: '#mainNav', offset: scrollSpyOffset }); } catch (e) { /* console.error("ScrollSpy init error on resize:", e); */ }
+                    }
+                }
+            });
+        };
+        window.addEventListener('resize', updateNavbarAndBodyPadding);
+        const observer = new MutationObserver(mutationsList => {
+            for(let mutation of mutationsList) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    if (mutation.target.classList.contains('navbar-collapse')) {
+                        updateNavbarAndBodyPadding();
+                    }
+                }
+            }
+        });
+        const navbarCollapseElement = header.querySelector('.navbar-collapse');
+        if (navbarCollapseElement) {
+            observer.observe(navbarCollapseElement, { attributes: true });
+        }
+        updateNavbarAndBodyPadding();
+        let scrollpos = window.scrollY;
+        window.addEventListener('scroll', () => {
+            scrollpos = window.scrollY;
+            if (scrollpos >= (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navbar-top-gap').trim()) || 0) / 2 ) {
+                add_class_on_scroll();
+            } else {
+                remove_class_on_scroll();
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const navLinks = document.querySelectorAll('#mainNav .nav-link');
+        if (navLinks.length > 0) {
+            const currentPath = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
+            navLinks.forEach(link => {
+                // Ensure index.html and careers.html correctly activate
+                const linkHref = link.getAttribute('href');
+                if ((linkHref === 'index.html' && (currentPath === '' || currentPath === 'index.html')) || linkHref === currentPath) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+        
+        const mouseShadow = document.getElementById('mouse-shadow');
+        if (mouseShadow && window.matchMedia("(pointer: fine)").matches) { 
+            document.addEventListener('mousemove', (e) => { 
+                requestAnimationFrame(() => { 
+                    mouseShadow.style.transform = `translate(${e.clientX - (mouseShadow.offsetWidth / 2)}px, ${e.clientY - (mouseShadow.offsetHeight / 2)}px)`; 
+                }); 
+            }); 
+        } else if (mouseShadow) { 
+            mouseShadow.style.display = 'none'; 
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && href !== "#" && href !== "#!") {
+                    // Prevent default anchor click behavior
+                    e.preventDefault(); 
+                    // Use CSS smooth scroll which is configured globally, or a JS scroll-to if more control is needed.
+                    // For now, simply setting window.location.hash and letting CSS handle it.
+                    window.location.hash = href;
+                }
+            }); 
+        });
+
+        if(document.getElementById('currentYear')) { document.getElementById('currentYear').textContent = new Date().getFullYear(); }
+
+
+        // Bootstrap Form Validation (Client-Side)
+        const forms = document.querySelectorAll('.application-form-section form');
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+            })
+        
+        // Populate "Desired Role" dropdown if "Apply for this role" button is clicked
+        const jobApplyButtons = document.querySelectorAll('.btn-apply-job');
+        jobApplyButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default link behavior, we'll handle scroll
+                const jobTitle = this.getAttribute('data-job-title');
+                const desiredRoleSelect = document.getElementById('desiredRoleSelect');
+                if (desiredRoleSelect && jobTitle) {
+                    // Check if the option already exists before trying to select it
+                    const optionExists = Array.from(desiredRoleSelect.options).some(option => option.value === jobTitle);
+                    if (optionExists) {
+                        desiredRoleSelect.value = jobTitle;
+                    } else {
+                        // If for some reason, the option isn't hardcoded or dynamically added, default to "Other"
+                        desiredRoleSelect.value = "Other";
+                        console.warn(`Job title "${jobTitle}" not found in dropdown options.`);
+                    }
+                    desiredRoleSelect.classList.add('was-validated'); // Add validation class if not already there
+                }
+                // Scroll to the application form
+                const applicationFormSection = document.getElementById('application-form-section');
+                if (applicationFormSection) {
+                    applicationFormSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    });
+  </script>
+</body>
+</html>
