@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>CrudOps Portfolio - Aharya E-commerce Suite</title>
+  <title>CrudOps Portfolio - Spinel Aurora</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -102,12 +102,6 @@
     /* ============================================== */
 
     /* Overall Content Wrapper for Centering and Margins */
-
-     .know-more-button-container {
-        text-align: center;
-        margin: 2rem 0;
-     }
-
     .work-content-wrapper {
         max-width: 1050px; /* Adjust this to control side margins */
         margin: 0 auto;
@@ -202,14 +196,44 @@
         padding-top: 4rem; /* Spacing after previous content */
     }
 
-    .project-image-gallery .img-fluid {
-        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect */
+    /* --- MOBILE SCREENSHOT FRAMING STYLES --- */
+    .mobile-screenshot-wrapper {
+        display: flex;
+        justify-content: center;
+        padding: 20px 0; /* Vertical padding between items */
     }
 
-    .project-image-gallery .img-fluid:hover {
-        transform: scale(1.01);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.2); /* Enhanced shadow on hover */
+    .mobile-screenshot-frame {
+        width: 100%;
+        max-width: 350px; /* Standard phone width constraint */
+        /* Use a modern phone screen aspect ratio (e.g., 9:19 or 9:18) */
+        aspect-ratio: 9 / 19; 
+        overflow: hidden;
+        border-radius: 30px; /* Large radius for the outside frame */
+        /* Simulate a bezel: dark background with a deep shadow */
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 0 8px var(--co-matte-black); 
+        background-color: var(--co-matte-black);
+        transition: transform 0.3s ease;
     }
+
+    .mobile-screenshot-frame:hover {
+        transform: scale(1.02);
+    }
+
+    .mobile-screenshot-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the image fills the constrained frame */
+        /* Slight inner rounding */
+        border-radius: 20px; 
+        display: block; /* Remove any inline gaps */
+    }
+    
+    /* Ensure the full-width image styling is removed for framed images */
+    .project-image-gallery .img-fluid {
+        box-shadow: none !important;
+    }
+
 
     /* Short descriptive text after images */
     .short-description-text {
@@ -331,9 +355,10 @@
 
 <main>
     <!-- Section 1: The big hero image (1/7 images) -->
+    <!-- Note: Keeping this hero image full width as it usually represents a broader concept mockup -->
     <section class="section-hero-top-image">
         <div class="work-content-wrapper">
-            <img src="PICKFRAMES/PF1.png" alt="Comprehensive mockups of Aharya Omni-Channel E-commerce Suite on various devices">
+            <img src="pathrika/IMG1.jpeg" alt="Comprehensive mockups of Aharya Omni-Channel E-commerce Suite on various devices" class="img-fluid">
         </div>
     </section>
 
@@ -344,52 +369,86 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item"><a href="portfolio.html">Portfolio</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Aharya E-commerce</li>
+                    <li class="breadcrumb-item active" aria-current="page">Pathrika</li>
                 </ol>
             </nav>
-            <h1 class="force-font-primary">Pickframes</h1>
-            <p>The website Picframes specializes in selling photo frames that can be customized to display your favorite pictures beautifully. Because of all the different designs, sizes and personalization choices, users can make special gifts or additions to their homes with Picframes. The site helps you design your frames and order them without stress, while keeping every product unique to you.
+            <h1 class="force-font-primary">Pathrika</h1>
+            <p>
+            Discover trending stories, explore diverse perspectives, and publish your own content effortlessly. With an intuitive interface and powerful features, Pathrika empowers you to read, write, and connect with a community of engaged users. 
             </p>
- <div class="know-more-button-container">
-              <a href="framing.html" class="btn-vila-pro">Want a Online Custom Framing Platform?</a>
-            </div>
-
             <div class="project-tags">
-                <span class="project-tag-badge">E-commerce</span>
+                <span class="project-tag-badge">Travel Booking</span>
                 <span class="project-tag-badge">Web App</span>
-                <span class="project-tag-badge">Framing</span>
-                <span class="project-tag-badge">Shopping</span>
+                <span class="project-tag-badge">Journey</span>
+                <span class="project-tag-badge">India</span>
                 <span class="project-tag-badge">2025</span>
             </div>
         </header>
 
-        <!-- UPDATED SECTION: Project Image Gallery (6 more images, larger) -->
+        <!-- UPDATED SECTION: Project Image Gallery (Now using mobile frames) -->
         <section class="project-image-gallery">
-            <div class="row g-4"> <!-- Using Bootstrap grid with gutters -->
+            <div class="row g-4"> 
+                
+                <!-- Image 1 -->
                 <div class="col-12">
-                    <img src="PICKFRAMES/PF7.png" alt="Aharya's mobile shopping experience interface" class="img-fluid rounded shadow-sm">
+                    <div class="mobile-screenshot-wrapper">
+                        <div class="mobile-screenshot-frame">
+                            <img src="pathrika/IMG1.jpeg" alt="Pathrika mobile home screen" class="img-fluid">
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Image 2 -->
                 <div class="col-12">
-                    <img src="PICKFRAMES/PF2.png" alt="Aharya's backend dashboard for order management" class="img-fluid rounded shadow-sm">
+                    <div class="mobile-screenshot-wrapper">
+                        <div class="mobile-screenshot-frame">
+                            <img src="pathrika/IMG2.jpeg" alt="Pathrika article view" class="img-fluid">
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Image 3 -->
                 <div class="col-12">
-                    <img src="PICKFRAMES/PF3.png" alt="Aharya's responsive web design across devices" class="img-fluid rounded shadow-sm">
+                    <div class="mobile-screenshot-wrapper">
+                        <div class="mobile-screenshot-frame">
+                            <img src="pathrika/IMG3.jpeg" alt="Pathrika user profile" class="img-fluid">
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Image 4 -->
                 <div class="col-12">
-                    <img src="PICKFRAMES/PF4.png" alt="Aharya native iOS mobile app showcasing user flow" class="img-fluid rounded shadow-sm">
+                    <div class="mobile-screenshot-wrapper">
+                        <div class="mobile-screenshot-frame">
+                            <img src="pathrika/IMG4.jpeg" alt="Pathrika content editor" class="img-fluid">
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Image 5 -->
                 <div class="col-12">
-                    <img src="PICKFRAMES/PF5.png" alt="Aharya native Android mobile app featuring catalog" class="img-fluid rounded shadow-sm">
+                    <div class="mobile-screenshot-wrapper">
+                        <div class="mobile-screenshot-frame">
+                            <img src="pathrika/IMG5.jpeg" alt="Pathrika categories view" class="img-fluid">
+                        </div>
+                    </div>
                 </div>
+
+                 <!-- Image 6 -->
                  <div class="col-12">
-                    <img src="PICKFRAMES/PF6.png" alt="Aharya in-store Point-of-Sale (POS) system in action" class="img-fluid rounded shadow-lg">
+                    <div class="mobile-screenshot-wrapper">
+                        <div class="mobile-screenshot-frame">
+                            <img src="pathrika/IMG6.jpeg" alt="Pathrika search results" class="img-fluid">
+                        </div>
+                    </div>
                 </div>
+                
             </div>
         </section>
 
         <!-- A short descriptive text to add context before CTA -->
         <section class="short-description-text">
-            <p class="lead-text">Since it began, Picframes has helped more than 12,000 customers make customized gifts. Since users can personalize frames in real time, 60% try out the tool during their visit and this increase has led to a 35% higher conversion rate.</p>
+            <p class="lead-text">Pathrika is a dynamic blogging and news platform designed for readers and writers alike. Whether you're passionate about sharing your thoughts through blogs or staying updated with the latest news, Pathrika brings it all together in one seamless experience. </p>
         </section>
 
     </div>

@@ -20,6 +20,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+  <!-- AOS CSS for Scroll Animations -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <style>
     :root {
       --co-yellow: #FFC107;
@@ -46,6 +49,7 @@
     p { margin-bottom: 1.5rem; font-weight: 400; font-family: var(--font-secondary); }
     .force-font-primary { font-family: var(--font-primary) !important; }
 
+    /* --- Navigation & Footer (Retained) --- */
     #mainNav { position: fixed; top: var(--navbar-top-gap); left: 50%; transform: translateX(-50%); width: 95%; max-width: 1300px; padding: 1rem; background-color: #FFFFFF; border-radius: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.08); z-index: 1050; transition: all 0.3s ease-in-out; }
     #mainNav .container { width: 100%; padding: 0; } #mainNav .navbar-brand .logo-img { height: 38px; width:auto; transition: height 0.3s ease-in-out; } #mainNav.scrolled .navbar-brand .logo-img { height: 32px; }
     #mainNav .navbar-nav .nav-link { font-family: var(--font-primary); color: var(--co-dark-text); font-weight: 400; padding: 0.5rem 1rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.3s ease; }
@@ -54,10 +58,10 @@
     #mainNav.scrolled { padding: 0.75rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); } .navbar-toggler { border-color: rgba(0, 0, 0, 0.1); margin-left: auto; }
     .nav-cta-btn { font-family: var(--font-primary); background-color: var(--co-yellow); border-color: var(--co-yellow); color: var(--co-dark-text); border-radius: 20px; font-weight: 700; padding: 0.45rem 1.3rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; transition: all 0.3s ease; }
     .nav-cta-btn:hover { background-color: #e0a800; border-color: #e0a800; transform: translateY(-2px); }
-
+    
     #mouse-shadow { position: fixed; width: 1px; height: 1px; background-color: transparent; border-radius: 50%; box-shadow: 0 0 200px 100px var(--co-yellow); opacity: 0.6; pointer-events: none; transform: translate(-50%, -50%); z-index: 9999; transition: transform 0.08s ease-out; }
     @media (pointer: coarse) { #mouse-shadow { display: none; } }
-
+    
     .site-footer { background-color: #FFFFFF; padding: 3rem 0 2rem 0; border-top: 1px solid var(--co-border-gray); font-family: var(--font-secondary); color: var(--co-dark-text); }
     .site-footer .container { max-width: 1300px;  }
     .footer-main-content { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2.5rem; gap: 2rem;  }
@@ -79,105 +83,130 @@
     .footer-social-media a:first-child { margin-left: 0; }
     .footer-social-media a:hover { color: var(--co-yellow); }
 
-    /* === PORTFOLIO PAGE SPECIFIC STYLES START === */
-    .portfolio-cover-section { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; background-color: #FFFFFF; padding: 3rem 1rem; text-align: center; }
+    /* === PORTFOLIO PAGE STYLING (REDESIGN) START === */
+    .portfolio-cover-section { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 50vh; background-color: #FFFFFF; padding: 3rem 1rem; text-align: center; }
+    
     .portfolio-cover-title {
-        font-family: var(--font-secondary); font-size: clamp(3.5rem, 15vw, 10rem); font-weight: 800; line-height: 1; letter-spacing: -0.02em; margin: 0;
+        font-family: var(--font-secondary); font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; line-height: 1; letter-spacing: -0.05em; margin: 0;
+        color: var(--co-dark-text);
+        text-transform: uppercase;
+        position: relative;
     }
-    .portfolio-cover-title .title-part-yellow { color: var(--co-yellow); }
-    .portfolio-cover-title .title-part-t-gradient {
-        background-image: linear-gradient(to bottom, var(--co-yellow) 50%, var(--co-dark-text) 50%);
-        -webkit-background-clip: text; -moz-background-clip: text; background-clip: text; color: transparent; padding: 0.01em 0;
+    .portfolio-cover-title::after {
+        content: "Our Work";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: clamp(3.5rem, 15vw, 10rem);
+        font-family: 'Bebas Neue', sans-serif;
+        color: var(--co-yellow);
+        opacity: 0.05;
+        z-index: 0;
+        white-space: nowrap;
+        pointer-events: none;
     }
-    .portfolio-cover-title .title-part-grey { color: var(--co-dark-text); }
-    .portfolio-hero-intro { font-family: var(--font-secondary); font-size: clamp(1rem, 2vw, 1.25rem); color: var(--co-medium-gray-text); max-width: 800px; margin: 1.5rem auto 0 auto; line-height: 1.6; }
-
-    /* Portfolio Filters Removed per request */
-    /* .portfolio-filters { text-align: center; margin-bottom: 3rem; margin-top: 2rem;} */
-    /* .portfolio-filters button { ... } */
+    .portfolio-hero-intro { font-family: var(--font-secondary); font-size: clamp(1rem, 2vw, 1.25rem); color: var(--co-medium-gray-text); max-width: 900px; margin: 1.5rem auto 0 auto; line-height: 1.6; position: relative; z-index: 1; font-weight: 300; }
 
     .portfolio-content-section {
-        padding: 2rem 0 5rem 0;
-        background-color: #FFFFFF;
+        padding: 4rem 0 6rem 0;
+        background-color: var(--co-light-gray-bg);
     }
+    .portfolio-content-section .container { max-width: 1300px; }
 
     .portfolio-grid-item {
         position: relative;
         overflow: hidden;
         display: block;
-        height: 0; /* Aspect ratio hack start */
-        padding-bottom: 66.66%; /* Default 3:2 aspect ratio for images */
+        height: 0;
+        padding-bottom: 66.66%;
         border-radius: 8px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-        transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease-out;
         cursor: pointer;
+        background-color: var(--co-matte-black);
     }
     .portfolio-grid-item:hover {
-        transform: translateY(-5px); /* Lift slightly on hover */
-        box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* More pronounced shadow */
+        transform: scale(1.02);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
     }
 
-    /* Specific aspect ratios for items (optional) */
     .portfolio-grid-item.aspect-square { padding-bottom: 100%; }
-    .portfolio-grid-item.aspect-portrait { padding-bottom: 133.33%; /* 3:4 ratio */ }
-    .portfolio-grid-item.aspect-cinematic { padding-bottom: 42%; /* ~21:9 ratio for full-width items */ }
+    .portfolio-grid-item.aspect-cinematic { padding-bottom: 45%; }
 
     .portfolio-grid-item img {
         position: absolute; top: 0; left: 0;
         width: 100%; height: 100%;
         object-fit: cover;
-        transition: transform 0.4s ease-out;
+        opacity: 0.9;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
     }
-    .portfolio-grid-item:hover img { transform: scale(1.02); }
+    .portfolio-grid-item:hover img { transform: scale(1.05); opacity: 0.2; }
 
     .portfolio-item-overlay {
         position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        background-color: rgba(0, 0, 0, 0.7); /* Solid darker background on hover */
-        opacity: 0; transition: opacity 0.4s ease; z-index: 1; /* Slower fade-in */
-        display: flex; flex-direction: column; justify-content: center; align-items: center;
-        padding: 1.5rem;
-        backdrop-filter: blur(4px); /* Subtle blur for premium effect (check browser support) */
-        text-align: center;
+        background: linear-gradient(180deg, rgba(26, 26, 26, 0.2) 0%, var(--co-matte-black) 100%);
+        opacity: 1; transition: opacity 0.4s ease; z-index: 1;
+        display: flex; flex-direction: column; justify-content: flex-end;
+        align-items: flex-start;
+        padding: 2rem;
+        text-align: left;
     }
-    .portfolio-grid-item:hover .portfolio-item-overlay { opacity: 1; }
+    .portfolio-grid-item:hover .portfolio-item-overlay { background: none; opacity: 1; justify-content: center; align-items: center; text-align: center; }
 
     .portfolio-item-title {
-        font-family: var(--font-primary); font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-weight: 700;
+        font-family: var(--font-secondary); font-size: clamp(1.4rem, 2.8vw, 2.2rem); font-weight: 800;
         color: #FFFFFF; line-height: 1.2; margin-bottom: 0.5rem;
-        transform: translateY(20px); opacity: 0; transition: transform 0.4s ease-out, opacity 0.4s ease-out; /* First reveal */
-    }
-    .portfolio-grid-item:hover .portfolio-item-title { transform: translateY(0); opacity: 1; transition-delay: 0.1s; } /* Stagger */
-
-    .portfolio-item-description { /* New element for detailed text on hover */
-        font-family: var(--font-secondary); font-size: clamp(0.9rem, 1.8vw, 1.1rem); color: rgba(255,255,255,0.9);
-        line-height: 1.5; max-width: 80%; /* Constrain description width */
-        transform: translateY(20px); opacity: 0; transition: transform 0.4s ease-out, opacity 0.4s ease-out;
-    }
-    .portfolio-grid-item:hover .portfolio-item-description { transform: translateY(0); opacity: 1; transition-delay: 0.2s; /* Further stagger */ }
-
-    .portfolio-item-tags-overlay { /* Tags visible only on hover */
-        position: absolute;
-        bottom: 15px; /* Offset from bottom */
-        left: 50%;
-        transform: translateX(-50%) translateY(20px); /* Slide up with text */
-        display: flex; gap: 8px; /* Space out tags */
-        z-index: 2; /* Above overlay, but below the main content flow */
-        opacity: 0;
         transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+        transform: translateY(0);
+    }
+    .portfolio-grid-item:hover .portfolio-item-title { 
+        transform: translateY(-20px);
+        font-family: var(--font-primary);
+        color: var(--co-yellow);
+    }
+
+    .portfolio-item-description { 
+        font-family: var(--font-secondary); font-size: clamp(0.9rem, 1.2vw, 1rem); 
+        color: rgba(255,255,255,0.8); line-height: 1.5; max-width: 100%;
+        margin-bottom: 1rem;
+        opacity: 0; height: 0; overflow: hidden;
+        transition: opacity 0.4s ease-out, height 0s linear 0.4s, margin 0s linear 0.4s;
+        text-align: center;
+    }
+    .portfolio-grid-item:hover .portfolio-item-description { 
+        opacity: 1; height: auto; overflow: visible; margin-bottom: 1.5rem; 
+        transition: opacity 0.4s ease-out, height 0s linear 0s, margin 0s linear 0s;
+    }
+
+    .portfolio-item-tags-overlay { 
+        position: relative;
+        bottom: auto; left: auto; transform: none; 
+        display: flex; gap: 10px; z-index: 2; 
+        opacity: 1;
+        transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        justify-content: flex-start;
     }
     .portfolio-grid-item:hover .portfolio-item-tags-overlay {
-        transform: translateX(-50%) translateY(0); opacity: 1; transition-delay: 0.25s; /* Most staggered */
+        justify-content: center;
+        transform: translateY(-20px);
     }
 
     .portfolio-item-tag {
-        background-color: var(--co-yellow); /* Make tags more prominent on hover */
-        color: var(--co-dark-text); /* Dark text on yellow tag */
-        padding: 5px 10px; border-radius: 4px;
-        font-family: var(--font-primary); font-size: 0.75rem; font-weight: 700;
+        background-color: rgba(255,255,255,0.2);
+        color: #FFFFFF;
+        padding: 5px 12px; border-radius: 20px;
+        font-family: var(--font-primary); font-size: 0.7rem; font-weight: 400;
         text-transform: uppercase; letter-spacing: 0.05em;
-        white-space: nowrap; /* Prevent tag text from wrapping */
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .portfolio-grid-item:hover .portfolio-item-tag {
+        background-color: var(--co-yellow);
+        color: var(--co-dark-text);
+        font-weight: 700;
     }
 
+    /* CTA Section styles retained */
     .section-call-to-action {
         padding: 5rem 0; background-color: var(--co-matte-black); text-align: center;
         color: #FFFFFF;
@@ -191,64 +220,31 @@
         text-transform: uppercase; border-radius: 25px; transition: all 0.3s ease;
     }
     .btn-portfolio-cta:hover { background-color: #e0a800; border-color: #e0a800; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-    /* === END PORTFOLIO PAGE SPECIFIC STYLES === */
-
+    
     /* --- MOBILE STYLES --- */
     @media (max-width: 991.98px) {
       body { padding-top: calc(var(--navbar-top-gap) + 60px); }
       #mainNav { width: 95%; padding: 0.75rem; max-width: calc(100% - 20px); border-radius: 0; }
-      #mainNav .navbar-brand .logo-img { height: 32px; }
-      #mainNav .navbar-collapse { background-color: #FFFFFF; padding: 1rem; margin-top: 0.75rem; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: absolute; top: 100%; left: 0; right: 0; width: 100%; }
-      #mainNav .navbar-nav .nav-item { margin-bottom: 0.3rem; }
-      #mainNav .navbar-nav .nav-link { padding: 0.6rem 0.5rem; font-size: 0.9rem; }
-      #mainNav .navbar-collapse .d-lg-flex { margin-top: 1rem; display: block !important; text-align: center; }
-      #mainNav .navbar-collapse .nav-cta-btn { width: 100%; display: block; margin: 0.5rem auto 0; font-size: 0.9rem; }
 
-      .portfolio-cover-section { min-height: 40vh; padding: 2rem 0; }
-      .portfolio-cover-title { font-size: clamp(2.8rem, 15vw, 6rem); }
+      .portfolio-cover-section { min-height: 30vh; padding: 2rem 0; }
+      .portfolio-cover-title { font-size: clamp(2.5rem, 10vw, 4rem); }
+      .portfolio-cover-title::after { font-size: clamp(3rem, 15vw, 6rem); }
       .portfolio-hero-intro { font-size: clamp(0.9rem, 2.5vw, 1.1rem); max-width: 90%; }
+      
+      .portfolio-content-section { padding: 2rem 0 3rem 0; }
+      
+      .portfolio-grid-item { margin-bottom: 1.5rem; }
+      .portfolio-grid-item.aspect-cinematic { padding-bottom: 60%; }
+      .portfolio-grid-item.aspect-square { padding-bottom: 80%; }
+      .portfolio-item-overlay { padding: 1rem; align-items: center; justify-content: center; text-align: center; }
 
-      /* Removed portfolio filters styles on mobile too */
+      .portfolio-grid-item:hover .portfolio-item-title { transform: translateY(-10px); }
+      .portfolio-item-description { font-size: 0.9rem; max-width: 95%; }
 
-      .portfolio-content-section { padding: 1rem 0 3rem 0; }
-
-      .portfolio-grid-item { border-radius: 6px; box-shadow: 0 3px 12px rgba(0,0,0,0.05); }
-      .portfolio-item-overlay { padding: 1rem; justify-content: center; } /* Center text better on mobile */
-      .portfolio-item-title { font-size: clamp(1rem, 2.5vw, 1.3rem); }
-      .portfolio-item-description { font-size: clamp(0.8rem, 1.8vw, 0.9rem); max-width: 90%; }
-      .portfolio-item-tags-overlay { bottom: 10px; gap: 5px;}
-      .portfolio-item-tag { font-size: 0.65rem; padding: 3px 7px;}
-
-      /* Ensure all cols stack properly on mobile */
       .portfolio-content-section .row > div[class*="col-"] {
            width: 100%; flex: 0 0 100%; max-width: 100%; margin-bottom: 1.5rem;
       }
-      .portfolio-content-section .row:last-of-type > div[class*="col-"] {
-        margin-bottom: 0; /* Remove margin from last row's items */
-      }
-
-      .section-call-to-action { padding: 3rem 0; }
-      .section-call-to-action h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); }
-      .section-call-to-action p { font-size: clamp(0.9rem, 2vw, 1.05rem); }
-      .btn-portfolio-cta { padding: 0.7rem 1.8rem; font-size: 0.9rem; }
-
-      /* Footer Mobile Styles (Copied from services page) */
-      .footer-main-content { flex-direction: column; align-items: flex-start;  gap: 0;  }
-      .footer-brand-block { flex-basis: auto; width: 100%; max-width: 100%; margin-bottom: 2rem; }
-      .footer-links-area { flex-direction: column; width: 100%; gap: 0; }
-      .footer-links-column { width: 100%; margin-bottom: 2rem; }
-      .footer-links-column:last-child { margin-bottom: 0; }
-      .footer-bottom-bar { flex-direction: column; align-items: flex-start;  text-align: left;  }
-      .footer-copyright-text { margin-bottom: 1.5rem; }
-      .footer-social-media { width: 100%; justify-content: flex-start;  }
-      .footer-social-media a { margin-left: 0; margin-right: 1rem;  }
     }
-    @media (max-width: 575.98px) { /* Extra small devices */
-        /* Portfolio content columns already forced to 100% via wider mobile rule. This rule is mostly for older bootstrap default */
-    }
-
-
-    .float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 8px rgba(0,0,0,0.2); z-index: 1000; display: flex; align-items: center; justify-content: center; }
   </style>
 </head>
 <body>
@@ -277,10 +273,10 @@
 <main>
     <section class="portfolio-cover-section">
         <div class="container">
-          <h1 class="portfolio-cover-title">
-            <span class="title-part-yellow">Por</span><span class="title-part-t-gradient">t</span><span class="title-part-grey">folio</span>
+          <h1 class="portfolio-cover-title" data-aos="fade-down" data-aos-duration="800">
+            Creative <span style="color: var(--co-yellow);">Projects</span>
           </h1>
-          <p class="portfolio-hero-intro">
+          <p class="portfolio-hero-intro" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
             Discover bold ideas brought to life. From data-driven platforms to beautifully engineered solutions, our portfolio showcases the innovation, creativity, and results we deliver for forward-thinking clients.
           </p>
         </div>
@@ -288,14 +284,10 @@
 
     <section class="portfolio-content-section">
         <div class="container">
-            <!-- Portfolio Filters - Removed per request -->
-
-            <!-- --- Start of Portfolio Grid Layouts --- -->
-
-            <!-- Featured Wide Project (Image example: high resolution banner/header for a major project) -->
+            <!-- Featured Wide Project 1 -->
             <div class="row g-4 mb-5 justify-content-center">
-                <div class="col-lg-10">
-                    <a href="work-aharya.html" class="portfolio-grid-item aspect-cinematic">
+                <div class="col-12">
+                    <a href="work-aharya.html" class="portfolio-grid-item aspect-cinematic" data-aos="fade-up" data-aos-duration="1000">
                         <img src="AAHARYA/AH6.png" alt="Comprehensive E-commerce Platform Suite - Website Homepage Banner">
                         <div class="portfolio-item-overlay">
                             <h4 class="portfolio-item-title">Aaharya</h4>
@@ -309,23 +301,10 @@
                 </div>
             </div>
 
-            <!-- 2-Column Wide Layout (Images: dashboards, UI screenshots) -->
+            <!-- Two Equal Columns (Web & Mobile Apps) -->
             <div class="row g-4 mb-5">
-                <div class="col-md-6">
-                    <a href="work-devidslad.html" class="portfolio-grid-item">
-                        <img src="Odoo screenshorts/odoo scrennshort1.webp" alt="Smart Solutions for Smarter Restaurants">
-                        <div class="portfolio-item-overlay">
-                            <h4 class="portfolio-item-title">Restaurant Management</h4>
-                            <p class="portfolio-item-description">A smart, all-in-one billing and management system built to simplify restaurant operations and boost efficiency.</p>
-                            <div class="portfolio-item-tags-overlay">
-                                <span class="portfolio-item-tag">ERP</span>
-                                <span class="portfolio-item-tag">2024</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="work_ringme.html" class="portfolio-grid-item">
+                <div class="col-lg-6">
+                    <a href="work_ringme.html" class="portfolio-grid-item" data-aos="fade-right" data-aos-duration="900" data-aos-offset="150">
                         <img src="RINGME/RN1.png" alt="Patient Care Mobile Application Interface - Screenshot of Patient Profile">
                         <div class="portfolio-item-overlay">
                             <h4 class="portfolio-item-title">Ringme</h4>
@@ -337,13 +316,39 @@
                         </div>
                     </a>
                 </div>
+                <div class="col-lg-6">
+                    <a href="work-devidslad.html" class="portfolio-grid-item" data-aos="fade-left" data-aos-duration="900" data-aos-offset="150">
+                        <img src="Odoo screenshorts/odoo scrennshort1.webp" alt="Smart Solutions for Smarter Restaurants">
+                        <div class="portfolio-item-overlay">
+                            <h4 class="portfolio-item-title">Restaurant Management</h4>
+                            <p class="portfolio-item-description">A smart, all-in-one billing and management system built to simplify restaurant operations and boost efficiency.</p>
+                            <div class="portfolio-item-tags-overlay">
+                                <span class="portfolio-item-tag">ERP</span>
+                                <span class="portfolio-item-tag">2024</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
-
-             <!-- ************************************************************** -->
+             
+            <!-- Three Column Layout (ERP, Billing, Custom Software) -->
              <div class="row g-4 mb-5">
-                <div class="col-md-6">
-                    <a href="work_kad_home.html" class="portfolio-grid-item">
-                        <img src="KAD1/1.png" alt="Smart Solutions for Smarter Restaurants">
+                <div class="col-lg-4">
+                    <a href="work_vila_pro.html" class="portfolio-grid-item aspect-square" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0" data-aos-offset="150">
+                        <img src="vila/vila1 .png" alt="Vila Pro Billing Software Screenshot">
+                        <div class="portfolio-item-overlay">
+                            <h4 class="portfolio-item-title">Vila Pro Billing Software</h4>
+                            <p class="portfolio-item-description">Streamlined financial operations and reporting for a medium-sized enterprise with a custom ERP integration.</p>
+                            <div class="portfolio-item-tags-overlay">
+                                <span class="portfolio-item-tag">Billing</span>
+                                <span class="portfolio-item-tag">2025</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <a href="work_kad_home.html" class="portfolio-grid-item aspect-square" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" data-aos-offset="150">
+                        <img src="KAD1/1.png" alt="Kad Home Interior ERP System Interface">
                         <div class="portfolio-item-overlay">
                             <h4 class="portfolio-item-title">Kad Home Interior</h4>
                             <p class="portfolio-item-description">Empowered sales teams with a mobile CRM to manage leads, track interactions, and boost conversion on the go.</p>
@@ -354,27 +359,9 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-6">
-                    <a href="work_vila_pro.html" class="portfolio-grid-item">
-                        <img src="vila/vila1 .png" alt="Patient Care Mobile Application Interface - Screenshot of Patient Profile">
-                        <div class="portfolio-item-overlay">
-                            <h4 class="portfolio-item-title">Vila Pro Billing Software</h4>
-                            <p class="portfolio-item-description">Streamlined HR processes, from onboarding to payroll, with a custom-built, integrated software suite.</p>
-                            <div class="portfolio-item-tags-overlay">
-                                <span class="portfolio-item-tag">Billing</span>
-                                <span class="portfolio-item-tag">2025</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-
-            <!-- Mixed Aspect Ratio Layout (Image example: app or system UI for square, web portal mockups for horizontal) -->
-            <div class="row g-4 mb-5">
-                <div class="col-lg-6">
-                    <a href="work_pickframes.html" class="portfolio-grid-item aspect-square">
-                        <img src="PICKFRAMES/PF1.png" alt="Custom CRM Solution Screenshot - Dashboard View">
+                <div class="col-lg-4">
+                    <a href="work_pickframes.html" class="portfolio-grid-item aspect-square" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400" data-aos-offset="150">
+                        <img src="PICKFRAMES/PF1.png" alt="PickFrames Custom CRM Solution Screenshot">
                         <div class="portfolio-item-overlay">
                             <h4 class="portfolio-item-title">PickFrames</h4>
                             <p class="portfolio-item-description">Built a bespoke CRM system specifically to optimize client lead tracking and sales pipeline for a B2B firm.</p>
@@ -385,8 +372,12 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-6 d-flex flex-column g-4">
-                    <a href="work_gamingsijori.html" class="portfolio-grid-item">
+            </div>
+
+            <!-- Two Equal Columns (Web Platforms) -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-6">
+                    <a href="work_gamingsijori.html" class="portfolio-grid-item" data-aos="fade-right" data-aos-duration="900" data-aos-offset="150">
                         <img src="GAMING SIJORI/GS1.png" alt="Interactive E-Learning Platform UI - Course Listing Page">
                         <div class="portfolio-item-overlay">
                             <h4 class="portfolio-item-title">Gaming Sijori</h4>
@@ -397,7 +388,9 @@
                             </div>
                         </div>
                     </a>
-                    <a href="work_snwoman.html" class="portfolio-grid-item">
+                </div>
+                <div class="col-lg-6">
+                    <a href="work_snwoman.html" class="portfolio-grid-item" data-aos="fade-left" data-aos-duration="900" data-aos-offset="150">
                         <img src="SNWOMAN/SN1.png" alt="Financial ERP Dashboard Mockup - Analytics Screen">
                         <div class="portfolio-item-overlay">
                             <h4 class="portfolio-item-title">Snwoman</h4>
@@ -411,54 +404,85 @@
                 </div>
             </div>
 
-            <!-- Four Column Layout (Images: mobile app screens, focused UI elements) -->
-            <div class="row g-4 mb-5 portfolio-layout-four-col">
-                <!-- <div class="col-md-6 col-lg-3">
-                    <a href="work_tharakacas.html" class="portfolio-grid-item aspect-portrait">
-                        <img src="img/work1.png" alt="Loan Default Prediction System Interface - Result Page">
+            <!-- Featured Wide Project 2 -->
+            <div class="row g-4 mb-5 justify-content-center">
+                <div class="col-12">
+                    <a href="work-superlogistics.html" class="portfolio-grid-item aspect-cinematic" data-aos="fade-up" data-aos-duration="1000">
+                        <img src="ERP Screenshorts/ERP screenshort4.webp" alt="Supply Chain ERP System Overview">
                         <div class="portfolio-item-overlay">
-                            <h4 class="portfolio-item-title">Tharaka CAS </h4>
-                            <p class="portfolio-item-description">An AI model providing highly accurate predictions for financial risk assessment in loan portfolios.</p>
-                            <div class="portfolio-item-tags-overlay">
-                                <span class="portfolio-item-tag">AI / ML</span>
-                                <span class="portfolio-item-tag">2022</span>
-                            </div>
-                        </div>
-                    </a>
-                </div> -->
-                <div class="row g-4 mb-5 justify-content-center">
-                    <div class="col-lg-10">
-                        <a href="work_superlogistics.html" class="portfolio-grid-item aspect-cinematic">
-                            <img src="ERP Screenshorts/ERP screenshort4.webp" alt="Comprehensive E-commerce Platform Suite - Website Homepage Banner">
-                            <div class="portfolio-item-overlay">
-                                <h4 class="portfolio-item-title">ERP System</h4>
-                                <p class="portfolio-item-description">Implemented a dynamic ERP module to optimize and provide real-time visibility into complex supply chain operations.</p>
-                                <div class="portfolio-item-tags-overlay">
-                                    <span class="portfolio-item-tag">Web</span>
-                                    <span class="portfolio-item-tag">2023</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- <div class="col-md-6 col-lg-3">
-                    <a href="work_superlogistics.html" class="portfolio-grid-item aspect-portrait">
-                        <img src="ERP Screenshorts/ERP screenshort1.webp" alt="ERP Supply Chain Management Interface - Inventory View">
-                        <div class="portfolio-item-overlay">
-                            <h4 class="portfolio-item-title">Super Logistics ERP</h4>
+                            <h4 class="portfolio-item-title">ERP Logistics System</h4>
                             <p class="portfolio-item-description">Implemented a dynamic ERP module to optimize and provide real-time visibility into complex supply chain operations.</p>
                             <div class="portfolio-item-tags-overlay">
                                 <span class="portfolio-item-tag">ERP</span>
-                                <span class="portfolio-item-tag">2022</span>
+                                <span class="portfolio-item-tag">2023</span>
                             </div>
                         </div>
                     </a>
-                </div> -->
+                </div>
             </div>
 
+             <div class="row g-4 mb-5">
+                <div class="col-lg-6">
+                    <a href="work_spinelaurora.html" class="portfolio-grid-item" data-aos="fade-right" data-aos-duration="900" data-aos-offset="150">
+                        <img src="spinel/img1.png" alt="Interactive E-Learning Platform UI - Course Listing Page">
+                        <div class="portfolio-item-overlay">
+                            <h4 class="portfolio-item-title">Spinel Aurora</h4>
+                            <p class="portfolio-item-description">Connecting you with the Earth's most beautiful creations. Discover jewelry and gemstones that inspire and empower.</p>
+                            <div class="portfolio-item-tags-overlay">
+                                <span class="portfolio-item-tag">Web Development</span>
+                                <span class="portfolio-item-tag">2025</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a href="work_angelaura.html" class="portfolio-grid-item" data-aos="fade-left" data-aos-duration="900" data-aos-offset="150">
+                        <img src="Angelaura/img1.png" alt="Financial ERP Dashboard Mockup - Analytics Screen">
+                        <div class="portfolio-item-overlay">
+                            <h4 class="portfolio-item-title">Angelaura</h4>
+                            <p class="portfolio-item-description">Angelaura is your trusted partner in pursuing medical studies abroad, specifically tailored for aspiring doctors and nurses from Kerala.</p>
+                            <div class="portfolio-item-tags-overlay">
+                                <span class="portfolio-item-tag">Web Development</span>
+                                <span class="portfolio-item-tag">2025</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-lg-6">
+                    <a href="work_pathrika.html" class="portfolio-grid-item" data-aos="fade-right" data-aos-duration="900" data-aos-offset="150">
+                        <img src="pathrika/IMG6.jpeg" alt="Interactive E-Learning Platform UI - Course Listing Page">
+                        <div class="portfolio-item-overlay">
+                            <h4 class="portfolio-item-title">Pathrika</h4>
+                            <p class="portfolio-item-description">Your all-in-one space to write, publish, and connect with readers.</p>
+                            <div class="portfolio-item-tags-overlay">
+                                <span class="portfolio-item-tag">Mobile App</span>
+                                <span class="portfolio-item-tag">2025</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a href="work_travelbuddha.html" class="portfolio-grid-item" data-aos="fade-left" data-aos-duration="900" data-aos-offset="150">
+                        <img src="travelbuddha/img1.png" alt="Financial ERP Dashboard Mockup - Analytics Screen">
+                        <div class="portfolio-item-overlay">
+                            <h4 class="portfolio-item-title">Travel Buddha</h4>
+                            <p class="portfolio-item-description">The Art of Tailor-Made Travel. From Kerala Retreats to Global Safaris.</p>
+                            <div class="portfolio-item-tags-overlay">
+                                <span class="portfolio-item-tag">Web Development</span>
+                                <span class="portfolio-item-tag">2025</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+
             <!-- Call to Action at the end of portfolio -->
-            <div class="row g-4 justify-content-center">
-                <div class="col-12 text-center">
+            <div class="row g-4 justify-content-center pt-5">
+                <div class="col-12 text-center" data-aos="zoom-in-up" data-aos-duration="800">
                     <a href="contact.html" class="btn btn-portfolio-cta btn-lg">Start Your Next Project With Us</a>
                 </div>
             </div>
@@ -476,7 +500,22 @@
 </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
   <script>
+    // Initialize AOS
+    AOS.init({
+        // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+        offset: 120, // offset (in px) from the original trigger point
+        delay: 0, // values from 0 to 3000, with step 50ms
+        duration: 800, // values from 0 to 3000, with step 50ms
+        easing: 'ease-in-out', // default easing for AOS animations
+        once: true, // whether animation should happen only once - default
+        mirror: false, // whether elements should animate out while scrolling past them
+    });
+
+
     // Navbar & Body Padding (re-using your existing robust JS)
     const header = document.querySelector("#mainNav");
     if (header) {

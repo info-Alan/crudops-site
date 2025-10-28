@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crudops | The Future of Custom Framing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-color: #FFFFFF;
+            --surface-color: #F8F9FA;
+            --text-color: #212529;
+            --text-secondary: #555555;
+            --primary-color: #007BFF;
+            --border-color: #DEE2E6;
+            --font-family-heading: 'Playfair Display', serif;
+            --font-family-body: 'Inter', sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--background-color); color: var(--text-color); font-family: var(--font-family-body); overscroll-behavior: none; }
+        .site-header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; z-index: 100; }
+        .logo { font-weight: 700; font-size: 1.5rem; color: var(--text-color); text-decoration: none; }
+        .header-button { display: inline-block; padding: 0.75rem 1.5rem; background: var(--primary-color); color: white; text-decoration: none; border-radius: 50px; font-weight: 500; font-size: 0.9rem; transition: transform 0.2s ease; }
+        .header-button:hover { transform: scale(1.05); }
+        .scrolly-container { position: relative; }
+
+        .scrolly-background {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1; /* Visuals are behind the text layer */
+            perspective: 1200px; 
+            pointer-events: none;
+        }
+        .scrolly-background > * { pointer-events: auto; }
+
+        .hero-gallery { position: absolute; width: 100%; height: 100%; transition: opacity 0.8s ease-in-out; }
+        .gallery-image { position: absolute; background-size: cover; background-position: center; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 8px solid white; border-radius: 4px; transition: transform 0.3s cubic-bezier(.25,.8,.25,1); }
+        
+        #gallery-img-1 { top: 1%; left: 18%; width: 22vw; height: 18vh; background-image: url('img/frame1.jpg'); }
+        #gallery-img-2 { top: 22%; left: 60%; width: 25vw; height: 38vh; background-image: url('img/frame2.jpg'); }
+        #gallery-img-3 { top: 65%; left: 8%; width: 32vw; height: 45vh; background-image: url('img/frame3.webp'); }
+        #gallery-img-4 { top: 60%; left: 55%; width: 40vw; height: 50vh; background-image: url('img/frame4.jpg'); }
+
+        #story-photo, #single-frame, #photo-matte {
+            position: absolute;
+            transition: all 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        
+        #story-photo {
+            top: 25%; left: 15%; width: 30vw; height: 35vh; max-width: 480px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18); border: 10px solid white;
+            background-image: url('img/old-pic.jpg'); background-size: cover; background-position: center;
+            z-index: 3;
+        }
+        
+        #single-frame { border: 25px solid #212529; box-shadow: inset 0 0 15px rgba(0,0,0,0.15); opacity: 0; box-sizing: content-box !important; z-index: 1; }
+        #photo-matte { background-color: #FFFFFF; opacity: 0; z-index: 2; }
+        
+        #blueprint-overlay {
+            position: absolute; z-index: 4;
+            opacity: 0; transition: opacity 0.6s ease;
+            overflow: visible;
+        }
+        #blueprint-overlay .line { stroke: var(--primary-color); stroke-width: 2; stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+        #blueprint-overlay .checkmark { stroke: #28a745; stroke-width: 5; stroke-dasharray: 100; stroke-dashoffset: 100; }
+        #blueprint-overlay.is-drawing .line { animation: draw-line 1s ease-out forwards 0.3s; }
+        #blueprint-overlay.is-drawing .checkmark { animation: draw-line 0.8s ease-out forwards 1s; }
+        @keyframes draw-line { to { stroke-dashoffset: 0; } }
+
+        #delivery-path {
+            position: absolute; width: 50vw; height: 1px;
+            background: var(--primary-color);
+            opacity: 0;
+            transform-origin: left center;
+            transition: all 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .room-preview { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; z-index: 0; transition: opacity 1.5s ease-in-out; }
+        .room-preview.living-room { background-image: url('img/room-wall.jpg'); }
+
+        .scrolly-content { 
+            position: relative; 
+            z-index: 2; /* Text layer is on top, allowing clicks */
+        }
+        .scroll-section { min-height: 100vh; display: flex; align-items: center; padding: 1.5rem; }
+        #hero, #outro { justify-content: center; text-align: center; }
+        #spark, #customization { justify-content: flex-end; text-align: right; }
+        #frames, #preview, #order { justify-content: flex-start; text-align: left; }
+        .content-wrapper { pointer-events: auto; max-width: 480px; padding: 2.5rem; background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 12px; opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s; }
+        .scroll-section.is-visible .content-wrapper { opacity: 1; transform: translateY(0); }
+        h1, h2 { font-family: var(--font-family-heading); font-weight: 700; }
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 0.5rem; }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; margin-bottom: 0.5rem;}
+        p { font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); }
+        
+        .color-switcher, .matte-switcher { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .color-button { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--border-color); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .color-button:hover { transform: scale(1.1); }
+        .color-button.active { border-color: var(--primary-color); box-shadow: 0 0 0 2px var(--primary-color); }
+        
+        .form { margin-top: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .form input { width: 100%; padding: 1rem; border: 1px solid var(--border-color); border-radius: 8px; font-family: var(--font-family-body); font-size: 1rem; }
+        .form .button { width: 100%; border: none; font-size: 1.1rem; cursor: pointer; }
+        
+        @media (max-width: 800px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            .scroll-section { justify-content: center; align-items: flex-end; }
+            .content-wrapper {
+                max-width: 90%; width: 90%;
+                padding: 1.5rem; margin-bottom: 5vh; text-align: center;
+                /* --- THE MOBILE FIX --- */
+                /* Make the card background invisible, so text floats cleanly */
+                background: transparent;
+                border: none;
+                backdrop-filter: none;
+                box-shadow: none;
+            }
+            .color-switcher, .matte-switcher { justify-content: center; }
+            .color-button { width: 36px; height: 36px; }
+            .gallery-image { width: 40vw; }
+            #gallery-img-1 { height: 25vh; } #gallery-img-2 { height: 30vh; }
+            #gallery-img-3 { height: 30vh; } #gallery-img-4 { height: 35vh; }
+            #story-photo { width: 50vw; height: 28vh;}
+        }
+
+    </style>
+</head>
+<body>
+    <header class="site-header"> <a href="index.html" class="logo">Crudops</a> <a href="#outro" class="header-button">Request a Demo</a> </header>
+    <div class="scrolly-container">
+        <div class="scrolly-background">
+            <div id="hero-gallery-container" class="hero-gallery">
+                <div id="gallery-img-1" class="gallery-image" data-depth="0.1"></div> <div id="gallery-img-2" class="gallery-image" data-depth="0.2"></div>
+                <div id="gallery-img-3" class="gallery-image" data-depth="0.15"></div> <div id="gallery-img-4" class="gallery-image" data-depth="0.1"></div>
+            </div>
+            
+            <div id="story-photo"></div>
+            <div id="photo-matte"></div>
+            <div id="single-frame"></div>
+
+            <svg id="blueprint-overlay">
+                <defs>
+                    <pattern id="grid-pattern" width="30" height="30" patternUnits="userSpaceOnUse">
+                        <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(0,123,255,0.2)" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid-pattern)" />
+                <path class="line" d="M -20 0 L -20 100%" />
+                <path class="line" d="M 100% 120% L 0 120%" />
+                <polyline class="checkmark" points="80,20 90,30 105,15" fill="none"/>
+            </svg>
+            
+            <div id="delivery-path"></div>
+            
+            <div id="living-room-bg" class="room-preview living-room"></div>
+        </div>
+        <main class="scrolly-content">
+             <section id="hero" class="scroll-section"> <div class="content-wrapper" style="background: none; border: none; box-shadow: none; backdrop-filter: none; margin-bottom: 0;"> <h1>Your Vision, Curated.</h1> <p>From a full gallery wall to a single masterpiece, give your customers the power to bring any vision to life.</p> </div> </section>
+             <section id="spark" class="scroll-section"> <div class="content-wrapper"> <h2>It Starts With a Masterpiece.</h2> <p>Whether a cherished photo, canvas print, prized jersey, or timeless document, your customers have limitless options.</p> </div> </section>
+             <section id="frames" class="scroll-section"> <div class="content-wrapper"> <h2>Your Infinite Showroom.</h2> <p>Give customers online access to your entire inventory. Our platform seamlessly displays every material, color, and finish you offer.</p> <div class="color-switcher"> <button class="color-button active" data-color="#212529" style="background-color: #212529;"></button> <button class="color-button" data-color="#D4AF37" style="background-color: #D4AF37;"></button> <button class="color-button" data-color="#FFFFFF" style="background-color: #FFFFFF;"></button> <button class="color-button" data-color="#8B4513" style="background-color: #8B4513;"></button> <button class="color-button" data-color="#C0C0C0" style="background-color: #C0C0C0;"></button> </div> </div> </section>
+             <section id="customization" class="scroll-section"> 
+                <div class="content-wrapper"> <h2>Perfecting the Vision.</h2> <p>Intuitive tools let customers fine-tune every detail—from size to matting—within a simple, powerful interface.</p> 
+                    <div class="matte-switcher">
+                         <button class="color-button active" data-color="#FFFFFF" style="background-color: #FFFFFF;"></button>
+                         <button class="color-button" data-color="#F5F5DC" style="background-color: #F5F5DC;"></button>
+                         <button class="color-button" data-color="#ADD8E6" style="background-color: #ADD8E6;"></button>
+                         <button class="color-button" data-color="#212529" style="background-color: #212529;"></button>
+                    </div>
+                </div> 
+             </section>
+             <section id="preview" class="scroll-section"> <div class="content-wrapper"> <h2>See it. Believe it.</h2> <p>Our live preview technology eliminates guesswork by building confidence by placing their art in realistic settings.</p> </div> </section>
+             <section id="order" class="scroll-section"> <div class="content-wrapper"> <h2>From Click to Creation.</h2> <p>A frictionless, secure checkout turns browsers into buyers. Simplify the entire process, from payment to workshop fulfillment.</p> </div> </section>
+             <section id="outro" class="scroll-section"> <div class="content-wrapper" style="backdrop-filter: none; margin-bottom: 0;"> <img src="img/logo-dark.png" alt="Crudops Logo" style="height: 40px; margin-bottom: 1rem;"> <h2>Elevate Your Framing Business.</h2> <p>Integrate the Crudops platform to unlock the future of online custom framing. Let's grow together.</p> <form class="form" action="#" method="POST"> <div class="form-group"> <input type="text" name="company" placeholder="Company Name" required> </div> <div class="form-group"> <input type="email" name="email" placeholder="Your Email Address" required> </div> <button type="submit" class="button header-button">Request Your Demo</button> </form> </div> </section>
+        </main>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // --- ALL ELEMENTS ---
+        const sections = document.querySelectorAll('.scroll-section');
+        const galleryContainer = document.getElementById('hero-gallery-container');
+        const storyPhoto = document.getElementById('story-photo');
+        const singleFrame = document.getElementById('single-frame');
+        const photoMatte = document.getElementById('photo-matte');
+        const roomBgs = { living: document.getElementById('living-room-bg') };
+        const frameColorButtons = document.querySelectorAll('.color-switcher .color-button');
+        const matteColorButtons = document.querySelectorAll('.matte-switcher .color-button');
+        const blueprintOverlay = document.getElementById('blueprint-overlay');
+        const deliveryPath = document.getElementById('delivery-path');
+
+        // --- STATE MANAGEMENT ---
+        let currentFrameColor = document.querySelector('.color-switcher .active').dataset.color;
+        let currentMatteColor = document.querySelector('.matte-switcher .active').dataset.color;
+        let lastScrollY = window.scrollY;
+        let isScrollingUp = false;
+        
+        // --- EVENT LISTENERS ---
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            if (!isScrollingUp && currentScrollY < lastScrollY && currentScrollY > 100) {
+                 isScrollingUp = true;
+                 window.scrollTo({ top: 0, behavior: 'auto' });
+            }
+            lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+            if (currentScrollY < 100) { isScrollingUp = false; }
+        }, { passive: true });
+        
+        frameColorButtons.forEach(button => {
+            button.addEventListener('click', (e) => { e.stopPropagation(); currentFrameColor = button.dataset.color; singleFrame.style.borderColor = currentFrameColor; frameColorButtons.forEach(btn => btn.classList.remove('active')); button.classList.add('active'); });
+        });
+        matteColorButtons.forEach(button => {
+            button.addEventListener('click', (e) => { e.stopPropagation(); currentMatteColor = button.dataset.color; photoMatte.style.backgroundColor = currentMatteColor; matteColorButtons.forEach(btn => btn.classList.remove('active')); button.classList.add('active'); });
+        });
+        const background = document.querySelector('.scrolly-background');
+        background.addEventListener('mousemove', (e) => {
+            if (galleryContainer.style.opacity !== '1') return;
+             const centerX = window.innerWidth / 2, centerY = window.innerHeight / 2;
+             const mouseX = e.clientX - centerX, mouseY = e.clientY - centerY;
+             galleryContainer.querySelectorAll('.gallery-image').forEach(item => {
+                 const depth = item.getAttribute('data-depth');
+                 const moveX = -(mouseX * depth) / 20, moveY = -(mouseY * depth) / 20;
+                 item.style.transform = `translateX(${moveX}px) translateY(${moveY}px)`;
+             });
+        });
+
+        // --- MAIN ANIMATION FUNCTION ---
+        const updateAnimations = (visibleSectionId) => {
+            // Comprehensive Reset
+            storyPhoto.style.cssText = 'opacity: 0; transform: scale(0.5);';
+            galleryContainer.style.opacity = '0';
+            singleFrame.style.cssText = 'opacity: 0;';
+            photoMatte.style.cssText = 'opacity: 0;';
+            blueprintOverlay.style.cssText = 'opacity: 0; visibility: hidden;';
+            blueprintOverlay.classList.remove('is-drawing');
+            deliveryPath.style.cssText = 'opacity: 0; transform: scaleX(0);';
+            roomBgs.living.style.opacity = '0';
+            
+            const isMobile = window.innerWidth <= 800;
+
+            switch (visibleSectionId) {
+                case 'hero':
+                    galleryContainer.style.opacity = '1';
+                    storyPhoto.style.cssText = 'opacity: 1;';
+                    break;
+                case 'spark':
+                    storyPhoto.style.opacity = '1';
+                    storyPhoto.style.top = isMobile ? '35%' : '50%'; storyPhoto.style.left = '50%';
+                    storyPhoto.style.width = isMobile ? '60vw' : '33vw'; storyPhoto.style.height = `calc(${isMobile ? '60vw' : '33vw'} * 1.16)`;
+                    storyPhoto.style.transform = 'translate(-50%, -50%)';
+                    if (!isMobile) { storyPhoto.style.transform = 'translate(-110%, -50%) scale(0.9)'; }
+                    break;
+                case 'frames':
+                    singleFrame.style.borderColor = currentFrameColor;
+                    storyPhoto.style.opacity = '1'; singleFrame.style.opacity = '1';
+                    const pW = isMobile ? '70vw' : '35vw', pH = `calc(${pW} * 1.16)`;
+                    const pL = isMobile ? '50%' : '70%', pT = isMobile ? '35%' : '50%';
+                    storyPhoto.style.border = 'none';
+                    storyPhoto.style.width = pW; storyPhoto.style.height = pH;
+                    storyPhoto.style.top = pT; storyPhoto.style.left = pL;
+                    storyPhoto.style.transform = 'translate(-50%, -50%)';
+                    const bW = 25;
+                    singleFrame.style.width = `calc(${pW} + ${bW * 2}px)`; singleFrame.style.height = `calc(${pH} + ${bW * 2}px)`;
+                    singleFrame.style.top = pT; singleFrame.style.left = pL;
+                    singleFrame.style.transform = 'translate(-50%, -50%)';
+                    break;
+                case 'customization':
+                    storyPhoto.style.opacity = '1'; singleFrame.style.opacity = '1'; photoMatte.style.opacity = '1';
+                    singleFrame.style.borderColor = currentFrameColor; photoMatte.style.backgroundColor = currentMatteColor;
+                    const fWC = isMobile ? '75vw' : '38vw', fHC = `calc(${fWC} * 1.16)`;
+                    const fCLC = isMobile ? '50%' : '30%', fCTC = isMobile ? '35%' : '50%';
+                    const bWC = 25;
+                    singleFrame.style.width = `calc(${fWC} + ${bWC * 2}px)`; singleFrame.style.height = `calc(${fHC} + ${bWC * 2}px)`;
+                    singleFrame.style.top = fCTC; singleFrame.style.left = fCLC;
+                    singleFrame.style.transform = 'translate(-50%, -50%)';
+                    photoMatte.style.width = fWC; photoMatte.style.height = fHC;
+                    photoMatte.style.top = fCTC; photoMatte.style.left = fCLC;
+                    photoMatte.style.transform = 'translate(-50%, -50%)';
+                    const mP = '5vw';
+                    storyPhoto.style.border = 'none';
+                    storyPhoto.style.width = `calc(${fWC} - ${mP})`; storyPhoto.style.height = `calc(${fHC} - ${mP})`;
+                    storyPhoto.style.top = fCTC; storyPhoto.style.left = fCLC;
+                    storyPhoto.style.transform = 'translate(-50%, -50%)';
+                    break;
+                case 'preview':
+                    storyPhoto.style.opacity = '1'; singleFrame.style.opacity = '1'; photoMatte.style.opacity = '1';
+                    roomBgs.living.style.opacity = '1';
+                    singleFrame.style.borderColor = currentFrameColor; photoMatte.style.backgroundColor = currentMatteColor; storyPhoto.style.border = 'none';
+                    const wCT = isMobile ? '30%' : '45%', wCL = '50%';
+                    const wFW = isMobile ? '55vw' : '28vw', wFH = `calc(${wFW} * 1.16)`;
+                    const bWW = 25, scale = isMobile ? 0.7 : 0.8;
+                    singleFrame.style.width = `calc(${wFW} + ${bWW * 2}px)`; singleFrame.style.height = `calc(${wFH} + ${bWW * 2}px)`;
+                    singleFrame.style.top = wCT; singleFrame.style.left = wCL;
+                    singleFrame.style.transform = `translate(-50%, -50%) scale(${scale})`;
+                    photoMatte.style.width = wFW; photoMatte.style.height = wFH;
+                    photoMatte.style.top = wCT; photoMatte.style.left = wCL;
+                    photoMatte.style.transform = `translate(-50%, -50%) scale(${scale})`;
+                    const mPW = isMobile ? '7vw' : '5.5vw';
+                    storyPhoto.style.width = `calc(${wFW} - ${mPW})`; storyPhoto.style.height = `calc(${wFH} - ${mPW})`;
+                    storyPhoto.style.top = wCT; storyPhoto.style.left = wCL;
+                    storyPhoto.style.transform = `translate(-50%, -50%) scale(${scale})`;
+                    break;
+                case 'order':
+                    storyPhoto.style.opacity = '1'; singleFrame.style.opacity = '1'; photoMatte.style.opacity = '1';
+                    singleFrame.style.borderColor = currentFrameColor; photoMatte.style.backgroundColor = currentMatteColor;
+                    const artW_order = isMobile ? '65vw' : '35vw';
+                    const artH_order = `calc(${artW_order} * 1.16)`;
+                    const bW_order = 25;
+                    singleFrame.style.width = `calc(${artW_order} + ${bW_order * 2}px)`; singleFrame.style.height = `calc(${artH_order} + ${bW_order * 2}px)`;
+                    singleFrame.style.top = '50%'; singleFrame.style.left = '50%';
+                    singleFrame.style.transform = 'translate(-50%, -50%)';
+                    photoMatte.style.width = artW_order; photoMatte.style.height = artH_order;
+                    photoMatte.style.top = '50%'; photoMatte.style.left = '50%';
+                    photoMatte.style.transform = 'translate(-50%, -50%)';
+                    const mP_order = '5vw';
+                    storyPhoto.style.border = 'none';
+                    storyPhoto.style.width = `calc(${artW_order} - ${mP_order})`; storyPhoto.style.height = `calc(${artH_order} - ${mP_order})`;
+                    storyPhoto.style.top = '50%'; storyPhoto.style.left = '50%';
+                    storyPhoto.style.transform = 'translate(-50%, -50%)';
+                    
+                    blueprintOverlay.style.cssText = `opacity: 1; visibility: visible; width: calc(${artW_order} + ${bW_order * 2}px); height: calc(${artH_order} + ${bW_order * 2}px); top: 50%; left: 50%; transform: translate(-50%, -50%);`;
+                    blueprintOverlay.classList.add('is-drawing');
+                    break;
+                case 'outro':
+                    [storyPhoto, singleFrame, photoMatte, blueprintOverlay].forEach(el => {
+                        el.style.opacity = '0';
+                        el.style.top = '50%'; el.style.left = '50%';
+                        el.style.transform = 'translate(-50%, -50%) scale(0.8)';
+                    });
+                    
+                    deliveryPath.style.opacity = '1';
+                    deliveryPath.style.top = '50%';
+                    deliveryPath.style.left = '0';
+                    deliveryPath.style.transform = 'scaleX(1)';
+                    setTimeout(() => {
+                        deliveryPath.style.left = '100%';
+                    }, 200);
+                    break;
+            }
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); updateAnimations(entry.target.getAttribute('id')); } 
+                else { entry.target.classList.remove('is-visible'); }
+            });
+        }, { rootMargin: '0px', threshold: 0.55 });
+        sections.forEach(section => observer.observe(section));
+        
+        setTimeout(() => {
+            const firstVisible = document.querySelector('.scroll-section.is-visible');
+            updateAnimations(firstVisible ? firstVisible.id : 'hero');
+        }, 100);
+    });
+    </script>
+</body>
+</html>
